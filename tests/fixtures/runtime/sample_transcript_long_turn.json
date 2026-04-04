@@ -1,0 +1,13 @@
+{
+  "session_id": "sess-long",
+  "topic_id": "tc-campus-ai",
+  "turns": [
+    {
+      "turn_id": "t1",
+      "speaker_role": "user",
+      "text": "Short placeholder; tests synthesize a 230+ word turn in code.",
+      "created_at": "2026-01-01T10:00:00Z",
+      "metadata": {}
+    }
+  ]
+}

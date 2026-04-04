@@ -1,0 +1,11 @@
+[
+  {
+    "id": "ev-900",
+    "title": "Research Data Ethics Workshop",
+    "description": "A hands-on workshop covering consent, de-identification, and responsible data sharing for student researchers. Registration is required one week before the event.",
+    "location": "Room 301, Teaching Complex A",
+    "starts_at": "2026-03-10T14:00:00Z",
+    "url": "https://example.edu/events/data-ethics",
+    "language": "en"
+  }
+]

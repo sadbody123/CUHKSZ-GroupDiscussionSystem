@@ -1,0 +1,12 @@
+cases:
+  - case_id: smoke_retrieval
+    case_type: retrieval_case
+    description: Ally context has evidence and pedagogy rows
+    inputs:
+      topic_id: tc-campus-ai
+      role: ally
+      phase: discussion
+      top_k: 5
+    expected:
+      min_evidence_count: 1
+      min_pedagogy_count: 1

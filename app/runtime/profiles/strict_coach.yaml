@@ -1,0 +1,18 @@
+profile_id: strict_coach
+description: Emphasize rubric/coaching tips retrieval and verbose coach feedback.
+retrieval:
+  top_k_by_role:
+    moderator: 4
+    ally: 5
+    opponent: 5
+    coach: 12
+orchestration:
+  auto_run_max_steps_default: 4
+analyzer:
+  long_turn_word_threshold: 200
+prompting:
+  max_reply_chars_by_role:
+    coach: 6000
+coach:
+  coach_verbosity: high
+metadata: {}

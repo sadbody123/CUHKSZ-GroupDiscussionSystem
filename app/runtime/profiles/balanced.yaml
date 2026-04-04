@@ -1,0 +1,19 @@
+profile_id: balanced
+description: Slightly higher evidence/pedagogy counts for ally/opponent.
+retrieval:
+  top_k_by_role:
+    moderator: 5
+    ally: 7
+    opponent: 7
+    coach: 8
+  min_quality_score: 0.1
+orchestration:
+  discussion_turn_threshold: 14
+  auto_run_max_steps_default: 5
+analyzer:
+  long_turn_word_threshold: 240
+prompting:
+  reply_style: balanced
+coach:
+  coach_verbosity: normal
+metadata: {}

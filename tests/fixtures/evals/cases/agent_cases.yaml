@@ -1,0 +1,16 @@
+cases:
+  - case_id: smoke_agent
+    case_type: agent_case
+    description: Mock ally output is tagged
+    inputs:
+      transcript_file: tests/fixtures/runtime/sample_transcript.json
+      topic_id: tc-campus-ai
+      role: ally
+      phase: discussion
+      provider_name: mock
+    expected:
+      text_contains_any:
+        - "[MOCK::ally::"
+      max_chars: 5000
+      required_metadata_keys:
+        - provider

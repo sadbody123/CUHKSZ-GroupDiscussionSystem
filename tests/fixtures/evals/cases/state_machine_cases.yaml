@@ -1,0 +1,10 @@
+cases:
+  - case_id: smoke_state_machine
+    case_type: state_machine_case
+    description: After ally speaks, next role is user
+    inputs:
+      transcript_file: tests/fixtures/runtime/sample_transcript.json
+      topic_id: tc-campus-ai
+      current_phase: discussion
+    expected:
+      next_role: user

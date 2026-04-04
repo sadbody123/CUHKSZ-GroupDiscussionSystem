@@ -1,0 +1,17 @@
+cases:
+  - case_id: smoke_e2e
+    case_type: e2e_case
+    description: Minimal mock e2e with feedback
+    inputs:
+      topic_id: tc-campus-ai
+      user_stance: for
+      initial_user_turn: "Opening for e2e eval."
+      auto_steps: 2
+      provider_name: mock
+    expected:
+      min_turn_count: 2
+      feedback_generated: true
+      final_phase_in:
+        - feedback
+      report_contains_any:
+        - Formative

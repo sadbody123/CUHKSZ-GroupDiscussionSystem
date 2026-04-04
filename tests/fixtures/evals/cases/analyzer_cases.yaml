@@ -1,0 +1,10 @@
+cases:
+  - case_id: smoke_analyzer
+    case_type: analyzer_case
+    description: Sample transcript triggers example cue signal
+    inputs:
+      transcript_file: tests/fixtures/runtime/sample_transcript.json
+      topic_id: tc-campus-ai
+    expected:
+      required_signals:
+        - example_language

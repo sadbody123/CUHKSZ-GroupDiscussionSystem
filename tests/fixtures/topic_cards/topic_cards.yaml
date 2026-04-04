@@ -1,0 +1,16 @@
+topics:
+  - topic_id: "tc-campus-ai"
+    topic: "AI on campus"
+    summary: "Discuss benefits and risks of using AI tools in university coursework."
+    stance_for: "AI can improve productivity and accessibility."
+    stance_against: "Over-reliance may weaken foundational skills."
+    core_points_for:
+      - "Supports diverse learning paces"
+      - "Automates repetitive tasks"
+    core_points_against:
+      - "May reduce critical practice"
+    example_hints:
+      - "Compare library research vs quick AI summaries."
+    tags:
+      - "ai"
+      - "campus"

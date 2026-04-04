@@ -1,0 +1,17 @@
+[
+  {
+    "id": "rep-001",
+    "title": "Annual Campus Sustainability Report",
+    "content": "This report summarizes energy usage, waste diversion, and student-led initiatives for the 2025 academic year. The campus reduced electricity consumption by twelve percent year over year.",
+    "url": "https://example.edu/reports/sustainability-2025",
+    "published_at": "2025-12-01",
+    "language": "en"
+  },
+  {
+    "id": "rep-002",
+    "title": "图书馆年度总结",
+    "content": "本年度图书馆延长了开放时间，并新增了数字资源数据库。师生借阅量较上一年增长约百分之八。",
+    "published_at": "2025-11-15",
+    "language": "zh"
+  }
+]

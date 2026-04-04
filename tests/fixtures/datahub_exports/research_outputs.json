@@ -1,0 +1,10 @@
+[
+  {
+    "id": "ro-100",
+    "title": "Graph Neural Networks for Citation Networks",
+    "abstract": "We propose a lightweight GNN architecture for academic citation graphs and evaluate on public benchmarks. Results show improved ranking metrics on link prediction tasks compared to baselines.",
+    "url": "https://example.edu/papers/gnn-citation",
+    "published_at": "2024-06-01",
+    "language": "en"
+  }
+]

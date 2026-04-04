@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Env
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test / coverage
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+
+# Snapshots (generated; keep dir structure via .gitkeep)
+app/knowledge/snapshots/*/
+!app/knowledge/snapshots/.gitkeep
+
+# Local discussion sessions (keep folder)
+storage/sessions/*.json
+!storage/sessions/.gitkeep

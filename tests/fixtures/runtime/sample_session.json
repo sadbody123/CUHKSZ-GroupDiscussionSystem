@@ -1,0 +1,24 @@
+{
+  "session_id": "sess_fixture_001",
+  "topic_id": "tc-campus-ai",
+  "user_stance": "for",
+  "phase": "discussion",
+  "max_discussion_turns": 12,
+  "provider_name": "mock",
+  "model_name": null,
+  "snapshot_dir": "app/knowledge/snapshots/dev_snapshot_v2",
+  "runtime_profile_id": "default",
+  "selected_role_policy": null,
+  "turns": [
+    {
+      "turn_id": "t1",
+      "speaker_role": "user",
+      "speaker_name": null,
+      "text": "Opening statement for fixture.",
+      "created_at": "2026-01-01T00:00:00Z",
+      "metadata": {}
+    }
+  ],
+  "coach_report": null,
+  "metadata": {}
+}

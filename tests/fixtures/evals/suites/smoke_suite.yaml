@@ -1,0 +1,12 @@
+suite_id: smoke
+description: Fast smoke cases for CI
+case_refs:
+  - smoke_retrieval
+  - smoke_analyzer
+  - smoke_state_machine
+  - smoke_agent
+  - smoke_e2e
+default_snapshot_id: dev_snapshot_v2
+default_runtime_profile_id: default
+tags:
+  - smoke

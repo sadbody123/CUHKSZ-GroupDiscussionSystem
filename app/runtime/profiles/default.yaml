@@ -1,0 +1,40 @@
+profile_id: default
+description: Baseline retrieval, orchestration, and analysis thresholds.
+retrieval:
+  top_k_by_role:
+    moderator: 5
+    ally: 5
+    opponent: 5
+    coach: 6
+  min_quality_score: 0.0
+  min_credibility_score: 0.0
+  prefer_source_types: []
+  topic_match_weight: 1.0
+  credibility_weight: 1.0
+  quality_weight: 1.0
+orchestration:
+  intro_turn_threshold: 1
+  discussion_turn_threshold: 12
+  moderator_intervene_every_n_turns: 0
+  summary_trigger_mode: turn_count
+  auto_run_max_steps_default: 4
+  summary_min_turns: 1
+analyzer:
+  long_turn_word_threshold: 220
+  low_interaction_min_ratio: 0.25
+  example_keywords: []
+  discussion_language_keywords: []
+  support_teammate_keywords: []
+  response_linkage_keywords: []
+prompting:
+  preferred_template_ids: []
+  reply_style: balanced
+  max_reply_chars_by_role:
+    moderator: 1200
+    ally: 2000
+    opponent: 2000
+    coach: 4000
+coach:
+  coach_verbosity: normal
+  preferred_template_ids: []
+metadata: {}

@@ -1,0 +1,23 @@
+profile_id: concise
+description: Tighter replies and smaller context windows.
+retrieval:
+  top_k_by_role:
+    moderator: 3
+    ally: 4
+    opponent: 4
+    coach: 5
+orchestration:
+  discussion_turn_threshold: 10
+  auto_run_max_steps_default: 3
+analyzer:
+  long_turn_word_threshold: 180
+prompting:
+  reply_style: concise
+  max_reply_chars_by_role:
+    moderator: 600
+    ally: 900
+    opponent: 900
+    coach: 2000
+coach:
+  coach_verbosity: brief
+metadata: {}

@@ -1,0 +1,10 @@
+[
+  {
+    "id": "proj-42",
+    "title": "Open Data Hub for Campus Research",
+    "description": "This project builds pipelines to collect public datasets, normalize metadata, and publish CSV and JSON exports for downstream teaching and discussion systems.",
+    "url": "https://example.edu/projects/datahub",
+    "start_date": "2024-01-10",
+    "language": "en"
+  }
+]

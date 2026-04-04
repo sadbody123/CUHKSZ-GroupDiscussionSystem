@@ -1,0 +1,5 @@
+{
+  "note": "Reference fingerprints for MockProvider smoke checks; not asserted byte-for-byte in all tests.",
+  "roles": ["moderator", "ally", "opponent", "coach"],
+  "same_input_stable": true
+}
