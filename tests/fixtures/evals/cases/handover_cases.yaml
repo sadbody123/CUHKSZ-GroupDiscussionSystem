@@ -1,0 +1,60 @@
+cases:
+  - case_id: handover_release_manifest_v1_demo
+    case_type: release_manifest_case
+    description: Release manifest includes profile and artifact refs
+    snapshot_id: dev_snapshot_v2
+    inputs:
+      profile_id: v1_demo
+    expected:
+      required_manifest_refs:
+        - profile_id
+        - included_artifact_refs
+        - release_id
+      required_profile_id: v1_demo
+
+  - case_id: handover_demo_kit_v1_demo
+    case_type: demo_kit_case
+    description: Demo kit has manifest and quickstart commands
+    snapshot_id: dev_snapshot_v2
+    inputs:
+      profile_id: v1_demo
+    expected:
+      require_quickstart_commands: true
+      min_quickstart_commands: 1
+
+  - case_id: handover_delivery_verify_v1_demo
+    case_type: delivery_verification_case
+    description: Delivery verifier runs without external services
+    snapshot_id: dev_snapshot_v2
+    inputs:
+      profile_id: v1_demo
+    expected:
+      allowed_overall_status:
+        - ok
+        - warning
+        - blocked
+
+  - case_id: handover_acceptance_v1_demo
+    case_type: acceptance_evidence_case
+    description: Acceptance evidence aggregates profile and limitations list
+    snapshot_id: dev_snapshot_v2
+    inputs:
+      profile_id: v1_demo
+    expected:
+      require_known_limitations_preserved: true
+      require_summary_keys:
+        - readiness_status
+
+  - case_id: handover_kit_assemble_v1_demo
+    case_type: handover_kit_case
+    description: Handover kit directory contains core artifacts
+    snapshot_id: dev_snapshot_v2
+    inputs:
+      profile_id: v1_demo
+    expected:
+      required_relative_files:
+        - handover_kit_manifest.json
+        - release_manifest.json
+        - bill_of_materials.json
+        - acceptance_evidence.json
+        - delivery_verification.json

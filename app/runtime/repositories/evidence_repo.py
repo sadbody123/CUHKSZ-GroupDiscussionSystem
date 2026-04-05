@@ -9,6 +9,12 @@ class EvidenceRepository:
     def __init__(self, items: list[EvidenceIndexItem]) -> None:
         self._items = list(items)
 
+    def get_by_evidence_id(self, evidence_id: str) -> EvidenceIndexItem | None:
+        for e in self._items:
+            if e.evidence_id == evidence_id:
+                return e
+        return None
+
     def list_evidence(self) -> list[EvidenceIndexItem]:
         return list(self._items)
 

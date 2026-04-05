@@ -61,7 +61,7 @@ def retrieve_context(
     """Build RoleContextPacket JSON for a role (rule retrieval)."""
     b = _bundle(snapshot_dir)
     ped, top, ev, doc, _src = build_repositories(b)
-    router = RoleRouter(ped, top, ev, doc)
+    router = RoleRouter(ped, top, ev, doc, snapshot_dir=b.path)
     pkt = router.build_context_packet(role=role, topic_id=topic_id, session_phase=phase, top_k=top_k)
     typer.echo(json.dumps(pkt.model_dump(), ensure_ascii=False, indent=2))
 
@@ -76,7 +76,7 @@ def plan_turn(
     """Produce TurnPlan with embedded context_packet (no natural language generation)."""
     b = _bundle(snapshot_dir)
     ped, top, ev, doc, _src = build_repositories(b)
-    router = RoleRouter(ped, top, ev, doc)
+    router = RoleRouter(ped, top, ev, doc, snapshot_dir=b.path)
     sm = SessionStateMachine(router)
     sid, tid, turns = SessionStore.load_transcript_file(transcript_file)
     tp = sm.build_turn_plan(

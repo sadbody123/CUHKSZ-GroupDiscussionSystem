@@ -1,18 +1,11 @@
-"""Minimal logging setup for CLI and pipeline."""
+"""Logging setup — delegates to ``app.ops.logging_config`` for trace-aware formatting."""
 
 from __future__ import annotations
 
-import logging
-import sys
+from app.ops.logging_config import configure_logging
+from app.ops.settings import get_ops_settings
 
 
-def setup_logging(level: str = "INFO") -> None:
-    root = logging.getLogger()
-    if root.handlers:
-        return
-    logging.basicConfig(
-        level=getattr(logging, level.upper(), logging.INFO),
-        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
-        datefmt="%Y-%m-%dT%H:%M:%S",
-        stream=sys.stderr,
-    )
+def setup_logging(level: str | None = None) -> None:
+    s = get_ops_settings()
+    configure_logging(level=level or s.log_level, structured=s.structured_logging)

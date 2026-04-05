@@ -1,0 +1,10 @@
+preset_id: timed_discussion
+mode_id: timed_discussion
+display_name: Timed discussion preset
+runtime_profile_override: balanced
+constraint_overrides:
+  moderator_reminder_every_n_turns: 3
+starter_prompts:
+  - Keep turns under ~250 words when possible.
+success_focus: [turn_concision, interaction]
+tags: [timed]

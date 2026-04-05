@@ -1,0 +1,32 @@
+{
+  "report_id": "e531bfb4-475f-47ef-8cd5-d208ad26f8db",
+  "created_at": "2026-04-05T01:18:47.285020+00:00",
+  "suite_id": "speech_delivery",
+  "profile_ids": [
+    "speech_default"
+  ],
+  "total_cases": 1,
+  "passed_cases": 1,
+  "failed_cases": 0,
+  "summary": {
+    "suite": "speech_delivery",
+    "profile": "speech_default"
+  },
+  "results": [
+    {
+      "suite_id": null,
+      "case_id": "speech_delivery_01",
+      "case_type": "speech_delivery_case",
+      "passed": true,
+      "score": 1.0,
+      "details": {
+        "report_id": "67bedde6-0e45-450b-aef2-d16066687173"
+      },
+      "metadata": {
+        "session_id": "e04b8c9c-33d1-444d-ad3b-d82fb5127207"
+      },
+      "profile_id": "speech_default"
+    }
+  ],
+  "metadata": {}
+}

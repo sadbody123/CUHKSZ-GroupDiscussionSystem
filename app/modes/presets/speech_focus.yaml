@@ -1,0 +1,12 @@
+preset_id: speech_focus
+mode_id: speech_focus
+display_name: Speech focus preset
+runtime_profile_override: speech_default
+audio_policy:
+  prefer_upload: true
+constraint_overrides:
+  prefer_audio_turns: true
+starter_prompts:
+  - Use short spoken turns; proxies are heuristic training signals only.
+success_focus: [fluency_proxy, delivery_proxy]
+tags: [speech]

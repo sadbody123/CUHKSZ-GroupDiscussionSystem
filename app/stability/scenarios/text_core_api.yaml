@@ -1,0 +1,9 @@
+scenario_id: text_core_api
+display_name: Text core (API-facing)
+scenario_type: text_core
+interface_mode: api
+required_capabilities:
+  - runtime_text_core
+  - api_mvp
+release_demo_alias: text_core_demo
+metadata: {}

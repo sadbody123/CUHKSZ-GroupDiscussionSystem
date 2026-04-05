@@ -1,0 +1,5 @@
+python main.py run-api
+python main.py run-ui
+python main.py audit-release-readiness --profile-id v1_demo
+python main.py run-demo-scenario --scenario-id text_core_demo --profile-id v1_demo --snapshot-id dev_snapshot_v2 --provider mock
+python main.py verify-delivery --profile-id v1_demo

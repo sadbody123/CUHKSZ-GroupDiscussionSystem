@@ -1,0 +1,14 @@
+preset_id: assessment_4p
+mode_id: assessment_simulation
+display_name: 4-person simulation preset
+description: Simulated 4-person group discussion flow (practice only).
+runtime_profile_override: strict_coach
+constraint_overrides:
+  require_summary_phase: true
+  block_mid_session_coach: true
+starter_prompts:
+  - This is a practice simulation — manage time across intro, discussion, and summary.
+success_focus: [topic_focus, discussion_language]
+tags: [assessment, four_person]
+metadata:
+  template_hint: gd_assessment_4p_v1

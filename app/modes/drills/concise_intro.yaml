@@ -1,0 +1,14 @@
+drill_id: concise_intro
+drill_type: concise_intro
+title: Concise stance intro
+objective: State stance and roadmap in <= 60 words.
+target_skills: [turn_concision, topic_focus]
+suggested_mode_id: micro_drill
+runtime_profile_id: concise
+recommended_duration_minutes: 4
+prompt_instructions:
+  - One paragraph only; no examples in the intro turn.
+success_criteria:
+  - Word count <= 70
+remediation_hints:
+  - Drop background; keep stance + two roadmap bullets mentally, one paragraph out loud.

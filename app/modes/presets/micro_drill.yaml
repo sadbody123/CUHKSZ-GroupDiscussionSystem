@@ -1,0 +1,10 @@
+preset_id: micro_drill
+mode_id: micro_drill
+display_name: Micro drill preset
+runtime_profile_override: concise
+constraint_overrides:
+  max_words_per_turn_soft: 200
+starter_prompts:
+  - Follow the drill objective literally; stop after the success criteria are met.
+success_focus: [example_usage, rebuttal_clarity]
+tags: [drill]

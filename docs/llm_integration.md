@@ -34,4 +34,6 @@ If the key is absent or you stay on **`mock`**, the project runs fully offline.
 - Integration tests for discussion flow use **`--provider mock`** and file-backed sessions under `storage/sessions/` or a temp directory.
 - No API key is required for `pytest` or for CLI demos with mock.
 
-See also: [CLI discussion MVP](cli_discussion_mvp.md).
+**Delivery expectation:** the **default, supported** path for demos and CI is **`mock`**. OpenAI-compatible and other HTTP providers are **optional**; they may return different content, latency, and failure modes than `mock`. **Do not treat cloud parity as guaranteed** without your own validation.
+
+See also: [CLI discussion MVP](cli_discussion_mvp.md), [providers_truth_table](providers_truth_table.md).

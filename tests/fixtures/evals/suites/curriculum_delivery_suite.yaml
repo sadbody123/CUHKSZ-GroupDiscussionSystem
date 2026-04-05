@@ -1,0 +1,8 @@
+suite_id: curriculum_delivery_v1
+default_runtime_profile_id: default
+case_refs:
+  - curriculum_pack_builtin_01
+  - launch_bridge_foundation_01
+  - assignment_progress_foundation_01
+  - plan_to_pack_01
+  - delivery_report_01

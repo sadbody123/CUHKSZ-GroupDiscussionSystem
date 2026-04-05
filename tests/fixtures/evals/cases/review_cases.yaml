@@ -1,0 +1,46 @@
+cases:
+  - case_id: review_pack_fixture_01
+    case_type: review_pack_case
+    description: Review pack lists core artifact keys
+    inputs:
+      review_pack_fixture: tests/fixtures/review/sample_review_pack.json
+    expected:
+      required_artifact_keys:
+        - session
+        - coach_report
+        - feedback_packet
+      required_rubric_dimensions:
+        min_count: 1
+
+  - case_id: override_merge_fixture_01
+    case_type: override_merge_case
+    description: Approved overrides merge with audit metadata
+    inputs:
+      coach_report_fixture: tests/fixtures/review/coach_sample.json
+      overrides_fixture: tests/fixtures/review/overrides_sample.json
+    expected:
+      require_payload_keys:
+        - risks
+
+  - case_id: calibration_fixture_01
+    case_type: calibration_case
+    description: Calibration report is generated for coach vs human
+    inputs:
+      coach_fixture: tests/fixtures/review/coach_sample.json
+      human_review_fixture: tests/fixtures/review/human_review_full.json
+    expected:
+      expected_agreement_levels:
+        - medium
+        - low
+        - high
+        - unknown
+      require_proxy_notes_preserved: true
+
+  - case_id: disagreement_fixture_01
+    case_type: disagreement_case
+    description: Disagreement heuristics surface AI vs human gaps
+    inputs:
+      disagreement_fixture: tests/fixtures/review/disagreement_sample.json
+    expected:
+      required_mismatch_types:
+        - ai_missing_risk_in_human_view

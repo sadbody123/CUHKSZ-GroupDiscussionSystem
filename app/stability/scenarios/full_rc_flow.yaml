@@ -1,0 +1,8 @@
+scenario_id: full_rc_flow
+display_name: Readiness + text core (RC smoke)
+scenario_type: full_stack
+interface_mode: service
+required_capabilities:
+  - runtime_text_core
+  - engineering_ops
+metadata: {}

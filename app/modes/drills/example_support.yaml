@@ -1,0 +1,14 @@
+drill_id: example_support
+drill_type: example_support
+title: Example sandwich
+objective: Claim → concrete example → link back to the topic.
+target_skills: [example_usage, content_support]
+suggested_mode_id: micro_drill
+runtime_profile_id: balanced
+recommended_duration_minutes: 8
+prompt_instructions:
+  - Name one example that is specific to the campus context if possible.
+success_criteria:
+  - At least one explicit example cue phrase is present
+remediation_hints:
+  - Use "For example," or "A case in point is" to cue the model.

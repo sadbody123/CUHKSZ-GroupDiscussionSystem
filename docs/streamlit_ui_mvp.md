@@ -6,7 +6,7 @@ Single-page app: **`app/ui/streamlit_app.py`**.
 
 - **Left column:** choose snapshot → topic → stance/provider → **Create session**.
 - **Right column:** transcript, **Submit / Run next / Auto run / Generate feedback**, coach text preview when present.
-- **Sidebar:** debug summary (session id, phase, provider, turn count).
+- **Sidebar:** **System** panel (`/health` + `/system/info`), **Debug** (API base URL, app version, snapshot/session ids, session summary). If the API is unreachable, the app shows a clear error and skips snapshot/session actions until the API is available.
 
 ## Data path
 

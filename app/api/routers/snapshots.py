@@ -7,6 +7,7 @@ from typing import Annotated
 from fastapi import APIRouter, Depends
 
 from app.api.deps import get_snapshot_service
+from app.api.schemas.index import IndexStatusResponse
 from app.api.schemas.snapshot import SnapshotDetailResponse, SnapshotSummaryResponse
 from app.application.snapshot_service import SnapshotService
 
@@ -28,6 +29,15 @@ def list_snapshots(svc: Annotated[SnapshotService, Depends(get_snapshot_service)
         )
         for i in items
     ]
+
+
+@router.get("/{snapshot_id}/index-status", response_model=IndexStatusResponse)
+def get_index_status(
+    snapshot_id: str,
+    svc: Annotated[SnapshotService, Depends(get_snapshot_service)],
+) -> IndexStatusResponse:
+    data = svc.get_index_status(snapshot_id)
+    return IndexStatusResponse(**data)
 
 
 @router.get("/{snapshot_id}", response_model=SnapshotDetailResponse)

@@ -1,0 +1,14 @@
+drill_id: rebuttal
+drill_type: rebuttal
+title: Polite rebuttal
+objective: Acknowledge an opposing point, then offer one counter-reason.
+target_skills: [rebuttal_clarity, discussion_language]
+suggested_mode_id: micro_drill
+runtime_profile_id: balanced
+recommended_duration_minutes: 7
+prompt_instructions:
+  - Start with "I see your point; however, ..."
+success_criteria:
+  - Contains a linkage phrase and a counterpoint sentence
+remediation_hints:
+  - Keep to two short paragraphs maximum.

@@ -1,0 +1,31 @@
+# Local stack: API + Streamlit UI.
+# From repo root: docker compose -f docker/docker-compose.yml up --build
+
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.api
+    ports:
+      - "8000:8000"
+    environment:
+      SNAPSHOT_ROOT: /app/app/knowledge/snapshots
+      SESSION_STORAGE_DIR: /app/storage/sessions
+      EVAL_REPORT_DIR: /app/storage/eval_reports
+      FEEDBACK_REPORT_DIR: /app/storage/feedback_reports
+      BUNDLE_DIR: /app/storage/bundles
+      DEFAULT_PROVIDER: mock
+    volumes:
+      - ../app/knowledge/snapshots:/app/app/knowledge/snapshots
+      - ../storage:/app/storage
+
+  ui:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.ui
+    ports:
+      - "8501:8501"
+    environment:
+      UI_API_BASE_URL: http://api:8000
+    depends_on:
+      - api

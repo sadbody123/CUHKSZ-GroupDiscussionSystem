@@ -1,0 +1,15 @@
+scenario_id: text_core_demo
+display_name: Text core demo
+description: Session, turns, feedback (mock).
+scenario_type: text_core
+required_capabilities:
+  - runtime_text_core
+required_inputs:
+  snapshot_id: dev_snapshot_v2
+  topic_id: tc-campus-ai
+steps: []
+success_criteria:
+  - session_created
+  - feedback_generated
+tags:
+  - core

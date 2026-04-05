@@ -33,9 +33,26 @@ class SessionService:
         model_name: str | None = None,
         max_discussion_turns: int | None = None,
         runtime_profile_id: str | None = None,
+        learner_id: str | None = None,
+        mode_id: str | None = None,
+        preset_id: str | None = None,
+        drill_id: str | None = None,
+        assessment_template_id: str | None = None,
+        roster_template_id: str | None = None,
+        user_participant_id: str | None = None,
+        participant_name_overrides: dict | None = None,
+        curriculum_pack_id: str | None = None,
+        assignment_id: str | None = None,
+        assignment_step_id: str | None = None,
+        audio_enabled: bool = False,
         source: str = "api",
     ) -> SessionContext:
         path = self._snapshots.resolve_snapshot_dir(snapshot_id)
+        roster_id = roster_template_id
+        if self._config.enable_group_sim and not roster_id and assessment_template_id:
+            from app.application.group_service import GroupService
+
+            roster_id = GroupService(self._config, self).map_assessment_template_to_roster(assessment_template_id)
         ctx = self._manager.create_session(
             topic_id=topic_id,
             snapshot_dir=str(path),
@@ -44,9 +61,28 @@ class SessionService:
             model_name=model_name if model_name is not None else self._config.default_model,
             max_discussion_turns=max_discussion_turns,
             runtime_profile_id=runtime_profile_id or "default",
+            learner_id=learner_id,
+            mode_id=mode_id,
+            preset_id=preset_id,
+            drill_id=drill_id,
+            assessment_template_id=assessment_template_id,
+            curriculum_pack_id=curriculum_pack_id,
+            assignment_id=assignment_id,
+            assignment_step_id=assignment_step_id,
+            audio_enabled=audio_enabled,
             phase="discussion",
             created_with=source,
         )
+        if self._config.enable_group_sim and roster_id:
+            from app.application.group_service import GroupService
+
+            uid = user_participant_id or "for_a"
+            ctx = GroupService(self._config, self).apply_roster_to_session(
+                ctx,
+                roster_template_id=roster_id,
+                user_participant_id=uid,
+                participant_name_overrides=participant_name_overrides,
+            )
         return ctx
 
     def get_session(self, session_id: str) -> SessionContext:
@@ -69,6 +105,7 @@ class SessionService:
                     "phase": ctx.phase,
                     "turn_count": len(ctx.turns),
                     "provider_name": ctx.provider_name,
+                    "learner_id": ctx.learner_id,
                 }
             )
         return out

@@ -1,0 +1,38 @@
+cases:
+  - case_id: stability_consistency_smoke
+    case_type: consistency_case
+    description: Consistency audit produces summary
+    inputs:
+      profile_id: v1_demo
+    expected:
+      min_findings: 0
+
+  - case_id: stability_e2e_text_core
+    case_type: e2e_flow_case
+    description: text_core_cli E2E returns structured result
+    inputs:
+      scenario_id: text_core_cli
+      profile_id: v1_demo
+    expected:
+      require_success: false
+      required_fields:
+        - run_id
+        - success
+
+  - case_id: stability_recovery_policy
+    case_type: recovery_policy_case
+    description: Recovery policy registry non-empty
+    inputs: {}
+    expected:
+      min_policies: 4
+
+  - case_id: stability_rc_gate
+    case_type: rc_gate_case
+    description: RC report has go field
+    inputs:
+      profile_id: v1_demo
+    expected:
+      allowed_go:
+        - go
+        - conditional_go
+        - no_go

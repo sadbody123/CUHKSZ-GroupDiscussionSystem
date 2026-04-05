@@ -18,7 +18,15 @@ from tests.conftest import HAS_SNAPSHOT_V2
 
 @pytest.mark.skipif(not HAS_SNAPSHOT_V2, reason="dev_snapshot_v2 not built")
 def test_snapshot_and_topic_services(tmp_path: Path) -> None:
-    cfg = get_app_config().model_copy(update={"session_storage_dir": tmp_path / "sessions"})
+    cfg = get_app_config().model_copy(
+        update={
+            "session_storage_dir": tmp_path / "sessions",
+            "audio_storage_dir": tmp_path / "audio",
+            "speech_report_dir": tmp_path / "speech_reports",
+            "mode_reports_dir": tmp_path / "mode_reports",
+            "group_reports_dir": tmp_path / "group_reports",
+        }
+    )
     snap = SnapshotService(cfg)
     rows = snap.list_snapshots()
     assert any(r.snapshot_id == "dev_snapshot_v2" for r in rows)
@@ -29,7 +37,15 @@ def test_snapshot_and_topic_services(tmp_path: Path) -> None:
 
 @pytest.mark.skipif(not HAS_SNAPSHOT_V2, reason="dev_snapshot_v2 not built")
 def test_session_discussion_feedback_roundtrip(tmp_path: Path) -> None:
-    cfg = get_app_config().model_copy(update={"session_storage_dir": tmp_path / "sessions"})
+    cfg = get_app_config().model_copy(
+        update={
+            "session_storage_dir": tmp_path / "sessions",
+            "audio_storage_dir": tmp_path / "audio",
+            "speech_report_dir": tmp_path / "speech_reports",
+            "mode_reports_dir": tmp_path / "mode_reports",
+            "group_reports_dir": tmp_path / "group_reports",
+        }
+    )
     ss = SessionService(cfg)
     top = TopicService(cfg)
     tid = top.list_topic_summaries("dev_snapshot_v2")[0]["topic_id"]

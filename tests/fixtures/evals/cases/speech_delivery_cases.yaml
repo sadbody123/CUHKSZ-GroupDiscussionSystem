@@ -1,0 +1,12 @@
+cases:
+  - case_id: speech_delivery_01
+    case_type: speech_delivery_case
+    description: Session speech proxy report after mock ASR user audio
+    inputs:
+      topic_id: tc-campus-ai
+      audio_file: tests/fixtures/audio/sample_user_turn_01.wav
+      provider_name: mock
+      profile_id: speech_default
+    expected:
+      require_proxy_disclaimer: true
+      min_aggregate_turns: 1

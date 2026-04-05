@@ -1,0 +1,8 @@
+scenario_id: group_mode_flow
+display_name: Group roster + turn
+scenario_type: group_mode
+interface_mode: service
+required_capabilities:
+  - group_simulation
+  - runtime_text_core
+metadata: {}

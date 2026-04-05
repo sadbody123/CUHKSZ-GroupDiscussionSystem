@@ -1,0 +1,42 @@
+{
+  "demo_kit_id": "dk_v1_demo_fef19463",
+  "release_id": "rel_v1_demo",
+  "created_at": "2026-04-05T13:24:14.119795+00:00",
+  "target_profile_id": "v1_demo",
+  "demo_scenario_ids": [
+    "text_core_demo"
+  ],
+  "sample_snapshot_id": "dev_snapshot_v2",
+  "sample_session_refs": [],
+  "sample_learner_refs": [],
+  "sample_assignment_refs": [],
+  "sample_review_refs": [],
+  "sample_publication_refs": [],
+  "quickstart_commands": [
+    "python main.py run-api",
+    "python main.py run-ui",
+    "python main.py audit-release-readiness --profile-id v1_demo",
+    "python main.py run-demo-scenario --scenario-id text_core_demo --profile-id v1_demo --snapshot-id dev_snapshot_v2 --provider mock",
+    "python main.py verify-delivery --profile-id v1_demo"
+  ],
+  "included_paths": [
+    "DEMO_NOTES.md",
+    "demo_kit_manifest.json",
+    "demo_results/text_core_demo.json",
+    "quickstart_commands.txt",
+    "release_demo_bundle/capability_matrix.json",
+    "release_demo_bundle/capability_matrix.md",
+    "release_demo_bundle/manifest.json",
+    "release_demo_bundle/readiness_report.json",
+    "release_demo_bundle/scenario_results/scenario_0.json",
+    "release_demo_bundle/scenario_results/scenario_1.json",
+    "release_demo_bundle/scenario_results/scenario_2.json",
+    "release_demo_bundle/scope_freeze_summary.json"
+  ],
+  "notes": [
+    "Demo kit is a stable showcase subset — not a full production deployment.",
+    "Run with mock provider and local snapshot only.",
+    "Included phase-17 style demo bundle output under release_demo_bundle/."
+  ],
+  "metadata": {}
+}

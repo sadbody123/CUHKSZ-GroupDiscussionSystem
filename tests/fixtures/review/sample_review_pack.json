@@ -1,0 +1,29 @@
+{
+  "review_pack_id": "fixture_pack_001",
+  "session_id": "sess_fixture",
+  "learner_id": null,
+  "topic_id": "topic_001",
+  "mode_id": "free_practice",
+  "roster_template_id": null,
+  "created_at": "2026-01-01T00:00:00+00:00",
+  "status": "pending",
+  "included_artifacts": {
+    "session": {"runtime_profile_id": "default", "turn_count": 2},
+    "coach_report": {"strengths": ["clear"], "risks": ["thin evidence"]},
+    "feedback_packet": {"metrics": {}},
+    "transcript_turns": [],
+    "mode_report": null,
+    "group_balance_report": null,
+    "session_speech_report": null
+  },
+  "ai_summary": {
+    "main_strengths": ["clear"],
+    "main_risks": ["thin evidence"],
+    "rubric_dimensions": [
+      {"dimension_id": "content", "dimension_name": "Content", "max_score": 5.0, "source": "fallback"}
+    ]
+  },
+  "transcript_ref": "speech_reports/sess_fixture/session_report.json",
+  "proxy_limitations": ["Training proxy disclaimer."],
+  "metadata": {}
+}

@@ -1,0 +1,16 @@
+template_id: gd_assessment_6p_v1
+display_name: GD practice simulation (6-person) v1
+description: Timed phases for a six-participant style practice — simulation only.
+simulated_group_size: 6
+prep_seconds: 180
+intro_seconds_per_side: 75
+discussion_seconds: 900
+summary_seconds_per_side: 75
+strict_interrupt_rules: false
+no_mid_session_feedback: true
+expected_user_contribution_target:
+  min_user_turns: 4
+  min_words_per_user_turn_avg: 35
+metadata:
+  practice_simulation: true
+  disclaimer: "Practice simulation — not a formal examination."

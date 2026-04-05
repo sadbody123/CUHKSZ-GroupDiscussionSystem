@@ -1,0 +1,17 @@
+mode_id: assessment_simulation
+mode_type: assessment
+display_name: Group discussion (simulation)
+description: Practice simulation with timed phases — not a formal exam.
+default_runtime_profile_id: strict_coach
+allow_mid_session_coach: false
+auto_generate_feedback: true
+constraint_policy:
+  max_words_per_turn_soft: 280
+  require_summary_phase: true
+  block_mid_session_coach: true
+timer_policy:
+  type: assessment
+recommended_for_skills: [discussion_language, topic_focus]
+tags: [assessment, simulation]
+metadata:
+  simulation_disclaimer: true

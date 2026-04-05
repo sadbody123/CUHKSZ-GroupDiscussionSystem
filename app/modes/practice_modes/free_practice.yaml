@@ -1,0 +1,15 @@
+mode_id: free_practice
+mode_type: practice
+display_name: Free practice
+description: Open-ended discussion without strict timers.
+default_runtime_profile_id: default
+default_audio_enabled: false
+allow_mid_session_coach: true
+auto_generate_feedback: true
+constraint_policy:
+  max_words_per_turn_soft: 400
+  require_summary_phase: false
+timer_policy:
+  type: none
+recommended_for_skills: []
+tags: [baseline]

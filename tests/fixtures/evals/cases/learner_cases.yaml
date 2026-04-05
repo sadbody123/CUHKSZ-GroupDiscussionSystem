@@ -1,0 +1,35 @@
+cases:
+  - case_id: learner_agg_fixture_01
+    case_type: learner_aggregation_case
+    description: Build profile from one exported session; expect example_usage among weak skills.
+    inputs:
+      manifest: tests/fixtures/learners/sample_learner_sessions_manifest.json
+      learner_id: eval_agg_01
+    expected:
+      min_total_sessions: 1
+      required_weak_skills:
+        - example_usage
+
+  - case_id: learner_recommend_fixture_01
+    case_type: recommendation_case
+    description: Recommendation engine emits core explainable types.
+    inputs:
+      manifest: tests/fixtures/learners/sample_learner_sessions_manifest.json
+      learner_id: eval_rec_01
+    expected:
+      required_recommendation_types:
+        - topic
+        - pedagogy
+        - runtime_profile
+        - mode
+
+  - case_id: learner_plan_fixture_01
+    case_type: learning_plan_case
+    description: Learning plan has at least 3 steps and references runtime profiles.
+    inputs:
+      manifest: tests/fixtures/learners/sample_learner_sessions_manifest.json
+      learner_id: eval_plan_01
+      horizon: 4
+    expected:
+      min_plan_steps: 3
+      recommended_profile_in: balanced

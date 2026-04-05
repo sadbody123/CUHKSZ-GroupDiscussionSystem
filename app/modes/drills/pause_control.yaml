@@ -1,0 +1,14 @@
+drill_id: pause_control
+drill_type: pause_control
+title: Pause-aware short audio
+objective: Keep spoken turns short to reduce long silent gaps (proxy).
+target_skills: [pause_management_proxy, fluency_proxy]
+suggested_mode_id: speech_focus
+runtime_profile_id: speech_default
+recommended_duration_minutes: 5
+prompt_instructions:
+  - Record one 20–35 second turn; use mock ASR if needed.
+success_criteria:
+  - Audio turn submitted OR text fallback with <= 40 words
+remediation_hints:
+  - Split into two shorter sentences if you pause often.

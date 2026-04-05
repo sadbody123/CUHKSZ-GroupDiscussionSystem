@@ -1,0 +1,14 @@
+drill_id: short_turn
+drill_type: short_turn
+title: 30-second claim drill
+objective: Deliver one claim plus one reason in under ~80 words.
+target_skills: [turn_concision, content_support]
+suggested_mode_id: micro_drill
+runtime_profile_id: concise
+recommended_duration_minutes: 5
+prompt_instructions:
+  - Write one sentence claim, one sentence reason, then stop.
+success_criteria:
+  - Turn word count <= 120
+remediation_hints:
+  - Remove examples if you exceed the word budget.

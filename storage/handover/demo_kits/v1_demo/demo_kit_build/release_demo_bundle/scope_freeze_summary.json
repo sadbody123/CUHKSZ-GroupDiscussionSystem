@@ -1,0 +1,168 @@
+{
+  "profile_id": "v1_demo",
+  "generated_at": "2026-04-05T13:24:14.389552+00:00",
+  "decisions": [
+    {
+      "decision_id": "sd_c624bce5",
+      "capability_id": "offline_build",
+      "decision": "keep",
+      "reason": "Enabled for profile",
+      "impact": [
+        "offline_build"
+      ],
+      "metadata": {}
+    },
+    {
+      "decision_id": "sd_5be06deb",
+      "capability_id": "runtime_text_core",
+      "decision": "keep",
+      "reason": "Enabled for profile",
+      "impact": [
+        "runtime"
+      ],
+      "metadata": {}
+    },
+    {
+      "decision_id": "sd_24a3c26a",
+      "capability_id": "api_mvp",
+      "decision": "keep",
+      "reason": "Enabled for profile",
+      "impact": [
+        "api"
+      ],
+      "metadata": {}
+    },
+    {
+      "decision_id": "sd_3362a891",
+      "capability_id": "ui_mvp",
+      "decision": "keep",
+      "reason": "Enabled for profile",
+      "impact": [
+        "ui"
+      ],
+      "metadata": {}
+    },
+    {
+      "decision_id": "sd_9400cfe7",
+      "capability_id": "eval_framework",
+      "decision": "keep",
+      "reason": "Enabled for profile",
+      "impact": [
+        "eval"
+      ],
+      "metadata": {}
+    },
+    {
+      "decision_id": "sd_354c16f9",
+      "capability_id": "runtime_profiles",
+      "decision": "keep",
+      "reason": "Enabled for profile",
+      "impact": [
+        "runtime"
+      ],
+      "metadata": {}
+    },
+    {
+      "decision_id": "sd_65fbf9f1",
+      "capability_id": "hybrid_retrieval",
+      "decision": "keep",
+      "reason": "Enabled for profile",
+      "impact": [
+        "indexing"
+      ],
+      "metadata": {}
+    },
+    {
+      "decision_id": "sd_2bc68849",
+      "capability_id": "audio_practice",
+      "decision": "hide_by_default",
+      "reason": "Disabled in release profile",
+      "impact": [
+        "audio"
+      ],
+      "metadata": {}
+    },
+    {
+      "decision_id": "sd_8367bfcf",
+      "capability_id": "speech_proxy_feedback",
+      "decision": "hide_by_default",
+      "reason": "Disabled in release profile",
+      "impact": [
+        "speech"
+      ],
+      "metadata": {}
+    },
+    {
+      "decision_id": "sd_401afcdd",
+      "capability_id": "learner_analytics",
+      "decision": "keep",
+      "reason": "Enabled for profile",
+      "impact": [
+        "learner"
+      ],
+      "metadata": {}
+    },
+    {
+      "decision_id": "sd_edbe106e",
+      "capability_id": "practice_modes",
+      "decision": "keep",
+      "reason": "Enabled for profile",
+      "impact": [
+        "modes"
+      ],
+      "metadata": {}
+    },
+    {
+      "decision_id": "sd_9018e75d",
+      "capability_id": "group_simulation",
+      "decision": "keep",
+      "reason": "Enabled for profile",
+      "impact": [
+        "group"
+      ],
+      "metadata": {}
+    },
+    {
+      "decision_id": "sd_3870deeb",
+      "capability_id": "review_workspace",
+      "decision": "keep",
+      "reason": "Enabled for profile",
+      "impact": [
+        "review"
+      ],
+      "metadata": {}
+    },
+    {
+      "decision_id": "sd_60c5e473",
+      "capability_id": "curriculum_delivery",
+      "decision": "keep",
+      "reason": "Enabled for profile",
+      "impact": [
+        "curriculum"
+      ],
+      "metadata": {}
+    },
+    {
+      "decision_id": "sd_92d237d1",
+      "capability_id": "authoring_studio",
+      "decision": "defer",
+      "reason": "Disabled in release profile",
+      "impact": [
+        "authoring"
+      ],
+      "metadata": {}
+    },
+    {
+      "decision_id": "sd_a8df0f60",
+      "capability_id": "engineering_ops",
+      "decision": "keep",
+      "reason": "Enabled for profile",
+      "impact": [
+        "ops"
+      ],
+      "metadata": {}
+    }
+  ],
+  "summary_text": "Scope freeze for profile `v1_demo`\n\n- offline_build: keep — Enabled for profile\n- runtime_text_core: keep — Enabled for profile\n- api_mvp: keep — Enabled for profile\n- ui_mvp: keep — Enabled for profile\n- eval_framework: keep — Enabled for profile\n- runtime_profiles: keep — Enabled for profile\n- hybrid_retrieval: keep — Enabled for profile\n- audio_practice: hide_by_default — Disabled in release profile\n- speech_proxy_feedback: hide_by_default — Disabled in release profile\n- learner_analytics: keep — Enabled for profile\n- practice_modes: keep — Enabled for profile\n- group_simulation: keep — Enabled for profile\n- review_workspace: keep — Enabled for profile\n- curriculum_delivery: keep — Enabled for profile\n- authoring_studio: defer — Disabled in release profile\n- engineering_ops: keep — Enabled for profile",
+  "metadata": {}
+}

@@ -1,0 +1,14 @@
+profile_id: hybrid_default
+description: Hybrid lexical + vector retrieval when indexes exist; falls back to rule.
+retrieval:
+  mode: hybrid
+  use_indexes_if_available: true
+  lexical_top_k: 24
+  vector_top_k: 24
+  final_top_k: 8
+  lexical_weight: 0.45
+  vector_weight: 0.55
+  title_boost: 1.3
+  topic_tag_boost: 1.2
+  quality_boost: 0.2
+  credibility_boost: 0.18

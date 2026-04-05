@@ -1,0 +1,84 @@
+cases:
+  - case_id: authoring_validation_ok_01
+    case_type: authoring_validation_case
+    description: Valid curriculum draft passes validation
+    inputs:
+      draft:
+        draft_id: eval_d1
+        artifact_type: curriculum_pack
+        artifact_id: test_pack
+        status: draft
+        created_at: "2026-01-01T00:00:00Z"
+        content:
+          pack_id: custom_eval_pack_01
+          display_name: Eval Pack
+          steps:
+            - step_id: s1
+              order: 1
+              title: T
+              objective: O
+              success_criteria: [transcript]
+              focus_skills: [discussion_language]
+        metadata: {}
+    expected:
+      min_findings: 0
+
+  - case_id: patch_proposal_shape_01
+    case_type: patch_proposal_case
+    description: Patch proposal has reason and evidence
+    inputs:
+      patch:
+        patch_id: p1
+        source_type: review
+        target_artifact_type: topic_card
+        target_artifact_id: tc-x
+        title: T
+        reason: R
+        proposed_ops: [{op: set, path: x, value: 1}]
+        evidence_refs: [review_1]
+        status: proposed
+    expected:
+      required_target_type: topic_card
+
+  - case_id: preview_case_01
+    case_type: preview_case
+    description: Artifact render preview returns summary
+    inputs:
+      draft:
+        draft_id: eval_pv
+        artifact_type: curriculum_pack
+        artifact_id: x
+        status: draft
+        created_at: "2026-01-01T00:00:00Z"
+        content: {pack_id: x, display_name: X, steps: []}
+      preview_kind: artifact_render
+    expected:
+      required_summary_keys: [rendered_keys]
+
+  - case_id: publication_case_01
+    case_type: publication_case
+    description: Publication record shape
+    inputs:
+      publication:
+        publication_id: pub_1
+        draft_id: d1
+        artifact_type: curriculum_pack
+        artifact_id: custom_x
+        published_version: "1.0.0"
+        published_at: "2026-01-01T00:00:00Z"
+        output_ref: storage/curriculum_packs/custom/custom_x.json
+        preview_result_ids: []
+        change_summary: []
+    expected:
+      required_publication_fields: [publication_id]
+      require_no_builtin_overwrite: true
+
+  - case_id: lineage_case_01
+    case_type: lineage_case
+    description: Diff detects changes
+    inputs:
+      base_content: {a: 1}
+      draft_content: {a: 2}
+      metadata: {derivative_of: base1}
+    expected:
+      required_lineage_refs: [derivative]

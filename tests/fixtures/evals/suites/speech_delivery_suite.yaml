@@ -1,0 +1,8 @@
+suite_id: speech_delivery
+description: Speech proxy delivery regression
+case_refs:
+  - speech_delivery_01
+default_snapshot_id: dev_snapshot_v2
+default_runtime_profile_id: speech_default
+tags:
+  - speech

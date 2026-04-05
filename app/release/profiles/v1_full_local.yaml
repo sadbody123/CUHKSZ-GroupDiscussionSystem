@@ -1,0 +1,23 @@
+profile_id: v1_full_local
+display_name: V1 Full Local
+description: All shipped capabilities enabled for local development (experimental flags respected).
+created_at: "2026-01-01T00:00:00Z"
+enabled_capabilities: []
+disabled_capabilities: []
+experimental_capabilities:
+  - authoring_studio
+default_snapshot_requirements: {}
+default_provider_policy:
+  default: mock
+default_runtime_profile_policy:
+  default: default
+ui_visibility_policy: {}
+api_visibility_policy: {}
+demo_scenario_ids:
+  - text_core_demo
+  - learner_assignment_demo
+  - review_calibration_demo
+  - full_local_demo
+acceptance_checks: []
+metadata:
+  strict_allowlist: false

@@ -1,0 +1,7 @@
+suite_id: review_calibration_v1
+default_runtime_profile_id: default
+case_refs:
+  - review_pack_fixture_01
+  - override_merge_fixture_01
+  - calibration_fixture_01
+  - disagreement_fixture_01

@@ -1,0 +1,50 @@
+cases:
+  - case_id: release_readiness_v1_demo
+    case_type: readiness_case
+    description: Readiness audit returns structured report for v1_demo
+    snapshot_id: dev_snapshot_v2
+    inputs:
+      profile_id: v1_demo
+    expected:
+      allowed_statuses:
+        - ready
+        - warning
+        - blocked
+      required_check_categories:
+        - env
+
+  - case_id: release_capability_matrix_v1_demo
+    case_type: capability_matrix_case
+    description: Capability matrix aligns with v1_demo profile
+    snapshot_id: dev_snapshot_v2
+    inputs:
+      profile_id: v1_demo
+    expected:
+      required_enabled:
+        - runtime_text_core
+        - api_mvp
+
+  - case_id: release_demo_text_core_v1_demo
+    case_type: demo_scenario_case
+    description: text_core_demo produces session and feedback steps
+    snapshot_id: dev_snapshot_v2
+    topic_id: tc-campus-ai
+    inputs:
+      scenario_id: text_core_demo
+      profile_id: v1_demo
+      provider_name: mock
+    expected:
+      require_step_keys:
+        - create_session
+
+  - case_id: release_scope_freeze_v1_demo
+    case_type: scope_freeze_case
+    description: Scope freeze summary has decisions and text
+    snapshot_id: dev_snapshot_v2
+    inputs:
+      profile_id: v1_demo
+    expected:
+      required_report_fields:
+        - profile_id
+        - decisions
+        - summary_text

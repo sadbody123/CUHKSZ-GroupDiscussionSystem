@@ -1,6 +1,17 @@
 profile_id: default
 description: Baseline retrieval, orchestration, and analysis thresholds.
 retrieval:
+  mode: rule
+  use_indexes_if_available: true
+  lexical_top_k: 20
+  vector_top_k: 20
+  final_top_k: 8
+  lexical_weight: 0.5
+  vector_weight: 0.5
+  title_boost: 1.25
+  topic_tag_boost: 1.15
+  quality_boost: 0.15
+  credibility_boost: 0.15
   top_k_by_role:
     moderator: 5
     ally: 5
@@ -37,4 +48,8 @@ prompting:
 coach:
   coach_verbosity: normal
   preferred_template_ids: []
+speech_analysis:
+  enabled: false
+  analyzer_name: local_wave
+  coach_include_speech_section: true
 metadata: {}

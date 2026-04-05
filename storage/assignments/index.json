@@ -1,0 +1,222 @@
+{
+  "assignments": {
+    "eb3f05bb-9bc1-4ad6-9c40-f4b08cfc9fcc": {
+      "title": "Demo assignment",
+      "pack_id": "foundation_gd_pack",
+      "status": "in_progress",
+      "learner_ids": [
+        "demo_learner_018882f5"
+      ]
+    },
+    "ac0e8911-a6d0-4d62-b1cf-c5ca974c94a3": {
+      "title": "Demo assignment",
+      "pack_id": "foundation_gd_pack",
+      "status": "in_progress",
+      "learner_ids": [
+        "demo_learner_589e53cf"
+      ]
+    },
+    "626f4f31-f722-40e0-a1c0-f90d8acf5deb": {
+      "title": "Demo assignment",
+      "pack_id": "foundation_gd_pack",
+      "status": "in_progress",
+      "learner_ids": [
+        "demo_learner_4d7298a8"
+      ]
+    },
+    "c26c225f-560d-47bf-af01-9cd1e2c57bab": {
+      "title": "Demo assignment",
+      "pack_id": "foundation_gd_pack",
+      "status": "in_progress",
+      "learner_ids": [
+        "demo_learner_7fb8a8d0"
+      ]
+    },
+    "b38851f3-fd60-4ce0-8085-6a35f6e873b6": {
+      "title": "Demo assignment",
+      "pack_id": "foundation_gd_pack",
+      "status": "in_progress",
+      "learner_ids": [
+        "demo_learner_82f4934f"
+      ]
+    },
+    "0456c81b-66b7-4da9-b253-6bf8597e28be": {
+      "title": "Demo assignment",
+      "pack_id": "foundation_gd_pack",
+      "status": "in_progress",
+      "learner_ids": [
+        "demo_learner_762b2d57"
+      ]
+    },
+    "e958da9f-6dc8-438f-aae8-b31af235f756": {
+      "title": "Demo assignment",
+      "pack_id": "foundation_gd_pack",
+      "status": "in_progress",
+      "learner_ids": [
+        "demo_learner_0fa3aec0"
+      ]
+    },
+    "3ddf29c2-c9d9-46d4-b269-7c3f1d3334ab": {
+      "title": "Demo assignment",
+      "pack_id": "foundation_gd_pack",
+      "status": "in_progress",
+      "learner_ids": [
+        "demo_learner_9db3967d"
+      ]
+    },
+    "2418891e-ea8d-45d6-8160-da537b313fe0": {
+      "title": "Demo assignment",
+      "pack_id": "foundation_gd_pack",
+      "status": "in_progress",
+      "learner_ids": [
+        "demo_learner_b02a52fa"
+      ]
+    },
+    "a965e45c-173a-4ed6-874e-831dedc69e21": {
+      "title": "Demo assignment",
+      "pack_id": "foundation_gd_pack",
+      "status": "in_progress",
+      "learner_ids": [
+        "demo_learner_bfb5ff1e"
+      ]
+    },
+    "f830544b-8454-4362-a3b5-addf9857a9f7": {
+      "title": "Demo assignment",
+      "pack_id": "foundation_gd_pack",
+      "status": "in_progress",
+      "learner_ids": [
+        "demo_learner_8ffd4318"
+      ]
+    },
+    "0f6121f7-c19b-45f8-9f85-fe0b0da8aafa": {
+      "title": "Demo assignment",
+      "pack_id": "foundation_gd_pack",
+      "status": "in_progress",
+      "learner_ids": [
+        "demo_learner_4f80e33b"
+      ]
+    },
+    "80a434e9-84ce-46d5-9386-6d2a691c492a": {
+      "title": "Demo assignment",
+      "pack_id": "foundation_gd_pack",
+      "status": "in_progress",
+      "learner_ids": [
+        "demo_learner_a6c6be32"
+      ]
+    },
+    "3bfe1164-ccb0-454e-b816-609d0fdb549b": {
+      "title": "Demo assignment",
+      "pack_id": "foundation_gd_pack",
+      "status": "in_progress",
+      "learner_ids": [
+        "demo_learner_04536c33"
+      ]
+    },
+    "cf0155b3-7476-4c23-8342-c416f497b618": {
+      "title": "Demo assignment",
+      "pack_id": "foundation_gd_pack",
+      "status": "in_progress",
+      "learner_ids": [
+        "demo_learner_f98f33b5"
+      ]
+    },
+    "f465d663-48e2-430a-b00a-59a6d1691e21": {
+      "title": "Demo assignment",
+      "pack_id": "foundation_gd_pack",
+      "status": "in_progress",
+      "learner_ids": [
+        "demo_learner_8b5588af"
+      ]
+    },
+    "31f3cd46-73f6-4c7f-8c36-368340f228eb": {
+      "title": "Demo assignment",
+      "pack_id": "foundation_gd_pack",
+      "status": "in_progress",
+      "learner_ids": [
+        "demo_learner_9c750811"
+      ]
+    },
+    "22c87e1d-1faf-4584-8083-93243ca107bb": {
+      "title": "Demo assignment",
+      "pack_id": "foundation_gd_pack",
+      "status": "in_progress",
+      "learner_ids": [
+        "demo_learner_3a66513e"
+      ]
+    }
+  },
+  "learner_map": {
+    "demo_learner_018882f5": [
+      "eb3f05bb-9bc1-4ad6-9c40-f4b08cfc9fcc",
+      "eb3f05bb-9bc1-4ad6-9c40-f4b08cfc9fcc"
+    ],
+    "demo_learner_589e53cf": [
+      "ac0e8911-a6d0-4d62-b1cf-c5ca974c94a3",
+      "ac0e8911-a6d0-4d62-b1cf-c5ca974c94a3"
+    ],
+    "demo_learner_4d7298a8": [
+      "626f4f31-f722-40e0-a1c0-f90d8acf5deb",
+      "626f4f31-f722-40e0-a1c0-f90d8acf5deb"
+    ],
+    "demo_learner_7fb8a8d0": [
+      "c26c225f-560d-47bf-af01-9cd1e2c57bab",
+      "c26c225f-560d-47bf-af01-9cd1e2c57bab"
+    ],
+    "demo_learner_82f4934f": [
+      "b38851f3-fd60-4ce0-8085-6a35f6e873b6",
+      "b38851f3-fd60-4ce0-8085-6a35f6e873b6"
+    ],
+    "demo_learner_762b2d57": [
+      "0456c81b-66b7-4da9-b253-6bf8597e28be",
+      "0456c81b-66b7-4da9-b253-6bf8597e28be"
+    ],
+    "demo_learner_0fa3aec0": [
+      "e958da9f-6dc8-438f-aae8-b31af235f756",
+      "e958da9f-6dc8-438f-aae8-b31af235f756"
+    ],
+    "demo_learner_9db3967d": [
+      "3ddf29c2-c9d9-46d4-b269-7c3f1d3334ab",
+      "3ddf29c2-c9d9-46d4-b269-7c3f1d3334ab"
+    ],
+    "demo_learner_b02a52fa": [
+      "2418891e-ea8d-45d6-8160-da537b313fe0",
+      "2418891e-ea8d-45d6-8160-da537b313fe0"
+    ],
+    "demo_learner_bfb5ff1e": [
+      "a965e45c-173a-4ed6-874e-831dedc69e21",
+      "a965e45c-173a-4ed6-874e-831dedc69e21"
+    ],
+    "demo_learner_8ffd4318": [
+      "f830544b-8454-4362-a3b5-addf9857a9f7",
+      "f830544b-8454-4362-a3b5-addf9857a9f7"
+    ],
+    "demo_learner_4f80e33b": [
+      "0f6121f7-c19b-45f8-9f85-fe0b0da8aafa",
+      "0f6121f7-c19b-45f8-9f85-fe0b0da8aafa"
+    ],
+    "demo_learner_a6c6be32": [
+      "80a434e9-84ce-46d5-9386-6d2a691c492a",
+      "80a434e9-84ce-46d5-9386-6d2a691c492a"
+    ],
+    "demo_learner_04536c33": [
+      "3bfe1164-ccb0-454e-b816-609d0fdb549b",
+      "3bfe1164-ccb0-454e-b816-609d0fdb549b"
+    ],
+    "demo_learner_f98f33b5": [
+      "cf0155b3-7476-4c23-8342-c416f497b618",
+      "cf0155b3-7476-4c23-8342-c416f497b618"
+    ],
+    "demo_learner_8b5588af": [
+      "f465d663-48e2-430a-b00a-59a6d1691e21",
+      "f465d663-48e2-430a-b00a-59a6d1691e21"
+    ],
+    "demo_learner_9c750811": [
+      "31f3cd46-73f6-4c7f-8c36-368340f228eb",
+      "31f3cd46-73f6-4c7f-8c36-368340f228eb"
+    ],
+    "demo_learner_3a66513e": [
+      "22c87e1d-1faf-4584-8083-93243ca107bb",
+      "22c87e1d-1faf-4584-8083-93243ca107bb"
+    ]
+  }
+}

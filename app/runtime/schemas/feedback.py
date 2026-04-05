@@ -13,4 +13,6 @@ class FeedbackPacket(BaseModel):
     strengths: list[str] = Field(default_factory=list)
     risks: list[str] = Field(default_factory=list)
     recommended_pedagogy_item_ids: list[str] = Field(default_factory=list)
+    speech_session_report: dict | None = None
+    speech_proxy_disclaimer: str | None = None
     metadata: dict = Field(default_factory=dict)

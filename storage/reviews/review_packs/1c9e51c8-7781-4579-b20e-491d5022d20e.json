@@ -1,0 +1,307 @@
+{
+  "review_pack_id": "1c9e51c8-7781-4579-b20e-491d5022d20e",
+  "session_id": "415311f0-48f5-4b24-8db9-331f65bf8dba",
+  "learner_id": null,
+  "topic_id": "tc-campus-ai",
+  "mode_id": "free_practice",
+  "roster_template_id": null,
+  "created_at": "2026-04-05T03:15:50.344171+00:00",
+  "status": "calibrated",
+  "included_artifacts": {
+    "session": {
+      "runtime_profile_id": "default",
+      "mode_id": "free_practice",
+      "preset_id": null,
+      "assessment_template_id": null,
+      "roster_template_id": null,
+      "phase": "feedback",
+      "turn_count": 6,
+      "participants": 0
+    },
+    "feedback_packet": {
+      "session_id": "415311f0-48f5-4b24-8db9-331f65bf8dba",
+      "topic_id": "tc-campus-ai",
+      "metrics": {
+        "total_turns": 6,
+        "user_turns": 3,
+        "avg_turn_words": 13.833,
+        "max_turn_words": 21
+      },
+      "detected_signals": [
+        {
+          "id": "few_examples_risk",
+          "severity": "low",
+          "detail": "Few explicit example cues detected."
+        }
+      ],
+      "strengths": [],
+      "risks": [
+        "few_examples_risk"
+      ],
+      "recommended_pedagogy_item_ids": [],
+      "speech_session_report": null,
+      "speech_proxy_disclaimer": null,
+      "metadata": {}
+    },
+    "coach_report": {
+      "session_id": "415311f0-48f5-4b24-8db9-331f65bf8dba",
+      "topic_id": "tc-campus-ai",
+      "text": "[MOCK::coach::27dfda31cb81] Formative feedback summary. Context tail: # Coach (template placeholder)  You give formative feedback using rubrics and coaching tips.  - Anchor feedback to rubri",
+      "strengths": [],
+      "risks": [
+        "few_examples_risk"
+      ],
+      "suggested_next_actions": [],
+      "feedback_packet": {
+        "session_id": "415311f0-48f5-4b24-8db9-331f65bf8dba",
+        "topic_id": "tc-campus-ai",
+        "metrics": {
+          "total_turns": 6,
+          "user_turns": 3,
+          "avg_turn_words": 13.833,
+          "max_turn_words": 21
+        },
+        "detected_signals": [
+          {
+            "id": "few_examples_risk",
+            "severity": "low",
+            "detail": "Few explicit example cues detected."
+          }
+        ],
+        "strengths": [],
+        "risks": [
+          "few_examples_risk"
+        ],
+        "recommended_pedagogy_item_ids": [],
+        "speech_session_report": null,
+        "speech_proxy_disclaimer": null,
+        "metadata": {}
+      },
+      "speech_report": null,
+      "proxy_limitations": [],
+      "speech_strengths": [],
+      "speech_risks": [],
+      "metadata": {
+        "rendered_prompt": "coach.md",
+        "raw_feedback_json": "{\"session_id\": \"415311f0-48f5-4b24-8db9-331f65bf8dba\", \"topic_id\": \"tc-campus-ai\", \"metrics\": {\"total_turns\": 6, \"user_turns\": 3, \"avg_turn_words\": 13.833, \"max_turn_words\": 21}, \"detected_signals\": [{\"id\": \"few_examples_risk\", \"severity\": \"low\", \"detail\": \"Few explicit example cues detected.\"}], \"strengths\": [], \"risks\": [\"few_examples_risk\"], \"recommended_pedagogy_item_ids\": [], \"speech_session_report\": null, \"speech_proxy_disclaimer\": null, \"metadata\": {}}"
+      }
+    },
+    "transcript_turns": [
+      {
+        "turn_id": "user-1",
+        "speaker_role": "user",
+        "speaker_name": null,
+        "text": "Smoke test: user turn.",
+        "created_at": "2026-04-05T03:15:50.260688+00:00",
+        "input_mode": "text",
+        "audio_asset_id": null,
+        "transcript_source": null,
+        "tts_asset_id": null,
+        "speech_analysis_id": null,
+        "participant_id": null,
+        "team_id": null,
+        "speaker_display_name": null,
+        "turn_relation_to_user": "self",
+        "turn_role_type": "user",
+        "metadata": {
+          "phase": "discussion"
+        }
+      },
+      {
+        "turn_id": "ally-2",
+        "speaker_role": "ally",
+        "speaker_name": null,
+        "text": "[MOCK::ally::0871d6deafe1] Supportive follow-up. Context tail: # Ally (template placeholder)  You support constructive development of ideas: elaborate, agree with nuance, connect evid",
+        "created_at": "2026-04-05T03:15:50.282042+00:00",
+        "input_mode": "text",
+        "audio_asset_id": null,
+        "transcript_source": null,
+        "tts_asset_id": null,
+        "speech_analysis_id": null,
+        "participant_id": null,
+        "team_id": null,
+        "speaker_display_name": null,
+        "turn_relation_to_user": null,
+        "turn_role_type": "agent",
+        "metadata": {
+          "agent": true,
+          "phase": "discussion"
+        }
+      },
+      {
+        "turn_id": "user-3",
+        "speaker_role": "user",
+        "speaker_name": null,
+        "text": "[auto] Continuing the discussion with a brief follow-up.",
+        "created_at": "2026-04-05T03:15:50.292030+00:00",
+        "input_mode": "text",
+        "audio_asset_id": null,
+        "transcript_source": null,
+        "tts_asset_id": null,
+        "speech_analysis_id": null,
+        "participant_id": null,
+        "team_id": null,
+        "speaker_display_name": null,
+        "turn_relation_to_user": "self",
+        "turn_role_type": "user",
+        "metadata": {
+          "phase": "discussion"
+        }
+      },
+      {
+        "turn_id": "ally-4",
+        "speaker_role": "ally",
+        "speaker_name": null,
+        "text": "[MOCK::ally::a82b1581c72d] Supportive follow-up. Context tail: # Ally (template placeholder)  You support constructive development of ideas: elaborate, agree with nuance, connect evid",
+        "created_at": "2026-04-05T03:15:50.303089+00:00",
+        "input_mode": "text",
+        "audio_asset_id": null,
+        "transcript_source": null,
+        "tts_asset_id": null,
+        "speech_analysis_id": null,
+        "participant_id": null,
+        "team_id": null,
+        "speaker_display_name": null,
+        "turn_relation_to_user": null,
+        "turn_role_type": "agent",
+        "metadata": {
+          "agent": true,
+          "phase": "discussion"
+        }
+      },
+      {
+        "turn_id": "user-5",
+        "speaker_role": "user",
+        "speaker_name": null,
+        "text": "[auto] Continuing the discussion with a brief follow-up.",
+        "created_at": "2026-04-05T03:15:50.303089+00:00",
+        "input_mode": "text",
+        "audio_asset_id": null,
+        "transcript_source": null,
+        "tts_asset_id": null,
+        "speech_analysis_id": null,
+        "participant_id": null,
+        "team_id": null,
+        "speaker_display_name": null,
+        "turn_relation_to_user": "self",
+        "turn_role_type": "user",
+        "metadata": {
+          "phase": "discussion"
+        }
+      },
+      {
+        "turn_id": "ally-6",
+        "speaker_role": "ally",
+        "speaker_name": null,
+        "text": "[MOCK::ally::8e53c790fe7e] Supportive follow-up. Context tail: # Ally (template placeholder)  You support constructive development of ideas: elaborate, agree with nuance, connect evid",
+        "created_at": "2026-04-05T03:15:50.308657+00:00",
+        "input_mode": "text",
+        "audio_asset_id": null,
+        "transcript_source": null,
+        "tts_asset_id": null,
+        "speech_analysis_id": null,
+        "participant_id": null,
+        "team_id": null,
+        "speaker_display_name": null,
+        "turn_relation_to_user": null,
+        "turn_role_type": "agent",
+        "metadata": {
+          "agent": true,
+          "phase": "discussion"
+        }
+      }
+    ],
+    "mode_report": {
+      "report_id": "b96c418f-4dc7-4282-80b4-ec303076bc22",
+      "session_id": "415311f0-48f5-4b24-8db9-331f65bf8dba",
+      "mode_id": "free_practice",
+      "preset_id": null,
+      "drill_id": null,
+      "assessment_template_id": null,
+      "created_at": "2026-04-05T03:15:50.325858+00:00",
+      "phase_progress": {
+        "effective_constraint_policy": {
+          "max_words_per_turn_soft": 400,
+          "require_summary_phase": false
+        },
+        "simulation_note": null,
+        "constraint_events": [],
+        "discussion_turns": 3,
+        "total_turns": 6,
+        "session_phase": "discussion"
+      },
+      "timer_events": [
+        {
+          "elapsed_seconds": 0.07,
+          "now_iso": "2026-04-05T03:15:50.313404+00:00",
+          "kind": "none"
+        }
+      ],
+      "constraint_events": [],
+      "success_checks": [],
+      "strengths": [],
+      "risks": [
+        "few_examples_risk"
+      ],
+      "recommended_next_actions": [],
+      "proxy_notes": [],
+      "metadata": {
+        "practice_report": true,
+        "not_an_exam_score": true
+      }
+    },
+    "group_balance_report": {
+      "report_id": "b0e04346-1690-4d81-bc0d-4aaf979cfe37",
+      "session_id": "415311f0-48f5-4b24-8db9-331f65bf8dba",
+      "roster_template_id": null,
+      "created_at": "2026-04-05T03:15:50.336018+00:00",
+      "participant_stats": [],
+      "team_stats": [],
+      "balance_flags": [],
+      "strengths": [
+        "Participation spread looks reasonable for a short practice session."
+      ],
+      "risks": [],
+      "recommendations": [],
+      "metadata": {
+        "practice_note": "Group balance and participation metrics are practice aids only — not official scores or exam results.",
+        "not_exam_score": true
+      }
+    }
+  },
+  "ai_summary": {
+    "main_strengths": [],
+    "main_risks": [
+      "few_examples_risk"
+    ],
+    "flags": [],
+    "relevant_metrics": {
+      "turn_count": 6,
+      "has_speech_report": false,
+      "has_mode_report": true,
+      "has_group_report": true
+    },
+    "rubric_dimensions": [
+      {
+        "dimension_id": "pedagogy_content",
+        "dimension_name": "Grading",
+        "max_score": 5.0,
+        "description": "Clarity (0-3): ideas are structured and easy to follow. Evidence use (0-3): references texts or examples appropriately.",
+        "source": "pedagogy",
+        "metadata": {
+          "item_ids": [
+            "rub-01"
+          ]
+        }
+      }
+    ]
+  },
+  "transcript_ref": "speech_reports/415311f0-48f5-4b24-8db9-331f65bf8dba/session_report.json",
+  "proxy_limitations": [
+    "Speech, learner analytics, and group balance metrics are training proxies only; they are not official academic scores."
+  ],
+  "metadata": {
+    "builder_version": "1",
+    "last_review_id": "0409672b-9243-4da3-8b74-b54f0b114fdc"
+  }
+}

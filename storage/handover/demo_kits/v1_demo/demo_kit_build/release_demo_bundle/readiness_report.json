@@ -1,0 +1,87 @@
+{
+  "report_id": "rr_7d25d7c69b",
+  "profile_id": "v1_demo",
+  "created_at": "2026-04-05T13:24:14.124898+00:00",
+  "overall_status": "ready",
+  "checks": [
+    {
+      "check_id": "env_overall",
+      "category": "env",
+      "severity": "info",
+      "passed": true,
+      "message": "validate_environment: ok",
+      "suggested_fix": null,
+      "metadata": {}
+    },
+    {
+      "check_id": "snapshot_root",
+      "category": "snapshots",
+      "severity": "error",
+      "passed": true,
+      "message": "snapshot_root directory present",
+      "suggested_fix": "Configure SNAPSHOT_ROOT",
+      "metadata": {}
+    },
+    {
+      "check_id": "snapshot_dev_v2",
+      "category": "snapshots",
+      "severity": "warning",
+      "passed": true,
+      "message": "dev_snapshot_v2 available",
+      "suggested_fix": null,
+      "metadata": {}
+    },
+    {
+      "check_id": "runtime_profile",
+      "category": "runtime",
+      "severity": "info",
+      "passed": true,
+      "message": "profile default loads",
+      "suggested_fix": null,
+      "metadata": {}
+    },
+    {
+      "check_id": "default_curriculum_pack",
+      "category": "curriculum",
+      "severity": "info",
+      "passed": true,
+      "message": "pack foundation_gd_pack",
+      "suggested_fix": null,
+      "metadata": {}
+    },
+    {
+      "check_id": "scenario_text_core_demo",
+      "category": "release",
+      "severity": "info",
+      "passed": true,
+      "message": "scenario text_core_demo defined",
+      "suggested_fix": null,
+      "metadata": {}
+    },
+    {
+      "check_id": "scenario_learner_assignment_demo",
+      "category": "release",
+      "severity": "info",
+      "passed": true,
+      "message": "scenario learner_assignment_demo defined",
+      "suggested_fix": null,
+      "metadata": {}
+    },
+    {
+      "check_id": "scenario_review_calibration_demo",
+      "category": "release",
+      "severity": "info",
+      "passed": true,
+      "message": "scenario review_calibration_demo defined",
+      "suggested_fix": null,
+      "metadata": {}
+    }
+  ],
+  "summary": {
+    "error_count": 0,
+    "warning_count": 0,
+    "check_count": 8
+  },
+  "recommended_actions": [],
+  "metadata": {}
+}

@@ -1,0 +1,14 @@
+mode_id: speech_focus
+mode_type: speech_focus
+display_name: Speech-focused practice
+description: Emphasises audio turns and delivery proxies (optional mock audio).
+default_runtime_profile_id: speech_default
+default_audio_enabled: true
+allow_mid_session_coach: true
+auto_generate_feedback: true
+constraint_policy:
+  prefer_audio_turns: true
+timer_policy:
+  type: none
+recommended_for_skills: [fluency_proxy, pause_management_proxy]
+tags: [speech]

@@ -1,0 +1,61 @@
+{
+  "artifact_kind": "reviewed_feedback",
+  "review_id": "0409672b-9243-4da3-8b74-b54f0b114fdc",
+  "reviewer_id": "smoke_reviewer_dev_snapshot_v2",
+  "review_pack_id": "1c9e51c8-7781-4579-b20e-491d5022d20e",
+  "session_id": "415311f0-48f5-4b24-8db9-331f65bf8dba",
+  "created_at": "2026-04-05T03:15:50.354502+00:00",
+  "source": "human_review_merge",
+  "proxy_note": "Speech, learner analytics, and group balance metrics are training proxies only; they are not official academic scores.",
+  "payload": {
+    "session_id": "415311f0-48f5-4b24-8db9-331f65bf8dba",
+    "topic_id": "tc-campus-ai",
+    "text": "[MOCK::coach::27dfda31cb81] Formative feedback summary. Context tail: # Coach (template placeholder)  You give formative feedback using rubrics and coaching tips.  - Anchor feedback to rubri",
+    "strengths": [
+      "Human-reviewed strength: cites syllabus"
+    ],
+    "risks": [
+      "few_examples_risk"
+    ],
+    "suggested_next_actions": [],
+    "feedback_packet": {
+      "session_id": "415311f0-48f5-4b24-8db9-331f65bf8dba",
+      "topic_id": "tc-campus-ai",
+      "metrics": {
+        "total_turns": 6,
+        "user_turns": 3,
+        "avg_turn_words": 13.833,
+        "max_turn_words": 21
+      },
+      "detected_signals": [
+        {
+          "id": "few_examples_risk",
+          "severity": "low",
+          "detail": "Few explicit example cues detected."
+        }
+      ],
+      "strengths": [],
+      "risks": [
+        "few_examples_risk"
+      ],
+      "recommended_pedagogy_item_ids": [],
+      "speech_session_report": null,
+      "speech_proxy_disclaimer": null,
+      "metadata": {}
+    },
+    "speech_report": null,
+    "proxy_limitations": [],
+    "speech_strengths": [],
+    "speech_risks": [],
+    "metadata": {
+      "rendered_prompt": "coach.md",
+      "raw_feedback_json": "{\"session_id\": \"415311f0-48f5-4b24-8db9-331f65bf8dba\", \"topic_id\": \"tc-campus-ai\", \"metrics\": {\"total_turns\": 6, \"user_turns\": 3, \"avg_turn_words\": 13.833, \"max_turn_words\": 21}, \"detected_signals\": [{\"id\": \"few_examples_risk\", \"severity\": \"low\", \"detail\": \"Few explicit example cues detected.\"}], \"strengths\": [], \"risks\": [\"few_examples_risk\"], \"recommended_pedagogy_item_ids\": [], \"speech_session_report\": null, \"speech_proxy_disclaimer\": null, \"metadata\": {}}"
+    }
+  },
+  "metadata": {
+    "override_ids": [
+      "o1"
+    ],
+    "merge_id": "197589b7-f1cb-4ba3-b6a6-d0eedd6890a4"
+  }
+}

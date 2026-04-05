@@ -1,0 +1,48 @@
+profile_id: v1_demo
+display_name: V1 Demo (showcase subset)
+description: Stable demo for presentation — learner, modes, group, review, curriculum; audio/speech optional.
+created_at: "2026-01-01T00:00:00Z"
+enabled_capabilities:
+  - offline_build
+  - runtime_text_core
+  - api_mvp
+  - ui_mvp
+  - eval_framework
+  - runtime_profiles
+  - hybrid_retrieval
+  - learner_analytics
+  - practice_modes
+  - group_simulation
+  - review_workspace
+  - curriculum_delivery
+  - engineering_ops
+disabled_capabilities: []
+experimental_capabilities:
+  - audio_practice
+  - speech_proxy_feedback
+  - authoring_studio
+default_snapshot_requirements:
+  recommended_snapshot_id: dev_snapshot_v2
+default_provider_policy:
+  default: mock
+default_runtime_profile_policy:
+  default: default
+ui_visibility_policy:
+  learner_panels: true
+  review_workspace: true
+  curriculum_panels: true
+  authoring_studio: false
+api_visibility_policy:
+  learners: true
+  reviews: true
+  curriculum: true
+  authoring: false
+demo_scenario_ids:
+  - text_core_demo
+  - learner_assignment_demo
+  - review_calibration_demo
+acceptance_checks:
+  - snapshot_loadable
+  - curriculum_pack_loadable
+metadata:
+  strict_allowlist: false

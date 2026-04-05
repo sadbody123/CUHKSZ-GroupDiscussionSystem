@@ -16,7 +16,7 @@ def run_retrieval_case(case: EvalCase, snapshot_dir: Path, profile_id: str) -> E
     exp = case.expected
     snap = load_snapshot(snapshot_dir)
     ped, top, ev, doc, _src = build_repositories(snap)
-    router = RoleRouter(ped, top, ev, doc)
+    router = RoleRouter(ped, top, ev, doc, snapshot_dir=snapshot_dir)
     prof = resolve_runtime_profile(profile_id or case.runtime_profile_id)
     pkt = router.build_context_packet(
         role=str(inp.get("role", "ally")),

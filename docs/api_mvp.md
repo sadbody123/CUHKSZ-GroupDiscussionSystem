@@ -2,7 +2,7 @@
 
 ## Architecture
 
-- **`app/api/main.py`** — `create_app()`, CORS, error handlers, included routers.
+- **`app/api/main.py`** — `create_app()`, request-id middleware, CORS, error handlers, included routers.
 - **`app/api/routers/`** — `health`, `snapshots`, `topics`, `sessions`, `feedback` (analyze-only).
 - **`app/api/schemas/`** — Pydantic request/response models.
 - **`app/api/deps.py`** — injects `AppConfig` and application services.
@@ -12,9 +12,11 @@
 
 | Method | Path | Description |
 |--------|------|-------------|
-| GET | `/health` | Status, version, default provider, snapshot root |
+| GET | `/health` | Status, version, default provider, snapshot root, `app_env`, `app_version`, `default_runtime_profile`, optional `request_id` |
+| GET | `/system/info` | Public app/env summary (paths, provider defaults, feature flags; no secrets) |
 | GET | `/snapshots` | List local snapshots |
 | GET | `/snapshots/{snapshot_id}` | Manifest/build summary + counts |
+| GET | `/snapshots/{snapshot_id}/index-status` | Whether indexes exist, embedder, modes, item counts |
 | GET | `/topics` | `snapshot_id` (query), optional `keyword` |
 | GET | `/topics/{topic_id}` | `snapshot_id` (query) required |
 | GET | `/sessions` | List sessions (file store) |

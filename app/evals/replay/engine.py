@@ -32,7 +32,7 @@ def replay_plan_turn(session_file: Path, profile_id: str, snapshot_dir: Path) ->
     prof = resolve_runtime_profile(profile_id)
     snap = load_snapshot(Path(snapshot_dir))
     ped, top, ev, doc, _src = build_repositories(snap)
-    router = RoleRouter(ped, top, ev, doc)
+    router = RoleRouter(ped, top, ev, doc, snapshot_dir=snap.path)
     sm = SessionStateMachine(router, orchestration=dict(prof.orchestration))
     last = ctx.turns[-1].speaker_role if ctx.turns else None
     nr = sm.peek_next_role(ctx, last)

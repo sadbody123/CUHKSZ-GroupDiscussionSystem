@@ -1,0 +1,12 @@
+cases:
+  - case_id: indexed_ally_evidence
+    case_type: indexed_retrieval_case
+    description: Ally role yields evidence rows (rule or indexed)
+    inputs:
+      role: ally
+      topic_id: tc-campus-ai
+      phase: discussion
+      top_k: 5
+      retrieval_mode: hybrid
+    expected:
+      min_evidence_count: 1

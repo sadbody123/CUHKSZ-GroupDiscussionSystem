@@ -1,0 +1,9 @@
+scenario_id: learner_assignment_flow
+display_name: Learner + assignment + curriculum step
+scenario_type: learner_assignment
+interface_mode: service
+required_capabilities:
+  - learner_analytics
+  - curriculum_delivery
+release_demo_alias: learner_assignment_demo
+metadata: {}

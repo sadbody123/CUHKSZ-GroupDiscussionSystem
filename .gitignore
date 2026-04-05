@@ -1,3 +1,8 @@
+# Snapshot build outputs under app/knowledge/snapshots/ (recreate with:
+#   python main.py bootstrap-dev-snapshot
+# or build-offline from README). Force-add only intentional sample bundles.
+# Runtime JSON under storage/ — see storage/README.md
+
 # Python
 __pycache__/
 *.py[cod]

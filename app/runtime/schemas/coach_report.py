@@ -13,4 +13,8 @@ class CoachReport(BaseModel):
     risks: list[str] = Field(default_factory=list)
     suggested_next_actions: list[str] = Field(default_factory=list)
     feedback_packet: dict = Field(default_factory=dict)
+    speech_report: dict | None = None
+    proxy_limitations: list[str] = Field(default_factory=list)
+    speech_strengths: list[str] = Field(default_factory=list)
+    speech_risks: list[str] = Field(default_factory=list)
     metadata: dict = Field(default_factory=dict)

@@ -1,0 +1,5 @@
+{
+  "note": "Example shape only; real values are deterministic from fixture WAV + transcript.",
+  "duration_ms": 100,
+  "pause_ratio": 0.2
+}

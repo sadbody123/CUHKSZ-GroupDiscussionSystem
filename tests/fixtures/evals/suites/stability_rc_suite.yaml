@@ -1,0 +1,12 @@
+suite_id: stability_rc
+description: Phase 18 stability / consistency / e2e / rc regression
+case_refs:
+  - stability_consistency_smoke
+  - stability_e2e_text_core
+  - stability_recovery_policy
+  - stability_rc_gate
+default_snapshot_id: dev_snapshot_v2
+default_runtime_profile_id: default
+tags:
+  - stability
+  - phase18

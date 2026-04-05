@@ -1,0 +1,46 @@
+profile_id: v1_minimal
+display_name: V1 Minimal (text + API + UI + smoke)
+description: Core text practice, feedback, basic API/UI, eval smoke only.
+created_at: "2026-01-01T00:00:00Z"
+enabled_capabilities:
+  - offline_build
+  - runtime_text_core
+  - api_mvp
+  - ui_mvp
+  - eval_framework
+  - runtime_profiles
+  - engineering_ops
+disabled_capabilities:
+  - hybrid_retrieval
+  - audio_practice
+  - speech_proxy_feedback
+  - learner_analytics
+  - practice_modes
+  - group_simulation
+  - review_workspace
+  - curriculum_delivery
+  - authoring_studio
+experimental_capabilities: []
+default_snapshot_requirements:
+  min_snapshots: 1
+default_provider_policy:
+  default: mock
+default_runtime_profile_policy:
+  default: default
+ui_visibility_policy:
+  learner_panels: false
+  review_workspace: false
+  curriculum_panels: false
+  authoring_studio: false
+api_visibility_policy:
+  learners: false
+  reviews: false
+  curriculum: false
+  authoring: false
+demo_scenario_ids:
+  - text_core_demo
+acceptance_checks:
+  - snapshot_loadable
+  - mock_provider_ok
+metadata:
+  strict_allowlist: true

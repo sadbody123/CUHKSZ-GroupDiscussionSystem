@@ -148,6 +148,54 @@ from app.evals.cli.commands import register_eval_cli as _register_eval_cli
 
 _register_eval_cli(app)
 
+from app.ops.cli.commands import register_ops_cli as _register_ops_cli
+
+_register_ops_cli(app)
+
+from app.indexing.cli.commands import register_flat_index_commands as _register_index_cli
+
+_register_index_cli(app)
+
+from app.audio.cli.commands import register_audio_cli as _register_audio_cli
+
+_register_audio_cli(app)
+
+from app.learner.cli.commands import register_learner_cli as _register_learner_cli
+
+_register_learner_cli(app)
+
+from app.modes.cli.commands import register_mode_cli as _register_mode_cli
+
+_register_mode_cli(app)
+
+from app.group_sim.cli.commands import register_group_cli as _register_group_cli
+
+_register_group_cli(app)
+
+from app.review.cli.commands import register_review_cli as _register_review_cli
+
+_register_review_cli(app)
+
+from app.curriculum.cli.commands import register_curriculum_cli as _register_curriculum_cli
+
+_register_curriculum_cli(app)
+
+from app.authoring.cli.commands import register_authoring_cli as _register_authoring_cli
+
+_register_authoring_cli(app)
+
+from app.release.cli.commands import register_release_cli as _register_release_cli
+
+_register_release_cli(app)
+
+from app.stability.cli.commands import register_stability_cli as _register_stability_cli
+
+_register_stability_cli(app)
+
+from app.handover.cli.commands import register_handover_cli as _register_handover_cli
+
+_register_handover_cli(app)
+
 
 @app.command("run-ui")
 def run_ui(

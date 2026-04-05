@@ -9,6 +9,12 @@ class PedagogyRepository:
     def __init__(self, items: list[PedagogyItem]) -> None:
         self._items = list(items)
 
+    def get_by_item_id(self, item_id: str) -> PedagogyItem | None:
+        for x in self._items:
+            if x.item_id == item_id:
+                return x
+        return None
+
     def list_items(self) -> list[PedagogyItem]:
         return list(self._items)
 

@@ -1,0 +1,43 @@
+{
+  "release_id": "gds_v1_demo_87cff543",
+  "release_version": "1.0.0-handover",
+  "profile_id": "v1_demo",
+  "created_at": "2026-04-05T13:24:14.798210+00:00",
+  "rc_report_ref": "report:rc_latest",
+  "readiness_report_ref": "report:readiness_latest",
+  "stability_report_ref": "report:stability_latest",
+  "capability_matrix_ref": "matrix:v1_demo",
+  "active_snapshot_ids": [
+    "audit_temp_snapshot",
+    "dev_snapshot",
+    "dev_snapshot_v2"
+  ],
+  "active_demo_scenario_ids": [
+    "text_core_demo",
+    "learner_assignment_demo",
+    "review_calibration_demo"
+  ],
+  "included_component_areas": [
+    "offline_build",
+    "runtime",
+    "api",
+    "ui",
+    "eval",
+    "release",
+    "stability"
+  ],
+  "included_artifact_refs": {
+    "readiness_summary": {
+      "overall_status": "ready"
+    },
+    "rc_go_no_go": "go",
+    "stability_overall": "green",
+    "capability_count": 16
+  },
+  "known_limitations_ref": "limitations:known_issues",
+  "docs_bundle_ref": "docs:final_bundle",
+  "metadata": {
+    "known_limitations_count": 1,
+    "open_issues_count": 1
+  }
+}

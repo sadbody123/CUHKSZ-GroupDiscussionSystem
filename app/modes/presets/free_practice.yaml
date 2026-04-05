@@ -1,0 +1,11 @@
+preset_id: free_practice
+mode_id: free_practice
+display_name: Free practice preset
+description: Default open practice.
+topic_policy: {}
+role_policy: {}
+constraint_overrides: {}
+starter_prompts:
+  - State your stance clearly, then add one supporting reason.
+success_focus: [content_support, interaction]
+tags: [default]

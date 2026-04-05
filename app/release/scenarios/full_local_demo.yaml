@@ -1,0 +1,11 @@
+scenario_id: full_local_demo
+display_name: Full local chained demo
+scenario_type: full_demo
+required_capabilities:
+  - runtime_text_core
+required_inputs: {}
+steps: []
+success_criteria:
+  - text_core_nested
+tags:
+  - full

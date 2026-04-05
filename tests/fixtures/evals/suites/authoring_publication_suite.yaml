@@ -1,0 +1,8 @@
+suite_id: authoring_publication_v1
+default_runtime_profile_id: default
+case_refs:
+  - authoring_validation_ok_01
+  - patch_proposal_shape_01
+  - preview_case_01
+  - publication_case_01
+  - lineage_case_01

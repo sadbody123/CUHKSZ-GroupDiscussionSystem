@@ -1,0 +1,49 @@
+cases:
+  - case_id: curriculum_pack_builtin_01
+    case_type: curriculum_pack_case
+    description: Builtin foundation pack loads
+    inputs:
+      pack_id: foundation_gd_pack
+    expected:
+      required_step_count: 1
+      required_focus_skills:
+        - discussion_language
+
+  - case_id: launch_bridge_foundation_01
+    case_type: launch_bridge_case
+    description: Launch bridge produces session kwargs
+    inputs:
+      pack_id: foundation_gd_pack
+      step_id: step_foundation_01
+    expected:
+      required_keys:
+        - snapshot_id
+        - topic_id
+
+  - case_id: assignment_progress_foundation_01
+    case_type: assignment_progress_case
+    description: Planner creates step refs
+    inputs: {}
+    expected:
+      required_status: active
+
+  - case_id: plan_to_pack_01
+    case_type: plan_to_pack_case
+    description: Plan converts to pack draft
+    inputs:
+      weak_skills:
+        - interaction
+    expected:
+      min_steps: 1
+      required_focus_in_steps:
+        - interaction
+
+  - case_id: delivery_report_01
+    case_type: delivery_report_case
+    description: Report aggregates steps
+    inputs: {}
+    expected:
+      required_report_fields:
+        - step_summaries
+        - completion_summary
+      require_proxy_notes_preserved: true

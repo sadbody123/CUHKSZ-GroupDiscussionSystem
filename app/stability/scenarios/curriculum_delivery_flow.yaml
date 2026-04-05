@@ -1,0 +1,8 @@
+scenario_id: curriculum_delivery_flow
+display_name: Curriculum delivery (assignment-shaped)
+scenario_type: curriculum_delivery
+interface_mode: service
+required_capabilities:
+  - curriculum_delivery
+release_demo_alias: learner_assignment_demo
+metadata: {}

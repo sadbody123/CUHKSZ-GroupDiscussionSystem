@@ -1,0 +1,49 @@
+{
+  "assignment_id": "3bfe1164-ccb0-454e-b816-609d0fdb549b",
+  "pack_id": "foundation_gd_pack",
+  "learner_ids": [
+    "demo_learner_04536c33"
+  ],
+  "created_at": "2026-04-05T13:15:43.749703+00:00",
+  "created_by": "demo",
+  "title": "Demo assignment",
+  "description": null,
+  "due_at": null,
+  "status": "in_progress",
+  "total_steps": 2,
+  "completion_policy": {
+    "min_completed_steps": 1,
+    "mode": "training_delivery"
+  },
+  "step_refs": [
+    {
+      "assignment_step_id": "d1d23cde-b2fd-4e6c-9746-4c20aad1d685",
+      "pack_step_id": "step_foundation_01",
+      "learner_id": "demo_learner_04536c33",
+      "required": true,
+      "status": "launched",
+      "attempt_ids": [],
+      "latest_session_id": "91fdfaea-7a43-43d2-bf27-dde64486c186",
+      "completion_summary": {},
+      "metadata": {
+        "title": "Topic stance practice"
+      }
+    },
+    {
+      "assignment_step_id": "e6249361-c8fb-4a0d-a576-4be3fe0ea782",
+      "pack_step_id": "step_foundation_02",
+      "learner_id": "demo_learner_04536c33",
+      "required": true,
+      "status": "pending",
+      "attempt_ids": [],
+      "latest_session_id": null,
+      "completion_summary": {},
+      "metadata": {
+        "title": "Evidence depth pass"
+      }
+    }
+  ],
+  "metadata": {
+    "planned_at": "2026-04-05T13:15:43.749703+00:00"
+  }
+}

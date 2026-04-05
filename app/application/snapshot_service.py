@@ -10,6 +10,7 @@ from app.application.config import AppConfig
 from app.application.dto import SnapshotListItemDTO
 from app.application.exceptions import SnapshotNotFoundError
 from app.offline_build.build_snapshot.validators import validate_snapshot_dir
+from app.indexing.schemas.index_manifest import IndexManifest
 from app.runtime.snapshot_loader import load_snapshot
 
 _SAFE_ID = re.compile(r"^[\w.\-]+$")
@@ -84,4 +85,28 @@ class SnapshotService:
                 "evidence_chunks": len(b.evidence_chunks),
             },
             "validation_ok": self.validate_usable(path),
+        }
+
+    def get_index_status(self, snapshot_id: str) -> dict:
+        path = self.resolve_snapshot_dir(snapshot_id)
+        mf = path / "indexes" / "manifest.json"
+        if not mf.is_file():
+            return {
+                "snapshot_id": snapshot_id,
+                "has_indexes": False,
+                "available_modes": [],
+                "stores": [],
+                "embedder_name": None,
+                "dimension": None,
+                "item_counts": {},
+            }
+        man = IndexManifest.model_validate(json.loads(mf.read_text(encoding="utf-8")))
+        return {
+            "snapshot_id": snapshot_id,
+            "has_indexes": True,
+            "available_modes": list(man.available_modes),
+            "stores": list(man.stores),
+            "embedder_name": man.embedder_name,
+            "dimension": man.dimension,
+            "item_counts": dict(man.item_counts),
         }

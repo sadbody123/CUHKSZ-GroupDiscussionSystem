@@ -1,0 +1,14 @@
+preset_id: assessment_6p
+mode_id: assessment_simulation
+display_name: 6-person simulation preset
+description: Simulated 6-person group discussion flow (practice only).
+runtime_profile_override: strict_coach
+constraint_overrides:
+  require_summary_phase: true
+  block_mid_session_coach: true
+starter_prompts:
+  - Practice pacing with a larger simulated group — still not a formal exam.
+success_focus: [interaction, teammate_support]
+tags: [assessment, six_person]
+metadata:
+  template_hint: gd_assessment_6p_v1

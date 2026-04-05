@@ -1,0 +1,16 @@
+mode_id: timed_discussion
+mode_type: practice
+display_name: Timed discussion
+description: Discussion with soft phase timers and progress reminders.
+default_runtime_profile_id: balanced
+allow_mid_session_coach: true
+auto_generate_feedback: true
+constraint_policy:
+  max_words_per_turn_soft: 320
+  moderator_reminder_every_n_turns: 4
+  require_summary_phase: true
+timer_policy:
+  type: soft_phase
+  discussion_seconds: 900
+recommended_for_skills: [interaction, turn_concision]
+tags: [timed]

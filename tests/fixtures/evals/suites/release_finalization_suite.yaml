@@ -1,0 +1,12 @@
+suite_id: release_finalization
+description: Phase 17 release / readiness / capability / demo / scope freeze regression
+case_refs:
+  - release_readiness_v1_demo
+  - release_capability_matrix_v1_demo
+  - release_demo_text_core_v1_demo
+  - release_scope_freeze_v1_demo
+default_snapshot_id: dev_snapshot_v2
+default_runtime_profile_id: default
+tags:
+  - release
+  - phase17

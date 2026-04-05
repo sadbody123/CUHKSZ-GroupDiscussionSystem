@@ -1,0 +1,11 @@
+scenario_id: review_calibration_demo
+display_name: Review pack + calibration demo
+scenario_type: review_flow
+required_capabilities:
+  - review_workspace
+required_inputs: {}
+steps: []
+success_criteria:
+  - review_pack_created
+tags:
+  - review

@@ -1,0 +1,49 @@
+pack_id: foundation_gd_pack
+display_name: Foundation Group Discussion
+description: Core topic practice and feedback loops for GD basics.
+author_id: builtin
+version: "1"
+created_at: "2026-01-01T00:00:00Z"
+target_skills:
+  - discussion_language
+  - example_usage
+recommended_learner_levels:
+  - beginner
+  - intermediate
+linked_topic_ids:
+  - tc-campus-ai
+tags:
+  - foundation
+steps:
+  - step_id: step_foundation_01
+    order: 1
+    title: Topic stance practice
+    objective: Practice structured stance on the topic card.
+    step_type: topic_practice
+    topic_id: tc-campus-ai
+    mode_id: free_practice
+    preset_id: free_practice
+    runtime_profile_id: default
+    focus_skills:
+      - discussion_language
+    success_criteria:
+      - transcript
+      - feedback
+    notes:
+      - Minimal free-practice session.
+    metadata:
+      reason: baseline_topic_run
+  - step_id: step_foundation_02
+    order: 2
+    title: Evidence depth pass
+    objective: Add examples and evidence cues in turns.
+    step_type: topic_practice
+    topic_id: tc-campus-ai
+    mode_id: free_practice
+    runtime_profile_id: default
+    focus_skills:
+      - example_usage
+    success_criteria:
+      - coach_report
+metadata:
+  source: builtin

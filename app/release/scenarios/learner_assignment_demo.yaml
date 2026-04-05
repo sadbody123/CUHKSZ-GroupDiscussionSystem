@@ -1,0 +1,13 @@
+scenario_id: learner_assignment_demo
+display_name: Learner + assignment demo
+scenario_type: learner_flow
+required_capabilities:
+  - learner_analytics
+  - curriculum_delivery
+required_inputs: {}
+steps: []
+success_criteria:
+  - assignment_created
+tags:
+  - learner
+  - curriculum

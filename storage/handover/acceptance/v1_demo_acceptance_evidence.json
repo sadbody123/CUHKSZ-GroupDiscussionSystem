@@ -1,0 +1,39 @@
+{
+  "evidence_id": "acc_3445f85117",
+  "created_at": "2026-04-05T13:24:12.771039+00:00",
+  "release_id": "rel_v1_demo",
+  "profile_id": "v1_demo",
+  "readiness_ref": "readiness:latest",
+  "consistency_ref": "consistency:latest",
+  "stability_ref": "stability:latest",
+  "rc_ref": "rc:latest",
+  "demo_result_refs": [
+    "demo:text_core_demo"
+  ],
+  "passed_checks": [
+    {
+      "check": "readiness_not_blocked",
+      "detail": "ready"
+    },
+    {
+      "check": "rc_gate",
+      "detail": "go"
+    },
+    {
+      "check": "stability",
+      "detail": "green"
+    }
+  ],
+  "failed_checks": [],
+  "accepted_limitations": [
+    "STAB-DOC-001: Local-only RC gate"
+  ],
+  "summary": {
+    "readiness_status": "ready",
+    "rc_go_no_go": "go",
+    "stability_overall": "green"
+  },
+  "metadata": {
+    "note": "Advisory evidence for local handover — not formal certification."
+  }
+}

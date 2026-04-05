@@ -1,0 +1,9 @@
+suite_id: audio_smoke
+description: Mock audio roundtrip
+case_refs:
+  - audio_roundtrip_01
+default_snapshot_id: dev_snapshot_v2
+default_runtime_profile_id: default
+tags:
+  - audio
+  - smoke

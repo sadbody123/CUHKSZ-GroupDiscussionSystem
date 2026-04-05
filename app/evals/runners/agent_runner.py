@@ -21,7 +21,7 @@ def run_agent_case(case: EvalCase, snapshot_dir: Path, profile_id: str) -> EvalR
     _sid, _tid, turns = SessionStore.load_transcript_file(transcript_file)
     snap = load_snapshot(snapshot_dir)
     ped, top, ev, doc, _src = build_repositories(snap)
-    router = RoleRouter(ped, top, ev, doc)
+    router = RoleRouter(ped, top, ev, doc, snapshot_dir=snap.path)
     prof = resolve_runtime_profile(profile_id or case.runtime_profile_id)
     ctx = SessionContext(
         session_id="eval-agent",

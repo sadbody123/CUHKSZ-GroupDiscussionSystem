@@ -36,10 +36,20 @@ def render_prompt_for_role(
         "USER_STANCE": user_stance or "(not specified)",
         "FEEDBACK_PACKET": feedback_packet_json or "(none)",
         "ROLE": role,
+        "PARTICIPANT_NAME": packet.participant_display_name or packet.metadata.get("participant_display_name") or "(participant)",
+        "SEAT_LABEL": packet.seat_label or "",
+        "TEAM_ID": packet.team_id or "",
+        "RELATION_TO_USER": packet.relation_to_user or "",
+        "PARTICIPANT_MEMORY": packet.participant_memory_summary or "",
+        "TEAM_MEMORY": packet.team_memory_summary or "",
+        "ROSTER_CONTEXT": packet.roster_context_summary or "",
     }
     body = _replace(template, mapping)
     default_user_prompt = _replace(
-        "You are role={{ROLE}}. Phase={{PHASE}}. User stance={{USER_STANCE}}.\n\n"
+        "You are role={{ROLE}} (seat {{SEAT_LABEL}}, team {{TEAM_ID}}, relation={{RELATION_TO_USER}}). "
+        "You are speaking as: {{PARTICIPANT_NAME}}. Phase={{PHASE}}. User stance={{USER_STANCE}}.\n"
+        "Roster context: {{ROSTER_CONTEXT}}\n"
+        "Participant memory: {{PARTICIPANT_MEMORY}}\nTeam hints: {{TEAM_MEMORY}}\n\n"
         "Context:\n{{TOPIC_CARD}}\n\nPedagogy:\n{{PEDAGOGY}}\n\nEvidence:\n{{EVIDENCE}}\n\n"
         "Recent discussion:\n{{TRANSCRIPT_WINDOW}}\n\n"
         "Feedback signals (coach only):\n{{FEEDBACK_PACKET}}\n",

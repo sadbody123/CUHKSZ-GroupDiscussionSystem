@@ -1,0 +1,63 @@
+roster_template_id: gd_4p_balanced
+display_name: GD 4-person balanced (2v2)
+description: Two vs two practice roster; one seat for the learner, three AI agents.
+total_participants: 4
+team_count: 2
+recommended_mode_ids: [timed_discussion, free_practice]
+default_assessment_template_id: gd_assessment_4p_v1
+participants:
+  - participant_id: for_a
+    display_name: For seat A
+    seat_label: FOR-1
+    team_id: team_for
+    stance: for
+    controller_type: agent
+    relation_to_user: self
+    intro_priority: 1
+    summary_priority: 2
+    persona_tags: [builder]
+  - participant_id: for_b
+    display_name: For seat B
+    seat_label: FOR-2
+    team_id: team_for
+    stance: for
+    controller_type: agent
+    relation_to_user: ally
+    intro_priority: 2
+    summary_priority: 1
+    persona_tags: [supporter]
+  - participant_id: against_a
+    display_name: Against seat A
+    seat_label: AG-1
+    team_id: team_against
+    stance: against
+    controller_type: agent
+    relation_to_user: opponent
+    intro_priority: 3
+    summary_priority: 3
+    persona_tags: [skeptic]
+  - participant_id: against_b
+    display_name: Against seat B
+    seat_label: AG-2
+    team_id: team_against
+    stance: against
+    controller_type: agent
+    relation_to_user: opponent
+    intro_priority: 4
+    summary_priority: 4
+    persona_tags: [challenger]
+teams:
+  - team_id: team_for
+    stance: for
+    display_name: For side
+    participant_ids: [for_a, for_b]
+    intro_participant_id: for_a
+    summary_participant_id: for_b
+  - team_id: team_against
+    stance: against
+    display_name: Against side
+    participant_ids: [against_a, against_b]
+    intro_participant_id: against_a
+    summary_participant_id: against_b
+metadata:
+  practice_simulation: true

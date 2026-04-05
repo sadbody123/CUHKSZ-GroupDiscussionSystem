@@ -28,6 +28,7 @@ def run_agent_turn(
     role: str,
     session: SessionContext,
     feedback_packet: dict | None = None,
+    participant_context: dict | None = None,
 ) -> AgentReply:
     prof = resolve_runtime_profile(session.runtime_profile_id)
     signals = None
@@ -41,6 +42,7 @@ def run_agent_turn(
         user_stance=session.user_stance,
         feedback_signals=signals if role.lower() == RoleType.COACH.value else None,
         retrieval=dict(prof.retrieval),
+        participant_context=participant_context,
     )
     fb_json = json.dumps(feedback_packet, ensure_ascii=False) if feedback_packet else None
     rp = render_prompt_for_role(
@@ -72,14 +74,35 @@ def run_agent_turn(
     )
 
 
-def append_ai_turn(session: SessionContext, role: str, text: str) -> None:
+def append_ai_turn(
+    session: SessionContext,
+    role: str,
+    text: str,
+    *,
+    input_mode: str = "text",
+    tts_asset_id: str | None = None,
+    extra_metadata: dict | None = None,
+    participant_id: str | None = None,
+    team_id: str | None = None,
+    speaker_display_name: str | None = None,
+    turn_relation_to_user: str | None = None,
+    turn_role_type: str | None = None,
+) -> None:
     tid = f"{role}-{len(session.turns)+1}"
+    meta = {"agent": True, "phase": session.phase, **(extra_metadata or {})}
     session.turns.append(
         TranscriptTurn(
             turn_id=tid,
             speaker_role=role,
             text=text,
             created_at=_utc_now(),
-            metadata={"agent": True},
+            input_mode=input_mode,
+            tts_asset_id=tts_asset_id,
+            metadata=meta,
+            participant_id=participant_id,
+            team_id=team_id,
+            speaker_display_name=speaker_display_name,
+            turn_relation_to_user=turn_relation_to_user,
+            turn_role_type=turn_role_type,
         )
     )

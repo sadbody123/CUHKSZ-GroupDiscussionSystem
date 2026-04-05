@@ -1,0 +1,8 @@
+{
+  "artifact_kind": "reviewed_feedback",
+  "proxy_note": "Speech, learner analytics, and group balance metrics are training proxies only; they are not official academic scores.",
+  "payload": {
+    "strengths": ["x"],
+    "risks": ["human flagged pacing"]
+  }
+}

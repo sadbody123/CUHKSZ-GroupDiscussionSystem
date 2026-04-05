@@ -1,0 +1,18 @@
+cases:
+  - case_id: audio_roundtrip_01
+    case_type: audio_roundtrip_case
+    description: Mock ASR user turn + mock TTS on next agent reply
+    inputs:
+      topic_id: tc-campus-ai
+      audio_file: tests/fixtures/audio/sample_user_turn_01.wav
+      provider_name: mock
+      provider_name_asr: mock_asr
+      provider_name_tts: mock_tts
+    expected:
+      transcript_contains_any:
+        - mock ASR
+        - fixture
+      created_turn_input_mode: audio
+      tts_asset_created: true
+      min_audio_asset_count: 2
+      mime_type: audio/wav

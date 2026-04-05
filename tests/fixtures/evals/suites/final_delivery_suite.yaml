@@ -1,0 +1,13 @@
+suite_id: final_delivery
+description: Phase 19 handover / manifest / demo kit / verification / acceptance
+case_refs:
+  - handover_release_manifest_v1_demo
+  - handover_demo_kit_v1_demo
+  - handover_delivery_verify_v1_demo
+  - handover_acceptance_v1_demo
+  - handover_kit_assemble_v1_demo
+default_snapshot_id: dev_snapshot_v2
+default_runtime_profile_id: v1_demo
+tags:
+  - handover
+  - phase19

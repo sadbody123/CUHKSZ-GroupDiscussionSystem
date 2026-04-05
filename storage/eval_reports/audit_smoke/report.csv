@@ -1,0 +1,6 @@
+case_id,case_type,passed,score,profile_id
+smoke_retrieval,retrieval_case,True,1.0,default
+smoke_analyzer,analyzer_case,True,1.0,default
+smoke_state_machine,state_machine_case,True,1.0,default
+smoke_agent,agent_case,True,1.0,default
+smoke_e2e,e2e_case,True,1.0,default

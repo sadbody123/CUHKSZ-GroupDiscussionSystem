@@ -1,0 +1,8 @@
+scenario_id: review_calibration_flow
+display_name: Review pack + calibration
+scenario_type: review_calibration
+interface_mode: service
+required_capabilities:
+  - review_workspace
+release_demo_alias: review_calibration_demo
+metadata: {}

@@ -1,0 +1,24 @@
+profile_id: speech_default
+description: Enables proxy speech delivery analysis thresholds (heuristic, not pronunciation scoring).
+speech_analysis:
+  enabled: true
+  analyzer_name: local_wave
+  min_audio_ms: 300
+  silence_threshold: 120.0
+  pause_min_duration_ms: 200
+  target_wpm_min: 80.0
+  target_wpm_max: 200.0
+  filler_words:
+    - um
+    - uh
+    - like
+    - you know
+    - actually
+  filler_warn_threshold: 4
+  high_pause_ratio_threshold: 0.45
+  low_energy_threshold: 500.0
+  confidence_warn_threshold: 0.45
+  max_turn_audio_analyze_count: 32
+  coach_include_speech_section: true
+  max_audio_ms: 600000
+metadata: {}

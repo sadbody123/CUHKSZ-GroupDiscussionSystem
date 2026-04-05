@@ -1,0 +1,133 @@
+{
+  "profile_id": "v1_demo",
+  "capabilities": [
+    {
+      "capability_id": "offline_build",
+      "display_name": "Offline snapshot build",
+      "area": "offline_build",
+      "stability": "stable",
+      "enabled": true,
+      "experimental": false
+    },
+    {
+      "capability_id": "runtime_text_core",
+      "display_name": "Text discussion runtime",
+      "area": "runtime",
+      "stability": "stable",
+      "enabled": true,
+      "experimental": false
+    },
+    {
+      "capability_id": "api_mvp",
+      "display_name": "FastAPI MVP",
+      "area": "api",
+      "stability": "stable",
+      "enabled": true,
+      "experimental": false
+    },
+    {
+      "capability_id": "ui_mvp",
+      "display_name": "Streamlit UI MVP",
+      "area": "ui",
+      "stability": "stable",
+      "enabled": true,
+      "experimental": false
+    },
+    {
+      "capability_id": "eval_framework",
+      "display_name": "Evaluation framework",
+      "area": "eval",
+      "stability": "stable",
+      "enabled": true,
+      "experimental": false
+    },
+    {
+      "capability_id": "runtime_profiles",
+      "display_name": "Runtime profiles",
+      "area": "runtime",
+      "stability": "stable",
+      "enabled": true,
+      "experimental": false
+    },
+    {
+      "capability_id": "hybrid_retrieval",
+      "display_name": "Lexical / vector / hybrid retrieval",
+      "area": "indexing",
+      "stability": "beta",
+      "enabled": true,
+      "experimental": false
+    },
+    {
+      "capability_id": "audio_practice",
+      "display_name": "ASR / TTS / audio session",
+      "area": "audio",
+      "stability": "beta",
+      "enabled": false,
+      "experimental": true
+    },
+    {
+      "capability_id": "speech_proxy_feedback",
+      "display_name": "Speech analysis & proxy metrics",
+      "area": "speech",
+      "stability": "beta",
+      "enabled": false,
+      "experimental": true
+    },
+    {
+      "capability_id": "learner_analytics",
+      "display_name": "Learner profile & recommendations",
+      "area": "learner",
+      "stability": "beta",
+      "enabled": true,
+      "experimental": false
+    },
+    {
+      "capability_id": "practice_modes",
+      "display_name": "Modes / presets / drills / assessments",
+      "area": "modes",
+      "stability": "beta",
+      "enabled": true,
+      "experimental": false
+    },
+    {
+      "capability_id": "group_simulation",
+      "display_name": "Multi-seat group simulation",
+      "area": "group",
+      "stability": "beta",
+      "enabled": true,
+      "experimental": false
+    },
+    {
+      "capability_id": "review_workspace",
+      "display_name": "Review workspace & calibration",
+      "area": "review",
+      "stability": "beta",
+      "enabled": true,
+      "experimental": false
+    },
+    {
+      "capability_id": "curriculum_delivery",
+      "display_name": "Curriculum packs & assignments",
+      "area": "curriculum",
+      "stability": "beta",
+      "enabled": true,
+      "experimental": false
+    },
+    {
+      "capability_id": "authoring_studio",
+      "display_name": "Authoring & publication",
+      "area": "authoring",
+      "stability": "experimental",
+      "enabled": false,
+      "experimental": true
+    },
+    {
+      "capability_id": "engineering_ops",
+      "display_name": "Ops CLI, bundles, artifact registry",
+      "area": "ops",
+      "stability": "stable",
+      "enabled": true,
+      "experimental": false
+    }
+  ]
+}

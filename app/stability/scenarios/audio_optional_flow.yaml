@@ -1,0 +1,7 @@
+scenario_id: audio_optional_flow
+display_name: Optional audio path (mock ASR/TTS)
+scenario_type: audio_optional
+interface_mode: service
+required_capabilities:
+  - audio_practice
+metadata: {}

@@ -1,0 +1,33 @@
+{
+  "report_id": "c9ce6cef-070c-4ddf-9811-6b402484b21d",
+  "created_at": "2026-04-05T00:46:27.142354+00:00",
+  "suite_id": "audio_smoke",
+  "profile_ids": [
+    "default"
+  ],
+  "total_cases": 1,
+  "passed_cases": 1,
+  "failed_cases": 0,
+  "summary": {
+    "suite": "audio_smoke",
+    "profile": "default"
+  },
+  "results": [
+    {
+      "suite_id": null,
+      "case_id": "audio_roundtrip_01",
+      "case_type": "audio_roundtrip_case",
+      "passed": true,
+      "score": 1.0,
+      "details": {
+        "assets": 2,
+        "turns": 2
+      },
+      "metadata": {
+        "session_id": "d419653d-bb7b-4b90-8d90-a2c6b1f7dd5b"
+      },
+      "profile_id": "default"
+    }
+  ],
+  "metadata": {}
+}

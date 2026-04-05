@@ -1,0 +1,10 @@
+{
+  "session_id": "sess_fixture",
+  "topic_id": "topic_001",
+  "text": "Coach text",
+  "strengths": ["clear thesis", "good turn balance"],
+  "risks": ["limited examples"],
+  "suggested_next_actions": ["add evidence"],
+  "feedback_packet": {},
+  "proxy_limitations": ["Proxy metrics are indicative only."]
+}

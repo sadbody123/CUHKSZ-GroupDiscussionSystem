@@ -1,0 +1,11 @@
+suite_id: mode_and_assessment
+description: Practice modes, drill targeting, assessment simulation (deterministic checks)
+case_refs:
+  - mode_flow_micro_drill
+  - drill_target_example_usage
+  - assessment_sim_4p_template
+default_snapshot_id: dev_snapshot_v2
+default_runtime_profile_id: default
+tags:
+  - modes
+  - assessment

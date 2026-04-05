@@ -1,0 +1,32 @@
+"""Release / capability tiers."""
+
+STABLE = "stable"
+BETA = "beta"
+EXPERIMENTAL = "experimental"
+DEFERRED = "deferred"
+
+AREA_OFFLINE = "offline_build"
+AREA_RUNTIME = "runtime"
+AREA_API = "api"
+AREA_UI = "ui"
+AREA_EVAL = "eval"
+AREA_INDEXING = "indexing"
+AREA_AUDIO = "audio"
+AREA_SPEECH = "speech"
+AREA_LEARNER = "learner"
+AREA_MODES = "modes"
+AREA_GROUP = "group"
+AREA_REVIEW = "review"
+AREA_CURRICULUM = "curriculum"
+AREA_AUTHORING = "authoring"
+AREA_OPS = "ops"
+
+DECISION_KEEP = "keep"
+DECISION_HIDE = "hide_by_default"
+DECISION_EXPERIMENTAL = "experimental_only"
+DECISION_DEFER = "defer"
+
+# Readiness overall_status
+READY = "ready"
+WARNING = "warning"
+BLOCKED = "blocked"

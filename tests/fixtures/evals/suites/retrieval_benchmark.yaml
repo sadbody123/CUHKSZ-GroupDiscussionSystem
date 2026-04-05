@@ -1,0 +1,8 @@
+suite_id: retrieval_benchmark
+description: Minimal indexed retrieval regression
+case_refs:
+  - indexed_ally_evidence
+default_snapshot_id: dev_snapshot_v2
+default_runtime_profile_id: hybrid_default
+tags:
+  - retrieval

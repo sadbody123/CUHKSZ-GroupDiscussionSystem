@@ -1,0 +1,16 @@
+mode_id: micro_drill
+mode_type: drill
+display_name: Micro drill
+description: Short targeted drills with explicit success criteria.
+default_runtime_profile_id: concise
+allow_mid_session_coach: true
+auto_generate_feedback: true
+constraint_policy:
+  max_words_per_turn_soft: 180
+  max_discussion_turns_cap: 12
+  require_summary_phase: false
+timer_policy:
+  type: drill
+  default_minutes: 8
+recommended_for_skills: [example_usage, rebuttal_clarity]
+tags: [drill]

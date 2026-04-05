@@ -1,0 +1,12 @@
+[
+  {
+    "override_id": "ov1",
+    "target_type": "coach_report",
+    "target_path": "risks",
+    "action": "append",
+    "new_value": ["human flagged pacing"],
+    "reason": "calibration",
+    "approved": true,
+    "metadata": {}
+  }
+]

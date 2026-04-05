@@ -1,0 +1,9 @@
+scenario_id: text_core_cli
+display_name: Text core (service / CLI parity)
+scenario_type: text_core
+interface_mode: cli
+required_capabilities:
+  - runtime_text_core
+release_demo_alias: text_core_demo
+metadata:
+  note: Delegates to release text_core_demo

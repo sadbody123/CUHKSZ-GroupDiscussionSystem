@@ -1,0 +1,10 @@
+cases:
+  - case_id: seat_allocation_4p
+    case_type: seat_allocation_case
+    description: 4p roster attaches to session and allocator returns a plan.
+    inputs:
+      topic_id: tc-campus-ai
+      roster_template_id: gd_4p_balanced
+      user_participant_id: for_a
+    expected:
+      min_participants: 4

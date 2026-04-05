@@ -1,0 +1,38 @@
+cases:
+  - case_id: mode_flow_micro_drill
+    case_type: mode_flow_case
+    description: Micro-drill mode records a long-turn constraint event.
+    inputs:
+      topic_id: tc-campus-ai
+      mode_id: micro_drill
+      drill_id: example_support
+    expected:
+      expected_mode_type: drill
+      required_constraint_event_types:
+        - long_turn_warning
+      min_constraint_events: 1
+
+  - case_id: drill_target_example_usage
+    case_type: drill_targeting_case
+    description: Weak skill example_usage should surface example_support drill.
+    inputs:
+      learner_id: eval_drill_01
+      weak_skills:
+        - example_usage
+    expected:
+      required_drill_ids:
+        - example_support
+
+  - case_id: assessment_sim_4p_template
+    case_type: assessment_simulation_case
+    description: 4p assessment template exposes timer fields and simulation note.
+    inputs:
+      topic_id: tc-campus-ai
+      assessment_template_id: gd_assessment_4p_v1
+      mode_id: assessment_simulation
+      preset_id: assessment_4p
+    expected:
+      simulation_note_non_empty: true
+      required_timer_fields:
+        - discussion_seconds
+        - prep_seconds

@@ -1,0 +1,16 @@
+template_id: gd_assessment_4p_v1
+display_name: GD practice simulation (4-person) v1
+description: Timed phases for a four-participant style practice — simulation only.
+simulated_group_size: 4
+prep_seconds: 120
+intro_seconds_per_side: 90
+discussion_seconds: 720
+summary_seconds_per_side: 90
+strict_interrupt_rules: false
+no_mid_session_feedback: true
+expected_user_contribution_target:
+  min_user_turns: 3
+  min_words_per_user_turn_avg: 40
+metadata:
+  practice_simulation: true
+  disclaimer: "Practice simulation — not a formal examination."

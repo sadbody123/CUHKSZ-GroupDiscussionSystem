@@ -8,7 +8,7 @@ from typing import Any
 from app.runtime.profile_loader import load_profile_yaml, list_profile_ids
 from app.runtime.schemas.profile import RuntimeProfile
 
-_MERGE_KEYS = ("retrieval", "orchestration", "analyzer", "prompting", "coach", "metadata")
+_MERGE_KEYS = ("retrieval", "orchestration", "analyzer", "prompting", "coach", "speech_analysis", "metadata")
 
 
 def _deep_merge(base: dict[str, Any], override: dict[str, Any]) -> dict[str, Any]:

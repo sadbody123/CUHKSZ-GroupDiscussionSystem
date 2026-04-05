@@ -1,0 +1,94 @@
+{
+  "report_id": "5585814a-d8e8-4ec2-ab82-b72b8aebae20",
+  "created_at": "2026-04-05T12:51:16.885738+00:00",
+  "suite_id": "smoke",
+  "profile_ids": [
+    "default"
+  ],
+  "total_cases": 5,
+  "passed_cases": 5,
+  "failed_cases": 0,
+  "summary": {
+    "suite": "smoke",
+    "profile": "default"
+  },
+  "results": [
+    {
+      "suite_id": null,
+      "case_id": "smoke_retrieval",
+      "case_type": "retrieval_case",
+      "passed": true,
+      "score": 1.0,
+      "details": {
+        "pedagogy_count": 1,
+        "evidence_count": 5
+      },
+      "metadata": {
+        "profile_id": "default"
+      },
+      "profile_id": "default"
+    },
+    {
+      "suite_id": null,
+      "case_id": "smoke_analyzer",
+      "case_type": "analyzer_case",
+      "passed": true,
+      "score": 1.0,
+      "details": {
+        "signals": [
+          "example_language",
+          "response_linkage",
+          "discussion_language"
+        ]
+      },
+      "metadata": {},
+      "profile_id": "default"
+    },
+    {
+      "suite_id": null,
+      "case_id": "smoke_state_machine",
+      "case_type": "state_machine_case",
+      "passed": true,
+      "score": 1.0,
+      "details": {
+        "next_role": "user",
+        "phase": "discussion"
+      },
+      "metadata": {},
+      "profile_id": "default"
+    },
+    {
+      "suite_id": null,
+      "case_id": "smoke_agent",
+      "case_type": "agent_case",
+      "passed": true,
+      "score": 1.0,
+      "details": {
+        "reply_preview": "[MOCK::ally::d85ac9f4ab9e] Supportive follow-up. Context tail: # Ally (template placeholder)  You support constructive development of ideas: elaborate, agree with nuance, connect evid"
+      },
+      "metadata": {
+        "metadata_keys": [
+          "provider",
+          "model"
+        ]
+      },
+      "profile_id": "default"
+    },
+    {
+      "suite_id": null,
+      "case_id": "smoke_e2e",
+      "case_type": "e2e_case",
+      "passed": true,
+      "score": 1.0,
+      "details": {
+        "turns": 4,
+        "phase": "feedback"
+      },
+      "metadata": {
+        "session_id": "1f092453-16c0-440f-8943-df8b038e16a4"
+      },
+      "profile_id": "default"
+    }
+  ],
+  "metadata": {}
+}

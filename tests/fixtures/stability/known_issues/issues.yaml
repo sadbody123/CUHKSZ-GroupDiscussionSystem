@@ -1,0 +1,13 @@
+issues:
+  - issue_id: STAB-DOC-001
+    source_type: manual
+    severity: info
+    area: integration
+    title: Local-only RC gate
+    description: RC go/no-go is advisory for local delivery; not a production SLA.
+    reproducible: true
+    status: accepted_limitation
+    linked_refs: []
+    suggested_fix: null
+    metadata:
+      reason: Scope of phase-18 hardening

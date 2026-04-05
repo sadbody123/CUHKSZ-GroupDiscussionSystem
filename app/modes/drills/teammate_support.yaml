@@ -1,0 +1,14 @@
+drill_id: teammate_support
+drill_type: teammate_support
+title: Build on a peer
+objective: Reference a teammate's idea and extend it constructively.
+target_skills: [teammate_support, interaction]
+suggested_mode_id: micro_drill
+runtime_profile_id: balanced
+recommended_duration_minutes: 6
+prompt_instructions:
+  - Use one supportive phrase and add one new angle.
+success_criteria:
+  - Contains support language directed at a peer contribution
+remediation_hints:
+  - Quote or paraphrase the peer line before extending.

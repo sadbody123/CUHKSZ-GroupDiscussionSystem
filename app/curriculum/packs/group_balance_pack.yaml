@@ -1,0 +1,28 @@
+pack_id: group_balance_pack
+display_name: Group Balance
+description: Multi-seat simulation with balance awareness.
+version: "1"
+created_at: "2026-01-01T00:00:00Z"
+target_skills:
+  - interaction
+tags:
+  - group_sim
+steps:
+  - step_id: step_gb_01
+    order: 1
+    title: 4P balanced roster
+    objective: Practice with roster template and balance report.
+    step_type: mixed
+    topic_id: tc-campus-ai
+    assessment_template_id: gd_assessment_4p_v1
+    roster_template_id: gd_4p_balanced
+    runtime_profile_id: default
+    focus_skills:
+      - interaction
+    success_criteria:
+      - group_balance_report
+    notes:
+      - Group simulation is training-only.
+metadata:
+  source: builtin
+  simulation_note: true

@@ -17,6 +17,7 @@ class RuntimeProfile(BaseModel):
     analyzer: dict[str, Any] = Field(default_factory=dict)
     prompting: dict[str, Any] = Field(default_factory=dict)
     coach: dict[str, Any] = Field(default_factory=dict)
+    speech_analysis: dict[str, Any] = Field(default_factory=dict)
     metadata: dict[str, Any] = Field(default_factory=dict)
 
     def merged_dict(self) -> dict[str, Any]:
@@ -28,5 +29,6 @@ class RuntimeProfile(BaseModel):
             "analyzer": dict(self.analyzer),
             "prompting": dict(self.prompting),
             "coach": dict(self.coach),
+            "speech_analysis": dict(self.speech_analysis),
             "metadata": dict(self.metadata),
         }
