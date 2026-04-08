@@ -52,4 +52,15 @@ speech_analysis:
   enabled: false
   analyzer_name: local_wave
   coach_include_speech_section: true
-metadata: {}
+metadata:
+  quality_policy:
+    policy_id: quality_default_v1
+    min_reply_length: 40
+    topic_relevance_threshold: 0.5
+    response_linkage_threshold: 0.5
+    max_repairs: 1
+    interrupt_after_max_repairs: true
+    enable_interrupt: true
+    per_role_overrides:
+      moderator:
+        min_reply_length: 30

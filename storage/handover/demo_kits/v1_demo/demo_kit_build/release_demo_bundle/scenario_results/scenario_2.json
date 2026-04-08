@@ -1,13 +1,13 @@
 {
-  "result_id": "dsr_3cff3b3dfae7",
+  "result_id": "dsr_67dd7cfed4f9",
   "scenario_id": "review_calibration_demo",
   "profile_id": "v1_demo",
-  "created_at": "2026-04-05T13:24:14.343295+00:00",
+  "created_at": "2026-04-08T07:16:44.225017+00:00",
   "success": true,
   "step_results": [
     {
       "step": "review_pack",
-      "review_pack_id": "77c61056-c52c-4374-9911-0e1f8dcd1a9d"
+      "review_pack_id": "4378a0b4-2796-4cb9-b05e-54630dd38789"
     },
     {
       "step": "calibration",
@@ -15,17 +15,17 @@
     }
   ],
   "outputs": {
-    "review_pack_id": "77c61056-c52c-4374-9911-0e1f8dcd1a9d",
+    "review_pack_id": "4378a0b4-2796-4cb9-b05e-54630dd38789",
     "calibration": {
-      "report_id": "a348eaeb-e6ab-43fa-b229-150d4c4fc56c",
-      "review_pack_id": "77c61056-c52c-4374-9911-0e1f8dcd1a9d",
-      "session_id": "9abfa51a-ec0d-41b9-9e7b-ae72d9cf41e9",
-      "review_id": "655bae2a-d7c7-498d-aee0-203b925153b1",
-      "created_at": "2026-04-05T13:24:14.389552+00:00",
+      "report_id": "7209fa91-1038-4fb1-99b5-1696237a93b8",
+      "review_pack_id": "4378a0b4-2796-4cb9-b05e-54630dd38789",
+      "session_id": "63eac7c7-73f7-47e4-895e-12e2a7cd923e",
+      "review_id": "e8cb8c79-eb50-481f-b078-23a6fd352e5a",
+      "created_at": "2026-04-08T07:16:44.329654+00:00",
       "overall_agreement": "low",
       "results": [
         {
-          "calibration_id": "d5dada6f-9f1b-4ede-b61f-26ea373a493e",
+          "calibration_id": "b1dc01a1-3bcf-4639-85f4-5c9486643481",
           "component_type": "rubric",
           "component_id": "content",
           "ai_value": null,
@@ -38,7 +38,7 @@
           "metadata": {}
         },
         {
-          "calibration_id": "fb027511-f0b9-40d1-99a0-62534293ff9d",
+          "calibration_id": "e0773f27-1679-4d2c-b467-f37c2120cb6c",
           "component_type": "feedback",
           "component_id": "strengths_language_overlap",
           "ai_value": [],
@@ -65,8 +65,8 @@
       "metadata": {
         "disagreement_analysis": {
           "ai_missing_risk_in_human_view": [
-            "low_interaction_risk",
-            "few_examples_risk"
+            "few_examples_risk",
+            "low_interaction_risk"
           ],
           "ai_possible_false_positive_strength": [],
           "human_added_risk_or_concern": []

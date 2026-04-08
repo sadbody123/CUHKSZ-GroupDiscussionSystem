@@ -1,0 +1,39 @@
+{
+  "report_id": "bb67af9a-cb3b-4311-aa33-1636e878b2cd",
+  "session_id": "f2fad713-23b8-491a-994c-d5cba51e0f04",
+  "mode_id": "free_practice",
+  "preset_id": null,
+  "drill_id": null,
+  "assessment_template_id": null,
+  "created_at": "2026-04-08T06:46:58.631654+00:00",
+  "phase_progress": {
+    "effective_constraint_policy": {
+      "max_words_per_turn_soft": 400,
+      "require_summary_phase": false
+    },
+    "simulation_note": null,
+    "constraint_events": [],
+    "discussion_turns": 1,
+    "total_turns": 2,
+    "session_phase": "discussion"
+  },
+  "timer_events": [
+    {
+      "elapsed_seconds": 0.034,
+      "now_iso": "2026-04-08T06:46:58.586162+00:00",
+      "kind": "none"
+    }
+  ],
+  "constraint_events": [],
+  "success_checks": [],
+  "strengths": [],
+  "risks": [
+    "few_examples_risk"
+  ],
+  "recommended_next_actions": [],
+  "proxy_notes": [],
+  "metadata": {
+    "practice_report": true,
+    "not_an_exam_score": true
+  }
+}

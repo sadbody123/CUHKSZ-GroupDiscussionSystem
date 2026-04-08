@@ -28,7 +28,9 @@ from app.api.schemas.session import (
     CreateSessionRequest,
     CreateSessionResponse,
     SessionListItemResponse,
+    SessionRuntimeEventsResponse,
     SessionStatusResponse,
+    SessionTranscriptResponse,
 )
 from app.api.schemas.turn import (
     AutoRunRequest,
@@ -209,6 +211,29 @@ def get_session(
         assignment_id=st.get("assignment_id"),
         assignment_step_id=st.get("assignment_step_id"),
     )
+
+
+@router.get("/{session_id}/transcript", response_model=SessionTranscriptResponse)
+def get_session_transcript(
+    session_id: str,
+    disc: Annotated[DiscussionService, Depends(get_discussion_service)],
+    offset: int = Query(0, ge=0),
+    limit: int = Query(50, ge=1, le=200),
+) -> SessionTranscriptResponse:
+    payload = disc.get_session_transcript(session_id, offset=offset, limit=limit)
+    return SessionTranscriptResponse(**payload)
+
+
+@router.get("/{session_id}/runtime-events", response_model=SessionRuntimeEventsResponse)
+def get_session_runtime_events(
+    session_id: str,
+    disc: Annotated[DiscussionService, Depends(get_discussion_service)],
+    run_id: str | None = Query(None),
+    offset: int = Query(0, ge=0),
+    limit: int = Query(50, ge=1, le=200),
+) -> SessionRuntimeEventsResponse:
+    payload = disc.get_runtime_events(session_id, run_id=run_id, offset=offset, limit=limit)
+    return SessionRuntimeEventsResponse(**payload)
 
 
 @router.post("/{session_id}/turns/user", response_model=SubmitUserTurnResponse)

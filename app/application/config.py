@@ -26,6 +26,8 @@ class AppConfig(BaseModel):
     default_provider: str = "mock"
     default_model: str | None = None
     default_runtime_profile: str = "default"
+    agent_runtime_backend: str = "v1"
+    agent_runtime_v2_dir: Path
     api_host: str = "127.0.0.1"
     api_port: int = 8000
     ui_api_base_url: str = "http://127.0.0.1:8000"
@@ -104,6 +106,8 @@ class AppConfig(BaseModel):
             default_provider=o.default_provider,
             default_model=o.default_model,
             default_runtime_profile=o.default_runtime_profile,
+            agent_runtime_backend=o.agent_runtime_backend,
+            agent_runtime_v2_dir=o.agent_runtime_v2_dir.resolve(),
             api_host=o.api_host,
             api_port=o.api_port,
             ui_api_base_url=o.ui_api_base_url,

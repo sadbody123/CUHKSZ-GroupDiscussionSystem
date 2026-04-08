@@ -1,0 +1,48 @@
+{
+  "review_id": "b4dd3527-0645-4437-92c2-98d4a3a59c2b",
+  "review_pack_id": "375d62f6-6771-46f0-8e63-f1098662826b",
+  "reviewer_id": "demo_reviewer_843294",
+  "created_at": "2026-04-08T04:46:24.682278+00:00",
+  "rubric_scores": [
+    {
+      "score_id": "rs1",
+      "dimension_id": "content",
+      "dimension_name": "Content",
+      "score": 4.0,
+      "max_score": 5.0,
+      "confidence": 0.7,
+      "note": "Solid structure"
+    }
+  ],
+  "annotations": [
+    {
+      "annotation_id": "a1",
+      "target_type": "feedback",
+      "target_id": null,
+      "annotation_type": "risk",
+      "content": "Missed counter-argument on campus policy",
+      "severity": "medium",
+      "linked_turn_ids": [],
+      "metadata": {}
+    }
+  ],
+  "override_decisions": [
+    {
+      "override_id": "o1",
+      "target_type": "coach_report",
+      "target_path": "strengths",
+      "action": "append",
+      "new_value": [
+        "Human-reviewed strength: cites syllabus"
+      ],
+      "reason": "AI omitted a visible citation",
+      "approved": true,
+      "metadata": {}
+    }
+  ],
+  "overall_judgment": "Good discussion with gaps on evidence depth.",
+  "summary_notes": [
+    "Watch time management in rebuttal phase."
+  ],
+  "metadata": {}
+}

@@ -1,20 +1,54 @@
-# V1 release scope and freeze
+# Release Scope and Freeze (Current Delivery)
 
-This document describes how **CUHKSZ-GroupDiscussionSystem** is scoped for a deliverable V1 baseline. It is **not** a product roadmap; it reflects the repository’s release profiles, capability registry, and automated scope-freeze output.
+## Delivery Scope Included
 
-## Scope principles
+- Backend:
+  - FastAPI API + application service layer
+  - V1 runtime (default) and V2 runtime (LangGraph, opt-in)
+  - quality/repair/interrupt/review workflow
+  - transcript pagination API
+  - runtime events/timeline API
+- Frontend:
+  - Discussion Console
+  - Runtime Review Console
+  - OpenAPI codegen pipeline
+  - Playwright mock and real-backend E2E modes
+- Engineering:
+  - minimal/full dependency strategy
+  - pytest marker strategy (`v2_graph`)
+  - CI matrix: `baseline` and `full-v2-fullstack`
 
-- **Upstream boundary**: raw crawling and export live in `CUHKSZ-Datahub`; this repo consumes **snapshots** only.
-- **No parallel runtimes**: release/demo tooling calls **existing** `SessionService`, `LearnerService`, `CurriculumService`, `ReviewService`, etc., via `app/release/engines/scenario_runner.py`.
-- **Gating over deletion**: capabilities may be **disabled or hidden by profile** without removing code.
+## Stable vs Optional
 
-## Freeze mechanics
+### Stable / Recommended
 
-- **Profiles**: YAML under `app/release/profiles/` (`v1_minimal`, `v1_demo`, `v1_full_local`).
-- **Registry**: `app/release/engines/capability_registry.py` lists capabilities with stability and dependencies.
-- **Scope summary**: `build_scope_freeze_summary()` in `app/release/engines/scope_freezer.py` classifies each capability for the active profile (`keep`, `hide_by_default`-style decisions via `DECISION_*` constants).
-- **CLI**: `python main.py freeze-scope-report --profile-id v1_demo` writes a JSON report under the configured release report directory.
+- V1 default path
+- Session discussion flow with mock provider
+- Runtime review operations and linkage in frontend
+- Transcript/timeline read APIs
+- Baseline and full test matrix commands
 
-## Deviation from aspirational docs
+### Optional / Conditional
 
-If a capability is marked **beta** or **experimental** in the registry, that reflects **current implementation confidence**, not a permanent product label. Re-run `show-capability-matrix` after major changes.
+- V2 runtime path (`AGENT_RUNTIME_BACKEND=v2`)
+- LangGraph-dependent tests and behaviors
+- Real-backend Playwright mode
+- Cloud provider integrations (non-mock)
+
+## Explicit Non-Goals For This Freeze
+
+- No production-grade multi-tenant/auth hardening
+- No database migration for review queue/checkpoint/event storage
+- No full DAG visualization UI for timeline
+- No LLM-assisted verifier as default policy
+
+## Post-Freeze Backlog (Not Part Of This Delivery)
+
+- Expand real-backend E2E to include stable review mutation path
+- Complete migration from residual hand-written frontend types to generated contract only
+- Introduce optional stronger storage backend for review queue/checkpoints
+- Add richer runtime timeline visual analytics
+
+## Version Note
+
+Project version remains `0.1.0` (no version bump in this freeze round).

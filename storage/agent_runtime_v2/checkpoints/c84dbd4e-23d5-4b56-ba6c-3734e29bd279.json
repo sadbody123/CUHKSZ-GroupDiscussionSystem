@@ -1,0 +1,223 @@
+{
+  "run_id": "c84dbd4e-23d5-4b56-ba6c-3734e29bd279",
+  "session_id": "0935749c-73e2-4c16-a197-02d4c80d39cd",
+  "status": "interrupted",
+  "run_status": "interrupted",
+  "last_successful_node": "stop_check",
+  "emitted_turn_ids": [],
+  "review_id": "rvw-c1747328-3489-4576-acda-940feb0a3d8a",
+  "policy_id": "quality_default_v1",
+  "updated_at": "2026-04-08T07:03:18.273608+00:00",
+  "checkpoint_id": "ckpt-c8e38019-1ca4-4559-81d3-fae57cba9523",
+  "state": {
+    "run_id": "c84dbd4e-23d5-4b56-ba6c-3734e29bd279",
+    "session_id": "0935749c-73e2-4c16-a197-02d4c80d39cd",
+    "runtime_profile_id": "default",
+    "phase": "discussion",
+    "last_role": "ally",
+    "next_actor": "ally",
+    "loop_index": 0,
+    "max_steps": 1,
+    "stop_reason": "interrupt_for_review",
+    "run_status": "interrupted",
+    "last_successful_node": "stop_check",
+    "runtime_checkpoint_id": "ckpt-9e31893b-1150-4e44-a852-b8d0d3a86eb0",
+    "trace_id": "trace-c84dbd4e-23d5-4b56-ba6c-3734e29bd279",
+    "emitted_turn_ids": [],
+    "quality_flags": [
+      "weak_response_link"
+    ],
+    "repair_count": 1,
+    "max_repairs": 1,
+    "quality_decision": "interrupt",
+    "moderation_action": "interrupt_for_review",
+    "interrupt_reason": "quality_failed_after_max_repairs",
+    "review_id": "rvw-c1747328-3489-4576-acda-940feb0a3d8a",
+    "policy_id": "quality_default_v1",
+    "metadata": {
+      "created_at": "2026-04-08T07:03:18.168484+00:00",
+      "quality_policy_snapshot": {
+        "policy_id": "quality_default_v1",
+        "min_reply_length": 40,
+        "topic_relevance_threshold": 0.5,
+        "response_linkage_threshold": 0.5,
+        "max_repairs": 1,
+        "interrupt_after_max_repairs": true,
+        "enable_interrupt": true,
+        "per_role_overrides": {
+          "moderator": {
+            "min_reply_length": 30
+          }
+        }
+      }
+    },
+    "artifacts": {
+      "pending_turn_ids": [],
+      "draft_reply_text": "[MOCK::ally::d0bfb4be7924] Supportive follow-up. Context tail: # Ally (template placeholder)  You support constructive development of ideas: elaborate, agree with nuance, connect evid [REPAIR] Clarified with explicit topic linkage and a direct response."
+    },
+    "events": [
+      {
+        "timestamp": "2026-04-08T07:03:18.200192+00:00",
+        "run_id": "c84dbd4e-23d5-4b56-ba6c-3734e29bd279",
+        "session_id": "0935749c-73e2-4c16-a197-02d4c80d39cd",
+        "backend": "v2",
+        "node_name": "load_session",
+        "next_actor": null,
+        "stop_reason": null,
+        "success": true,
+        "error_summary": null,
+        "trace_id": "trace-c84dbd4e-23d5-4b56-ba6c-3734e29bd279",
+        "checkpoint_id": "ckpt-eccdf634-2df6-48da-a26c-8d9dbe3b51ff",
+        "quality_decision": null,
+        "interrupt_reason": null,
+        "repair_count": 0,
+        "quality_flags": [],
+        "review_id": null,
+        "policy_id": null
+      },
+      {
+        "timestamp": "2026-04-08T07:03:18.218219+00:00",
+        "run_id": "c84dbd4e-23d5-4b56-ba6c-3734e29bd279",
+        "session_id": "0935749c-73e2-4c16-a197-02d4c80d39cd",
+        "backend": "v2",
+        "node_name": "select_next_actor",
+        "next_actor": "ally",
+        "stop_reason": null,
+        "success": true,
+        "error_summary": null,
+        "trace_id": "trace-c84dbd4e-23d5-4b56-ba6c-3734e29bd279",
+        "checkpoint_id": "ckpt-eccdf634-2df6-48da-a26c-8d9dbe3b51ff",
+        "quality_decision": null,
+        "interrupt_reason": null,
+        "repair_count": 0,
+        "quality_flags": [],
+        "review_id": null,
+        "policy_id": null
+      },
+      {
+        "timestamp": "2026-04-08T07:03:18.249867+00:00",
+        "run_id": "c84dbd4e-23d5-4b56-ba6c-3734e29bd279",
+        "session_id": "0935749c-73e2-4c16-a197-02d4c80d39cd",
+        "backend": "v2",
+        "node_name": "generate_turn",
+        "next_actor": "ally",
+        "stop_reason": null,
+        "success": true,
+        "error_summary": null,
+        "trace_id": "trace-c84dbd4e-23d5-4b56-ba6c-3734e29bd279",
+        "checkpoint_id": "ckpt-eccdf634-2df6-48da-a26c-8d9dbe3b51ff",
+        "quality_decision": null,
+        "interrupt_reason": null,
+        "repair_count": 0,
+        "quality_flags": [],
+        "review_id": null,
+        "policy_id": null
+      },
+      {
+        "timestamp": "2026-04-08T07:03:18.262839+00:00",
+        "run_id": "c84dbd4e-23d5-4b56-ba6c-3734e29bd279",
+        "session_id": "0935749c-73e2-4c16-a197-02d4c80d39cd",
+        "backend": "v2",
+        "node_name": "quality_check",
+        "next_actor": "ally",
+        "stop_reason": null,
+        "success": true,
+        "error_summary": null,
+        "trace_id": "trace-c84dbd4e-23d5-4b56-ba6c-3734e29bd279",
+        "checkpoint_id": "ckpt-eccdf634-2df6-48da-a26c-8d9dbe3b51ff",
+        "quality_decision": "repair",
+        "interrupt_reason": null,
+        "repair_count": 0,
+        "quality_flags": [
+          "weak_response_link"
+        ],
+        "review_id": null,
+        "policy_id": "quality_default_v1"
+      },
+      {
+        "timestamp": "2026-04-08T07:03:18.264371+00:00",
+        "run_id": "c84dbd4e-23d5-4b56-ba6c-3734e29bd279",
+        "session_id": "0935749c-73e2-4c16-a197-02d4c80d39cd",
+        "backend": "v2",
+        "node_name": "repair_turn",
+        "next_actor": "ally",
+        "stop_reason": null,
+        "success": true,
+        "error_summary": null,
+        "trace_id": "trace-c84dbd4e-23d5-4b56-ba6c-3734e29bd279",
+        "checkpoint_id": "ckpt-eccdf634-2df6-48da-a26c-8d9dbe3b51ff",
+        "quality_decision": "repair",
+        "interrupt_reason": null,
+        "repair_count": 1,
+        "quality_flags": [
+          "weak_response_link"
+        ],
+        "review_id": null,
+        "policy_id": "quality_default_v1"
+      },
+      {
+        "timestamp": "2026-04-08T07:03:18.273083+00:00",
+        "run_id": "c84dbd4e-23d5-4b56-ba6c-3734e29bd279",
+        "session_id": "0935749c-73e2-4c16-a197-02d4c80d39cd",
+        "backend": "v2",
+        "node_name": "quality_check",
+        "next_actor": "ally",
+        "stop_reason": null,
+        "success": true,
+        "error_summary": null,
+        "trace_id": "trace-c84dbd4e-23d5-4b56-ba6c-3734e29bd279",
+        "checkpoint_id": "ckpt-eccdf634-2df6-48da-a26c-8d9dbe3b51ff",
+        "quality_decision": "interrupt",
+        "interrupt_reason": "quality_failed_after_max_repairs",
+        "repair_count": 1,
+        "quality_flags": [
+          "weak_response_link"
+        ],
+        "review_id": null,
+        "policy_id": "quality_default_v1"
+      },
+      {
+        "timestamp": "2026-04-08T07:03:18.273608+00:00",
+        "run_id": "c84dbd4e-23d5-4b56-ba6c-3734e29bd279",
+        "session_id": "0935749c-73e2-4c16-a197-02d4c80d39cd",
+        "backend": "v2",
+        "node_name": "interrupt_for_review",
+        "next_actor": "ally",
+        "stop_reason": "interrupt_for_review",
+        "success": true,
+        "error_summary": null,
+        "trace_id": "trace-c84dbd4e-23d5-4b56-ba6c-3734e29bd279",
+        "checkpoint_id": "ckpt-eccdf634-2df6-48da-a26c-8d9dbe3b51ff",
+        "quality_decision": "interrupt",
+        "interrupt_reason": "quality_failed_after_max_repairs",
+        "repair_count": 1,
+        "quality_flags": [
+          "weak_response_link"
+        ],
+        "review_id": null,
+        "policy_id": "quality_default_v1"
+      },
+      {
+        "timestamp": "2026-04-08T07:03:18.273608+00:00",
+        "run_id": "c84dbd4e-23d5-4b56-ba6c-3734e29bd279",
+        "session_id": "0935749c-73e2-4c16-a197-02d4c80d39cd",
+        "backend": "v2",
+        "node_name": "stop_check",
+        "next_actor": "ally",
+        "stop_reason": "interrupt_for_review",
+        "success": true,
+        "error_summary": null,
+        "trace_id": "trace-c84dbd4e-23d5-4b56-ba6c-3734e29bd279",
+        "checkpoint_id": "ckpt-eccdf634-2df6-48da-a26c-8d9dbe3b51ff",
+        "quality_decision": "interrupt",
+        "interrupt_reason": "quality_failed_after_max_repairs",
+        "repair_count": 1,
+        "quality_flags": [
+          "weak_response_link"
+        ],
+        "review_id": null,
+        "policy_id": "quality_default_v1"
+      }
+    ]
+  }
+}

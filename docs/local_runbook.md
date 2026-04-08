@@ -1,56 +1,99 @@
-# Local runbook (phase 5)
+# Local Runbook (Release Freeze)
 
-## 1. Prepare a snapshot
+## 1) Environment Modes
 
-Build a phase-2 snapshot (example):
+### Minimal / V1-first
 
 ```bash
-python main.py build-offline ^
-  --input-dir tests/fixtures/datahub_exports ^
-  --pedagogy-dir tests/fixtures/pedagogy ^
-  --topic-card-dir tests/fixtures/topic_cards ^
-  --snapshot-id dev_snapshot_v2
+python -m pip install -e ".[dev]"
 ```
 
-Validate:
+Use this mode for:
+
+- baseline API/CLI checks
+- V1-first testing without LangGraph dependency
+
+### Full / V2 fullstack
 
 ```bash
-python main.py validate-snapshot --snapshot-dir app/knowledge/snapshots/dev_snapshot_v2
+python -m pip install -e ".[dev,graph]"
 ```
 
-## 2. Start the API
+Use this mode for:
+
+- V2 graph runtime tests
+- frontend + codegen + Playwright
+
+## 2) Bootstrap Data
 
 ```bash
-pip install -e ".[dev]"
+python main.py bootstrap-dev-snapshot
+```
+
+This ensures `dev_snapshot_v2` exists in snapshot root.
+
+## 3) Backend Startup
+
+```bash
 python main.py run-api --host 127.0.0.1 --port 8000
 ```
 
-Check:
-
-```bash
-curl -s http://127.0.0.1:8000/health
-```
-
-Optional env:
-
-- `SESSION_STORAGE_DIR` — where session JSON files go (default `storage/sessions`)
-- `SNAPSHOT_ROOT` — snapshot parent directory (see `.env.example`)
-- `DEFAULT_PROVIDER` — default `mock`
-
-## 3. Start the Streamlit UI
+Optional Streamlit:
 
 ```bash
 python main.py run-ui --api-base-url http://127.0.0.1:8000
 ```
 
-## 4. Demo flow
+## 4) Frontend Startup
 
-1. Pick snapshot **dev_snapshot_v2** and a topic.
-2. Create session (provider **mock**).
-3. Submit a user message → **Run next** → **Auto run** a few steps.
-4. **Generate feedback** and read the coach preview.
-5. (Optional) `GET /sessions/{id}/export` for full JSON.
+From `frontend/`:
 
-## 5. CLI still works
+```bash
+npm install
+npm run codegen:openapi
+npm run dev
+```
 
-Phase-4 commands (`create-session`, `submit-user-turn`, …) are unchanged; they use the same session store and runtime.
+## 5) Functional Walkthrough
+
+1. Open `/sessions`
+2. Create session with `dev_snapshot_v2` + a topic
+3. Enter session detail
+4. Submit user turn
+5. Run next turn or auto run
+6. Inspect transcript and runtime timeline
+7. If review generated, open `/runtime-reviews` and process item
+
+## 6) Test Commands
+
+### Baseline
+
+```bash
+python -m pytest -m "not v2_graph" -q
+python main.py validate-env
+python main.py run-smoke --snapshot-id dev_snapshot_v2 --topic-id tc-campus-ai --provider mock --runtime-profile default
+```
+
+### Full
+
+```bash
+python -m pytest -q
+```
+
+Frontend:
+
+```bash
+cd frontend
+npm run codegen:openapi
+npm run test
+npm run build
+npm run e2e:mock
+npm run e2e:real
+```
+
+## 7) Troubleshooting
+
+- `langgraph not installed`: switch to minimal test command or install `.[graph]`.
+- Missing snapshot/topic: rerun `python main.py bootstrap-dev-snapshot`.
+- Codegen output missing: run `cd frontend && npm run codegen:openapi`.
+- Real E2E failures: verify backend port `8000` is free and frontend port `4173` is available.

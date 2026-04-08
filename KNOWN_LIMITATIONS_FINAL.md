@@ -1,9 +1,37 @@
-# Known limitations (final)
+# Known Limitations and Non-Goals (Freeze)
 
-- **Advisory only**: readiness, stability, RC, handover bundles, and acceptance evidence are **training / engineering support artifacts** for local verification — **not** formal certification, accreditation, or regulatory compliance.
-- **Not an official assessment**: speech metrics, learner analytics, review calibration scores, and practice-mode reports use **heuristics, proxies, or simulation** — they must not be presented as official grades or exam results.
-- **Snapshots required**: run **`python main.py bootstrap-dev-snapshot`** (or `build-offline` from `README.md`) so `dev_snapshot_v2` exists under the configured snapshot root.
-- **Mock-first**: default flows use **mock** LLM/ASR/TTS; cloud keys are optional. **OpenAI-compatible / vendor providers are not guaranteed to match mock behavior** and are **not** covered to the same depth in CI.
-- **Scope**: extended surfaces (audio, group sim, authoring, etc.) may be gated by `v1_demo` or marked experimental — see capability matrix and release profiles.
+This file lists known boundaries for the current delivery. These are not hidden bugs;
+they are explicit scope limits at freeze time.
 
-Additional items may be listed under `storage/stability/issues/issues.yaml`.
+## Runtime / Backend
+
+- V2 runtime depends on `langgraph`; minimal mode intentionally does not require it.
+- Review queue storage is file-backed (`storage/agent_runtime_v2/review_queue`) and designed for single-node/local workflow.
+- Checkpoint/events are file-based observability assets, not distributed transaction logs.
+- V1 remains default runtime backend; V2 is opt-in.
+
+## Quality / Review
+
+- Quality verifier is heuristic-first by default.
+- LLM-assisted verifier is not part of current frozen delivery.
+- Review workflow is operational for local/API usage, but not hardened for multi-instance consensus.
+
+## Frontend / E2E
+
+- Timeline panel is list-centric and does not provide advanced graph visualization.
+- Frontend types use generated OpenAPI types via adapter layer; a small hand-written transition surface may still exist.
+- Real-backend Playwright currently emphasizes discussion path; review real-backend deep coverage remains limited.
+
+## Platform / Product Boundaries
+
+- This project is not positioned as production SaaS:
+  - no full auth/multi-tenant hardening
+  - no distributed consistency guarantees
+  - no production SLAs
+- Advisory analytics (speech/learner/review calibration) must not be interpreted as official grading/certification.
+
+## Out of Scope For This Release
+
+- Replacing review queue with database-backed strong-consistency design.
+- Full DAG-style runtime trace visualization UI.
+- Full provider matrix expansion beyond current adapter-backed path.

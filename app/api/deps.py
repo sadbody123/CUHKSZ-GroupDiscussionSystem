@@ -21,6 +21,7 @@ from app.application.handover_service import HandoverService
 from app.application.stability_service import StabilityService
 from app.application.curriculum_service import CurriculumService
 from app.application.review_service import ReviewService
+from app.application.runtime_review_service import RuntimeReviewService
 from app.application.session_service import SessionService
 from app.application.snapshot_service import SnapshotService
 from app.application.topic_service import TopicService
@@ -99,6 +100,13 @@ def get_review_service(
     sessions: Annotated[SessionService, Depends(get_session_service)],
 ) -> ReviewService:
     return ReviewService(config, sessions)
+
+
+def get_runtime_review_service(
+    config: Annotated[AppConfig, Depends(get_config)],
+    sessions: Annotated[SessionService, Depends(get_session_service)],
+) -> RuntimeReviewService:
+    return RuntimeReviewService(config, sessions)
 
 
 def get_curriculum_service(

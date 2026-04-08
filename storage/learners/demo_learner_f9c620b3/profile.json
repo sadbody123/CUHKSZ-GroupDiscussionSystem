@@ -1,0 +1,18 @@
+{
+  "learner_id": "demo_learner_f9c620b3",
+  "display_name": "Demo Learner",
+  "created_at": "2026-04-08T06:45:23.614928+00:00",
+  "updated_at": "2026-04-08T06:45:23.614928+00:00",
+  "total_sessions": 0,
+  "session_ids": [],
+  "preferred_mode": null,
+  "current_runtime_profile_id": null,
+  "current_focus_skills": [],
+  "strong_skills": [],
+  "weak_skills": [],
+  "aggregate_metrics": {},
+  "trend_summary": {},
+  "metadata": {
+    "source": "create_learner"
+  }
+}

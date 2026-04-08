@@ -1,0 +1,200 @@
+{
+  "review_pack_id": "2d217df4-df9b-4a89-9bcd-798e51c6cb7e",
+  "session_id": "461290fe-86f2-4ced-9575-e79d03b35f22",
+  "learner_id": null,
+  "topic_id": "tc-campus-ai",
+  "mode_id": "free_practice",
+  "roster_template_id": null,
+  "created_at": "2026-04-08T06:45:24.020160+00:00",
+  "status": "calibrated",
+  "included_artifacts": {
+    "session": {
+      "runtime_profile_id": "default",
+      "mode_id": "free_practice",
+      "preset_id": null,
+      "assessment_template_id": null,
+      "roster_template_id": null,
+      "phase": "feedback",
+      "turn_count": 0,
+      "participants": 0
+    },
+    "feedback_packet": {
+      "session_id": "461290fe-86f2-4ced-9575-e79d03b35f22",
+      "topic_id": "tc-campus-ai",
+      "metrics": {
+        "total_turns": 0,
+        "user_turns": 0,
+        "avg_turn_words": 0.0,
+        "max_turn_words": 0
+      },
+      "detected_signals": [
+        {
+          "id": "few_examples_risk",
+          "severity": "low",
+          "detail": "Few explicit example cues detected."
+        },
+        {
+          "id": "low_interaction_risk",
+          "severity": "high",
+          "detail": "User turns are sparse."
+        }
+      ],
+      "strengths": [],
+      "risks": [
+        "few_examples_risk",
+        "low_interaction_risk"
+      ],
+      "recommended_pedagogy_item_ids": [
+        "coach-1"
+      ],
+      "speech_session_report": null,
+      "speech_proxy_disclaimer": null,
+      "metadata": {}
+    },
+    "coach_report": {
+      "session_id": "461290fe-86f2-4ced-9575-e79d03b35f22",
+      "topic_id": "tc-campus-ai",
+      "text": "[MOCK::coach::3dd2577d6fdd] Formative feedback summary. Context tail: # Coach (template placeholder)  You give formative feedback using rubrics and coaching tips.  - Anchor feedback to rubri",
+      "strengths": [],
+      "risks": [
+        "few_examples_risk",
+        "low_interaction_risk"
+      ],
+      "suggested_next_actions": [
+        "Review pedagogy item coach-1"
+      ],
+      "feedback_packet": {
+        "session_id": "461290fe-86f2-4ced-9575-e79d03b35f22",
+        "topic_id": "tc-campus-ai",
+        "metrics": {
+          "total_turns": 0,
+          "user_turns": 0,
+          "avg_turn_words": 0.0,
+          "max_turn_words": 0
+        },
+        "detected_signals": [
+          {
+            "id": "few_examples_risk",
+            "severity": "low",
+            "detail": "Few explicit example cues detected."
+          },
+          {
+            "id": "low_interaction_risk",
+            "severity": "high",
+            "detail": "User turns are sparse."
+          }
+        ],
+        "strengths": [],
+        "risks": [
+          "few_examples_risk",
+          "low_interaction_risk"
+        ],
+        "recommended_pedagogy_item_ids": [
+          "coach-1"
+        ],
+        "speech_session_report": null,
+        "speech_proxy_disclaimer": null,
+        "metadata": {}
+      },
+      "speech_report": null,
+      "proxy_limitations": [],
+      "speech_strengths": [],
+      "speech_risks": [],
+      "metadata": {
+        "rendered_prompt": "coach.md",
+        "raw_feedback_json": "{\"session_id\": \"461290fe-86f2-4ced-9575-e79d03b35f22\", \"topic_id\": \"tc-campus-ai\", \"metrics\": {\"total_turns\": 0, \"user_turns\": 0, \"avg_turn_words\": 0.0, \"max_turn_words\": 0}, \"detected_signals\": [{\"id\": \"few_examples_risk\", \"severity\": \"low\", \"detail\": \"Few explicit example cues detected.\"}, {\"id\": \"low_interaction_risk\", \"severity\": \"high\", \"detail\": \"User turns are sparse.\"}], \"strengths\": [], \"risks\": [\"few_examples_risk\", \"low_interaction_risk\"], \"recommended_pedagogy_item_ids\": [\"coach-1\"], \"speech_session_report\": null, \"speech_proxy_disclaimer\": null, \"metadata\": {}}"
+      }
+    },
+    "transcript_turns": [],
+    "mode_report": {
+      "report_id": "c78b6595-9e43-49c9-8921-e7dcdb9062ee",
+      "session_id": "461290fe-86f2-4ced-9575-e79d03b35f22",
+      "mode_id": "free_practice",
+      "preset_id": null,
+      "drill_id": null,
+      "assessment_template_id": null,
+      "created_at": "2026-04-08T06:45:23.959686+00:00",
+      "phase_progress": {
+        "effective_constraint_policy": {
+          "max_words_per_turn_soft": 400,
+          "require_summary_phase": false
+        },
+        "simulation_note": null
+      },
+      "timer_events": [
+        {
+          "elapsed_seconds": 0.0,
+          "now_iso": "2026-04-08T06:45:23.900263+00:00",
+          "kind": "none"
+        }
+      ],
+      "constraint_events": [],
+      "success_checks": [],
+      "strengths": [],
+      "risks": [
+        "few_examples_risk",
+        "low_interaction_risk"
+      ],
+      "recommended_next_actions": [],
+      "proxy_notes": [],
+      "metadata": {
+        "practice_report": true,
+        "not_an_exam_score": true
+      }
+    },
+    "group_balance_report": {
+      "report_id": "6e2d1057-60b1-4d41-8f95-80d45c6c8031",
+      "session_id": "461290fe-86f2-4ced-9575-e79d03b35f22",
+      "roster_template_id": null,
+      "created_at": "2026-04-08T06:45:23.972832+00:00",
+      "participant_stats": [],
+      "team_stats": [],
+      "balance_flags": [],
+      "strengths": [
+        "Participation spread looks reasonable for a short practice session."
+      ],
+      "risks": [],
+      "recommendations": [],
+      "metadata": {
+        "practice_note": "Group balance and participation metrics are practice aids only — not official scores or exam results.",
+        "not_exam_score": true
+      }
+    }
+  },
+  "ai_summary": {
+    "main_strengths": [],
+    "main_risks": [
+      "few_examples_risk",
+      "low_interaction_risk"
+    ],
+    "flags": [],
+    "relevant_metrics": {
+      "turn_count": 0,
+      "has_speech_report": false,
+      "has_mode_report": true,
+      "has_group_report": true
+    },
+    "rubric_dimensions": [
+      {
+        "dimension_id": "pedagogy_content",
+        "dimension_name": "Grading",
+        "max_score": 5.0,
+        "description": "Clarity (0-3): ideas are structured and easy to follow. Evidence use (0-3): references texts or examples appropriately.",
+        "source": "pedagogy",
+        "metadata": {
+          "item_ids": [
+            "rub-01"
+          ]
+        }
+      }
+    ]
+  },
+  "transcript_ref": "speech_reports/461290fe-86f2-4ced-9575-e79d03b35f22/session_report.json",
+  "proxy_limitations": [
+    "Speech, learner analytics, and group balance metrics are training proxies only; they are not official academic scores."
+  ],
+  "metadata": {
+    "builder_version": "1",
+    "last_review_id": "2b83c03d-8bc1-484b-8139-80048f758ecc"
+  }
+}

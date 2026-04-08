@@ -12,7 +12,21 @@ from app.api.routers import stability as stability_router
 from app.api.routers import audio as audio_router
 from app.api.routers import speech as speech_router
 from app.api.routers import feedback as feedback_router
-from app.api.routers import authoring, curriculum, health, learners, modes, profiles, reviews, roster_templates, sessions, snapshots, system, topics
+from app.api.routers import (
+    authoring,
+    curriculum,
+    health,
+    learners,
+    modes,
+    profiles,
+    reviews,
+    roster_templates,
+    runtime_reviews,
+    sessions,
+    snapshots,
+    system,
+    topics,
+)
 from app.ops.version import get_app_version
 
 
@@ -42,6 +56,7 @@ def create_app() -> FastAPI:
     app.include_router(audio_router.router)
     app.include_router(speech_router.router)
     app.include_router(reviews.router)
+    app.include_router(runtime_reviews.router)
     app.include_router(curriculum.router)
     app.include_router(authoring.router)
     return app

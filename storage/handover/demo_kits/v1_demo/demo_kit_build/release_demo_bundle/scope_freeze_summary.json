@@ -1,9 +1,9 @@
 {
   "profile_id": "v1_demo",
-  "generated_at": "2026-04-05T13:24:14.389552+00:00",
+  "generated_at": "2026-04-08T07:16:44.337203+00:00",
   "decisions": [
     {
-      "decision_id": "sd_c624bce5",
+      "decision_id": "sd_dd469726",
       "capability_id": "offline_build",
       "decision": "keep",
       "reason": "Enabled for profile",
@@ -13,7 +13,7 @@
       "metadata": {}
     },
     {
-      "decision_id": "sd_5be06deb",
+      "decision_id": "sd_03c9c104",
       "capability_id": "runtime_text_core",
       "decision": "keep",
       "reason": "Enabled for profile",
@@ -23,7 +23,7 @@
       "metadata": {}
     },
     {
-      "decision_id": "sd_24a3c26a",
+      "decision_id": "sd_13605e37",
       "capability_id": "api_mvp",
       "decision": "keep",
       "reason": "Enabled for profile",
@@ -33,7 +33,7 @@
       "metadata": {}
     },
     {
-      "decision_id": "sd_3362a891",
+      "decision_id": "sd_ed1d32e3",
       "capability_id": "ui_mvp",
       "decision": "keep",
       "reason": "Enabled for profile",
@@ -43,7 +43,7 @@
       "metadata": {}
     },
     {
-      "decision_id": "sd_9400cfe7",
+      "decision_id": "sd_4ca45945",
       "capability_id": "eval_framework",
       "decision": "keep",
       "reason": "Enabled for profile",
@@ -53,7 +53,7 @@
       "metadata": {}
     },
     {
-      "decision_id": "sd_354c16f9",
+      "decision_id": "sd_37503b88",
       "capability_id": "runtime_profiles",
       "decision": "keep",
       "reason": "Enabled for profile",
@@ -63,7 +63,7 @@
       "metadata": {}
     },
     {
-      "decision_id": "sd_65fbf9f1",
+      "decision_id": "sd_6f9159b0",
       "capability_id": "hybrid_retrieval",
       "decision": "keep",
       "reason": "Enabled for profile",
@@ -73,7 +73,7 @@
       "metadata": {}
     },
     {
-      "decision_id": "sd_2bc68849",
+      "decision_id": "sd_5ec574b1",
       "capability_id": "audio_practice",
       "decision": "hide_by_default",
       "reason": "Disabled in release profile",
@@ -83,7 +83,7 @@
       "metadata": {}
     },
     {
-      "decision_id": "sd_8367bfcf",
+      "decision_id": "sd_2e92958f",
       "capability_id": "speech_proxy_feedback",
       "decision": "hide_by_default",
       "reason": "Disabled in release profile",
@@ -93,7 +93,7 @@
       "metadata": {}
     },
     {
-      "decision_id": "sd_401afcdd",
+      "decision_id": "sd_eead486f",
       "capability_id": "learner_analytics",
       "decision": "keep",
       "reason": "Enabled for profile",
@@ -103,7 +103,7 @@
       "metadata": {}
     },
     {
-      "decision_id": "sd_edbe106e",
+      "decision_id": "sd_921c1ff2",
       "capability_id": "practice_modes",
       "decision": "keep",
       "reason": "Enabled for profile",
@@ -113,7 +113,7 @@
       "metadata": {}
     },
     {
-      "decision_id": "sd_9018e75d",
+      "decision_id": "sd_65ccaef1",
       "capability_id": "group_simulation",
       "decision": "keep",
       "reason": "Enabled for profile",
@@ -123,7 +123,7 @@
       "metadata": {}
     },
     {
-      "decision_id": "sd_3870deeb",
+      "decision_id": "sd_6a361f88",
       "capability_id": "review_workspace",
       "decision": "keep",
       "reason": "Enabled for profile",
@@ -133,7 +133,7 @@
       "metadata": {}
     },
     {
-      "decision_id": "sd_60c5e473",
+      "decision_id": "sd_b10dde2c",
       "capability_id": "curriculum_delivery",
       "decision": "keep",
       "reason": "Enabled for profile",
@@ -143,7 +143,7 @@
       "metadata": {}
     },
     {
-      "decision_id": "sd_92d237d1",
+      "decision_id": "sd_962adc35",
       "capability_id": "authoring_studio",
       "decision": "defer",
       "reason": "Disabled in release profile",
@@ -153,7 +153,7 @@
       "metadata": {}
     },
     {
-      "decision_id": "sd_a8df0f60",
+      "decision_id": "sd_16910f10",
       "capability_id": "engineering_ops",
       "decision": "keep",
       "reason": "Enabled for profile",

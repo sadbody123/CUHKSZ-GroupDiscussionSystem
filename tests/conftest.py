@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Generator
+import importlib.util
 from pathlib import Path
 
 import pytest
@@ -30,6 +31,7 @@ FIXTURE_RUNTIME = PROJECT_ROOT / "tests" / "fixtures" / "runtime"
 # Phase-2 snapshot built locally or in CI (optional)
 SNAPSHOT_V2 = PROJECT_ROOT / "app" / "knowledge" / "snapshots" / "dev_snapshot_v2"
 HAS_SNAPSHOT_V2 = (SNAPSHOT_V2 / "manifest.json").is_file()
+HAS_LANGGRAPH = importlib.util.find_spec("langgraph") is not None
 
 
 @pytest.fixture
@@ -89,3 +91,13 @@ def api_client(api_test_config: AppConfig) -> Generator[TestClient, None, None]:
     with TestClient(app) as c:
         yield c
     app.dependency_overrides.clear()
+
+
+def pytest_collection_modifyitems(config: pytest.Config, items: list[pytest.Item]) -> None:
+    """Skip V2 graph tests when langgraph is unavailable."""
+    if HAS_LANGGRAPH:
+        return
+    skip_v2 = pytest.mark.skip(reason="langgraph not installed (install with -e '.[graph]' or '.[dev,graph]')")
+    for item in items:
+        if "v2_graph" in item.keywords:
+            item.add_marker(skip_v2)

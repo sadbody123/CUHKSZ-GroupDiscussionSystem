@@ -1,0 +1,33 @@
+{
+  "review_id": "rvw-c1747328-3489-4576-acda-940feb0a3d8a",
+  "session_id": "0935749c-73e2-4c16-a197-02d4c80d39cd",
+  "run_id": "c84dbd4e-23d5-4b56-ba6c-3734e29bd279",
+  "checkpoint_id": "ckpt-9e31893b-1150-4e44-a852-b8d0d3a86eb0",
+  "topic_id": "tc-campus-ai",
+  "reason": "quality_interrupt",
+  "interrupt_reason": "quality_failed_after_max_repairs",
+  "quality_flags": [
+    "weak_response_link"
+  ],
+  "draft_reply_text": "[MOCK::ally::d0bfb4be7924] Supportive follow-up. Context tail: # Ally (template placeholder)  You support constructive development of ideas: elaborate, agree with nuance, connect evid [REPAIR] Clarified with explicit topic linkage and a direct response.",
+  "draft_reply_summary": "[MOCK::ally::d0bfb4be7924] Supportive follow-up. Context tail: # Ally (template placeholder)  You support constructive development of ideas: elaborate, agree with nuance, connect evid [REPAIR] Clarified with explicit topic linkage and a direct response.",
+  "status": "pending",
+  "version": 1,
+  "allowed_actions": [
+    "approve",
+    "reject",
+    "resume",
+    "apply_edited_draft"
+  ],
+  "review_decision_payload": {},
+  "resolved_by": null,
+  "updated_by": null,
+  "notes": [],
+  "created_at": "2026-04-08T07:03:18.273608+00:00",
+  "updated_at": "2026-04-08T07:03:18.273608+00:00",
+  "metadata": {
+    "policy_id": "quality_default_v1",
+    "quality_decision": "interrupt",
+    "next_actor": "ally"
+  }
+}

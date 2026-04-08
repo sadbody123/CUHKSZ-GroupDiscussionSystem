@@ -1,0 +1,72 @@
+{
+  "artifact_kind": "reviewed_feedback",
+  "review_id": "0b9d058a-b007-42aa-8e6b-2d0ba12a9388",
+  "reviewer_id": "demo_reviewer_6fc5f5",
+  "review_pack_id": "86f793d2-d4c8-42eb-891d-7566805de0fa",
+  "session_id": "7d4610e5-fdbf-46ff-8ed7-57f5b5885391",
+  "created_at": "2026-04-08T04:59:34.991692+00:00",
+  "source": "human_review_merge",
+  "proxy_note": "Speech, learner analytics, and group balance metrics are training proxies only; they are not official academic scores.",
+  "payload": {
+    "session_id": "7d4610e5-fdbf-46ff-8ed7-57f5b5885391",
+    "topic_id": "tc-campus-ai",
+    "text": "[MOCK::coach::203c52ebcd38] Formative feedback summary. Context tail: # Coach (template placeholder)  You give formative feedback using rubrics and coaching tips.  - Anchor feedback to rubri",
+    "strengths": [
+      "Human-reviewed strength: cites syllabus"
+    ],
+    "risks": [
+      "few_examples_risk",
+      "low_interaction_risk"
+    ],
+    "suggested_next_actions": [
+      "Review pedagogy item coach-1"
+    ],
+    "feedback_packet": {
+      "session_id": "7d4610e5-fdbf-46ff-8ed7-57f5b5885391",
+      "topic_id": "tc-campus-ai",
+      "metrics": {
+        "total_turns": 0,
+        "user_turns": 0,
+        "avg_turn_words": 0.0,
+        "max_turn_words": 0
+      },
+      "detected_signals": [
+        {
+          "id": "few_examples_risk",
+          "severity": "low",
+          "detail": "Few explicit example cues detected."
+        },
+        {
+          "id": "low_interaction_risk",
+          "severity": "high",
+          "detail": "User turns are sparse."
+        }
+      ],
+      "strengths": [],
+      "risks": [
+        "few_examples_risk",
+        "low_interaction_risk"
+      ],
+      "recommended_pedagogy_item_ids": [
+        "coach-1"
+      ],
+      "speech_session_report": null,
+      "speech_proxy_disclaimer": null,
+      "metadata": {}
+    },
+    "speech_report": null,
+    "proxy_limitations": [],
+    "speech_strengths": [],
+    "speech_risks": [],
+    "metadata": {
+      "rendered_prompt": "coach.md",
+      "raw_feedback_json": "{\"session_id\": \"7d4610e5-fdbf-46ff-8ed7-57f5b5885391\", \"topic_id\": \"tc-campus-ai\", \"metrics\": {\"total_turns\": 0, \"user_turns\": 0, \"avg_turn_words\": 0.0, \"max_turn_words\": 0}, \"detected_signals\": [{\"id\": \"few_examples_risk\", \"severity\": \"low\", \"detail\": \"Few explicit example cues detected.\"}, {\"id\": \"low_interaction_risk\", \"severity\": \"high\", \"detail\": \"User turns are sparse.\"}], \"strengths\": [], \"risks\": [\"few_examples_risk\", \"low_interaction_risk\"], \"recommended_pedagogy_item_ids\": [\"coach-1\"], \"speech_session_report\": null, \"speech_proxy_disclaimer\": null, \"metadata\": {}}"
+    }
+  },
+  "metadata": {
+    "override_ids": [
+      "o1"
+    ],
+    "merge_id": "891fe007-81ae-4e94-9bdd-ab52051151fa"
+  }
+}

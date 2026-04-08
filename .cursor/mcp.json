@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "project-code": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "app",
+        "docs",
+        "tests"
+      ]
+    }
+  }
+}

@@ -1,0 +1,209 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: #111827;
+  background: #f9fafb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: #2563eb;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fff;
+}
+
+.topbar nav a {
+  text-decoration: none;
+  margin-left: 12px;
+}
+
+.topbar nav .active {
+  font-weight: 600;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filter-row,
+.form-row,
+.actions-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.metric-card,
+.card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.metric-label {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.metric-value {
+  margin-top: 6px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+  vertical-align: top;
+}
+
+.pill {
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.pill-pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.pill-approved,
+.pill-resolved {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.pill-rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.pill-resumed {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.loading,
+.error,
+.empty {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.error {
+  border-color: #fecaca;
+  color: #991b1b;
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.grid-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.turn-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.turn-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px;
+  background: #fff;
+}
+
+.turn-meta {
+  margin-bottom: 6px;
+}
+
+.turn-text {
+  white-space: pre-wrap;
+}
+
+textarea,
+input,
+select,
+button {
+  font: inherit;
+}
+
+textarea,
+input,
+select {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+button {
+  border: 1px solid #d1d5db;
+  background: #fff;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .metrics-grid,
+  .grid-two {
+    grid-template-columns: 1fr;
+  }
+}

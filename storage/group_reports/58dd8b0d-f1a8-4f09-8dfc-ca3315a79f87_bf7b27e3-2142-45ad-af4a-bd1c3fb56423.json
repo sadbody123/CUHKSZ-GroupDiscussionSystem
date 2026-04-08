@@ -1,0 +1,18 @@
+{
+  "report_id": "bf7b27e3-2142-45ad-af4a-bd1c3fb56423",
+  "session_id": "58dd8b0d-f1a8-4f09-8dfc-ca3315a79f87",
+  "roster_template_id": null,
+  "created_at": "2026-04-08T07:06:09.189558+00:00",
+  "participant_stats": [],
+  "team_stats": [],
+  "balance_flags": [],
+  "strengths": [
+    "Participation spread looks reasonable for a short practice session."
+  ],
+  "risks": [],
+  "recommendations": [],
+  "metadata": {
+    "practice_note": "Group balance and participation metrics are practice aids only — not official scores or exam results.",
+    "not_exam_score": true
+  }
+}

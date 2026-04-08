@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 from app.application.config import AppConfig
@@ -18,6 +19,8 @@ from app.runtime.schemas.agent import AgentReply
 from app.runtime.schemas.session import SessionContext
 from app.runtime.snapshot_loader import load_snapshot
 
+from app.agent_runtime_v2.compat.application_bridge import build_discussion_runtime
+
 from .audio_service import AudioService
 from .mode_service import ModeService
 from .session_service import SessionService
@@ -27,6 +30,7 @@ class DiscussionService:
         self._config = config
         self._sessions = session_service
         self._audio = AudioService(config, session_service)
+        self._v2_runtime = build_discussion_runtime(config, session_service)
 
     def _mode(self) -> ModeService:
         return ModeService(self._config, self._sessions)
@@ -63,8 +67,12 @@ class DiscussionService:
             raise SessionNotFoundError(session_id)
         if ctx.phase == "feedback":
             raise PhaseConflictError("Discussion already in feedback phase")
-        ex = self._executor(ctx)
-        sess, reply = ex.run_next_turn()
+        next_up = None
+        if self._v2_runtime is not None:
+            sess, reply, next_up = self._v2_runtime.run_next_turn(session_id)
+        else:
+            ex = self._executor(ctx)
+            sess, reply = ex.run_next_turn()
         self._sessions.manager.save(sess)
         try:
             self._mode().on_turn_saved(session_id)
@@ -80,8 +88,10 @@ class DiscussionService:
             last = sess.turns[-1]
             self._audio.synthesize_turn_audio(session_id, last.turn_id, provider_name=tts_provider)
             sess = self._sessions.manager.load(session_id) or sess
-        last = sess.turns[-1].speaker_role if sess.turns else None
-        next_up = ex.sm.peek_next_role(sess, last)
+        if next_up is None:
+            ex = self._executor(sess)
+            last = sess.turns[-1].speaker_role if sess.turns else None
+            next_up = ex.sm.peek_next_role(sess, last)
         return sess, reply, next_up
 
     def auto_run_discussion(
@@ -92,8 +102,13 @@ class DiscussionService:
             raise SessionNotFoundError(session_id)
         if ctx.phase == "feedback":
             raise PhaseConflictError("Cannot auto-run in feedback phase")
-        ex = self._executor(ctx)
-        sess, replies = auto_run_discussion(ex, max_steps=max_steps, auto_fill_user=auto_fill_user)
+        if self._v2_runtime is not None:
+            sess, replies = self._v2_runtime.auto_run_discussion(
+                session_id, max_steps=max_steps, auto_fill_user=auto_fill_user
+            )
+        else:
+            ex = self._executor(ctx)
+            sess, replies = auto_run_discussion(ex, max_steps=max_steps, auto_fill_user=auto_fill_user)
         self._sessions.manager.save(sess)
         try:
             self._mode().on_turn_saved(session_id)
@@ -183,4 +198,100 @@ class DiscussionService:
             "curriculum_pack_id": ctx.curriculum_pack_id,
             "assignment_id": ctx.assignment_id,
             "assignment_step_id": ctx.assignment_step_id,
+        }
+
+    def get_session_transcript(self, session_id: str, *, offset: int = 0, limit: int = 50) -> dict:
+        ctx = self._sessions.get_session(session_id)
+        safe_offset = max(0, int(offset))
+        safe_limit = max(1, min(200, int(limit)))
+        total = len(ctx.turns)
+        window = ctx.turns[safe_offset : safe_offset + safe_limit]
+        items: list[dict] = []
+        for idx, turn in enumerate(window, start=safe_offset):
+            metadata = dict(turn.metadata or {})
+            items.append(
+                {
+                    "turn_id": turn.turn_id,
+                    "sequence": idx,
+                    "speaker_role": turn.speaker_role,
+                    "text": turn.text,
+                    "created_at": turn.created_at,
+                    "manual_override": bool(metadata.get("manual_override", False)),
+                    "review_id": metadata.get("review_id"),
+                    "run_id": metadata.get("run_id"),
+                    "metadata": metadata,
+                }
+            )
+        next_offset = safe_offset + len(window)
+        return {
+            "session_id": session_id,
+            "total": total,
+            "offset": safe_offset,
+            "limit": safe_limit,
+            "next_offset": next_offset if next_offset < total else None,
+            "items": items,
+        }
+
+    def get_runtime_events(
+        self,
+        session_id: str,
+        *,
+        run_id: str | None = None,
+        offset: int = 0,
+        limit: int = 50,
+    ) -> dict:
+        # Validate session existence first for a clearer API contract.
+        _ = self._sessions.get_session(session_id)
+        safe_offset = max(0, int(offset))
+        safe_limit = max(1, min(200, int(limit)))
+        event_file = self._config.agent_runtime_v2_dir / "events" / "runtime_v2_events.jsonl"
+        rows: list[dict] = []
+        if event_file.is_file():
+            for line in event_file.read_text(encoding="utf-8").splitlines():
+                raw = line.strip()
+                if not raw:
+                    continue
+                try:
+                    evt = json.loads(raw)
+                except json.JSONDecodeError:
+                    continue
+                if str(evt.get("session_id")) != session_id:
+                    continue
+                if run_id and str(evt.get("run_id")) != run_id:
+                    continue
+                rows.append(evt)
+        total = len(rows)
+        window = rows[safe_offset : safe_offset + safe_limit]
+        items: list[dict] = []
+        for evt in window:
+            items.append(
+                {
+                    "timestamp": str(evt.get("timestamp") or ""),
+                    "run_id": str(evt.get("run_id") or ""),
+                    "session_id": str(evt.get("session_id") or session_id),
+                    "backend": str(evt.get("backend") or "v2"),
+                    "node_name": str(evt.get("node_name") or ""),
+                    "next_actor": evt.get("next_actor"),
+                    "stop_reason": evt.get("stop_reason"),
+                    "success": bool(evt.get("success", False)),
+                    "error_summary": evt.get("error_summary"),
+                    "trace_id": evt.get("trace_id"),
+                    "checkpoint_id": evt.get("checkpoint_id"),
+                    "quality_decision": evt.get("quality_decision"),
+                    "interrupt_reason": evt.get("interrupt_reason"),
+                    "repair_count": evt.get("repair_count"),
+                    "quality_flags": list(evt.get("quality_flags") or []),
+                    "review_id": evt.get("review_id"),
+                    "policy_id": evt.get("policy_id"),
+                }
+            )
+        next_offset = safe_offset + len(window)
+        return {
+            "session_id": session_id,
+            "run_id": run_id,
+            "total": total,
+            "offset": safe_offset,
+            "limit": safe_limit,
+            "next_offset": next_offset if next_offset < total else None,
+            "items": items,
         }

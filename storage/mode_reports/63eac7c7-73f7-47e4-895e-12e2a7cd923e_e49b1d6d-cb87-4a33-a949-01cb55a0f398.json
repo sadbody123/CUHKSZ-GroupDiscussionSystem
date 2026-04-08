@@ -1,0 +1,36 @@
+{
+  "report_id": "e49b1d6d-cb87-4a33-a949-01cb55a0f398",
+  "session_id": "63eac7c7-73f7-47e4-895e-12e2a7cd923e",
+  "mode_id": "free_practice",
+  "preset_id": null,
+  "drill_id": null,
+  "assessment_template_id": null,
+  "created_at": "2026-04-08T07:16:44.261765+00:00",
+  "phase_progress": {
+    "effective_constraint_policy": {
+      "max_words_per_turn_soft": 400,
+      "require_summary_phase": false
+    },
+    "simulation_note": null
+  },
+  "timer_events": [
+    {
+      "elapsed_seconds": 0.0,
+      "now_iso": "2026-04-08T07:16:44.229042+00:00",
+      "kind": "none"
+    }
+  ],
+  "constraint_events": [],
+  "success_checks": [],
+  "strengths": [],
+  "risks": [
+    "few_examples_risk",
+    "low_interaction_risk"
+  ],
+  "recommended_next_actions": [],
+  "proxy_notes": [],
+  "metadata": {
+    "practice_report": true,
+    "not_an_exam_score": true
+  }
+}

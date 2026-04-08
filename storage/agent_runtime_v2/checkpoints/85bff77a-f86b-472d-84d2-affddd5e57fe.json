@@ -1,0 +1,223 @@
+{
+  "run_id": "85bff77a-f86b-472d-84d2-affddd5e57fe",
+  "session_id": "22b6fe98-4c1f-4c3f-a7d9-c87522b6d0de",
+  "status": "interrupted",
+  "run_status": "interrupted",
+  "last_successful_node": "stop_check",
+  "emitted_turn_ids": [],
+  "review_id": "rvw-0de47cb5-a7df-46a3-a043-8928e0966e75",
+  "policy_id": "quality_default_v1",
+  "updated_at": "2026-04-08T07:18:25.765328+00:00",
+  "checkpoint_id": "ckpt-64bff8a2-9291-46d3-a8f3-d853a5ed1fac",
+  "state": {
+    "run_id": "85bff77a-f86b-472d-84d2-affddd5e57fe",
+    "session_id": "22b6fe98-4c1f-4c3f-a7d9-c87522b6d0de",
+    "runtime_profile_id": "default",
+    "phase": "discussion",
+    "last_role": "opponent",
+    "next_actor": "opponent",
+    "loop_index": 0,
+    "max_steps": 1,
+    "stop_reason": "interrupt_for_review",
+    "run_status": "interrupted",
+    "last_successful_node": "stop_check",
+    "runtime_checkpoint_id": "ckpt-b7dc367c-1ca9-46a8-b017-5810c8854725",
+    "trace_id": "trace-85bff77a-f86b-472d-84d2-affddd5e57fe",
+    "emitted_turn_ids": [],
+    "quality_flags": [
+      "weak_response_link"
+    ],
+    "repair_count": 1,
+    "max_repairs": 1,
+    "quality_decision": "interrupt",
+    "moderation_action": "interrupt_for_review",
+    "interrupt_reason": "quality_failed_after_max_repairs",
+    "review_id": "rvw-0de47cb5-a7df-46a3-a043-8928e0966e75",
+    "policy_id": "quality_default_v1",
+    "metadata": {
+      "created_at": "2026-04-08T07:18:25.626928+00:00",
+      "quality_policy_snapshot": {
+        "policy_id": "quality_default_v1",
+        "min_reply_length": 40,
+        "topic_relevance_threshold": 0.5,
+        "response_linkage_threshold": 0.5,
+        "max_repairs": 1,
+        "interrupt_after_max_repairs": true,
+        "enable_interrupt": true,
+        "per_role_overrides": {
+          "moderator": {
+            "min_reply_length": 30
+          }
+        }
+      }
+    },
+    "artifacts": {
+      "pending_turn_ids": [],
+      "draft_reply_text": "[MOCK::opponent::ce082caf3837] Respectful challenge. Context tail: # Opponent (template placeholder)  You challenge assumptions respectfully: probe weaknesses, request evidence, offer cou [REPAIR] Clarified with explicit topic linkage and a direct response."
+    },
+    "events": [
+      {
+        "timestamp": "2026-04-08T07:18:25.663534+00:00",
+        "run_id": "85bff77a-f86b-472d-84d2-affddd5e57fe",
+        "session_id": "22b6fe98-4c1f-4c3f-a7d9-c87522b6d0de",
+        "backend": "v2",
+        "node_name": "load_session",
+        "next_actor": null,
+        "stop_reason": null,
+        "success": true,
+        "error_summary": null,
+        "trace_id": "trace-85bff77a-f86b-472d-84d2-affddd5e57fe",
+        "checkpoint_id": "ckpt-c2429ef7-05ad-4562-b0a8-0aab1b07c025",
+        "quality_decision": null,
+        "interrupt_reason": null,
+        "repair_count": 0,
+        "quality_flags": [],
+        "review_id": null,
+        "policy_id": null
+      },
+      {
+        "timestamp": "2026-04-08T07:18:25.679457+00:00",
+        "run_id": "85bff77a-f86b-472d-84d2-affddd5e57fe",
+        "session_id": "22b6fe98-4c1f-4c3f-a7d9-c87522b6d0de",
+        "backend": "v2",
+        "node_name": "select_next_actor",
+        "next_actor": "opponent",
+        "stop_reason": null,
+        "success": true,
+        "error_summary": null,
+        "trace_id": "trace-85bff77a-f86b-472d-84d2-affddd5e57fe",
+        "checkpoint_id": "ckpt-c2429ef7-05ad-4562-b0a8-0aab1b07c025",
+        "quality_decision": null,
+        "interrupt_reason": null,
+        "repair_count": 0,
+        "quality_flags": [],
+        "review_id": null,
+        "policy_id": null
+      },
+      {
+        "timestamp": "2026-04-08T07:18:25.707092+00:00",
+        "run_id": "85bff77a-f86b-472d-84d2-affddd5e57fe",
+        "session_id": "22b6fe98-4c1f-4c3f-a7d9-c87522b6d0de",
+        "backend": "v2",
+        "node_name": "generate_turn",
+        "next_actor": "opponent",
+        "stop_reason": null,
+        "success": true,
+        "error_summary": null,
+        "trace_id": "trace-85bff77a-f86b-472d-84d2-affddd5e57fe",
+        "checkpoint_id": "ckpt-c2429ef7-05ad-4562-b0a8-0aab1b07c025",
+        "quality_decision": null,
+        "interrupt_reason": null,
+        "repair_count": 0,
+        "quality_flags": [],
+        "review_id": null,
+        "policy_id": null
+      },
+      {
+        "timestamp": "2026-04-08T07:18:25.716796+00:00",
+        "run_id": "85bff77a-f86b-472d-84d2-affddd5e57fe",
+        "session_id": "22b6fe98-4c1f-4c3f-a7d9-c87522b6d0de",
+        "backend": "v2",
+        "node_name": "quality_check",
+        "next_actor": "opponent",
+        "stop_reason": null,
+        "success": true,
+        "error_summary": null,
+        "trace_id": "trace-85bff77a-f86b-472d-84d2-affddd5e57fe",
+        "checkpoint_id": "ckpt-c2429ef7-05ad-4562-b0a8-0aab1b07c025",
+        "quality_decision": "repair",
+        "interrupt_reason": null,
+        "repair_count": 0,
+        "quality_flags": [
+          "weak_response_link"
+        ],
+        "review_id": null,
+        "policy_id": "quality_default_v1"
+      },
+      {
+        "timestamp": "2026-04-08T07:18:25.716796+00:00",
+        "run_id": "85bff77a-f86b-472d-84d2-affddd5e57fe",
+        "session_id": "22b6fe98-4c1f-4c3f-a7d9-c87522b6d0de",
+        "backend": "v2",
+        "node_name": "repair_turn",
+        "next_actor": "opponent",
+        "stop_reason": null,
+        "success": true,
+        "error_summary": null,
+        "trace_id": "trace-85bff77a-f86b-472d-84d2-affddd5e57fe",
+        "checkpoint_id": "ckpt-c2429ef7-05ad-4562-b0a8-0aab1b07c025",
+        "quality_decision": "repair",
+        "interrupt_reason": null,
+        "repair_count": 1,
+        "quality_flags": [
+          "weak_response_link"
+        ],
+        "review_id": null,
+        "policy_id": "quality_default_v1"
+      },
+      {
+        "timestamp": "2026-04-08T07:18:25.728360+00:00",
+        "run_id": "85bff77a-f86b-472d-84d2-affddd5e57fe",
+        "session_id": "22b6fe98-4c1f-4c3f-a7d9-c87522b6d0de",
+        "backend": "v2",
+        "node_name": "quality_check",
+        "next_actor": "opponent",
+        "stop_reason": null,
+        "success": true,
+        "error_summary": null,
+        "trace_id": "trace-85bff77a-f86b-472d-84d2-affddd5e57fe",
+        "checkpoint_id": "ckpt-c2429ef7-05ad-4562-b0a8-0aab1b07c025",
+        "quality_decision": "interrupt",
+        "interrupt_reason": "quality_failed_after_max_repairs",
+        "repair_count": 1,
+        "quality_flags": [
+          "weak_response_link"
+        ],
+        "review_id": null,
+        "policy_id": "quality_default_v1"
+      },
+      {
+        "timestamp": "2026-04-08T07:18:25.728360+00:00",
+        "run_id": "85bff77a-f86b-472d-84d2-affddd5e57fe",
+        "session_id": "22b6fe98-4c1f-4c3f-a7d9-c87522b6d0de",
+        "backend": "v2",
+        "node_name": "interrupt_for_review",
+        "next_actor": "opponent",
+        "stop_reason": "interrupt_for_review",
+        "success": true,
+        "error_summary": null,
+        "trace_id": "trace-85bff77a-f86b-472d-84d2-affddd5e57fe",
+        "checkpoint_id": "ckpt-c2429ef7-05ad-4562-b0a8-0aab1b07c025",
+        "quality_decision": "interrupt",
+        "interrupt_reason": "quality_failed_after_max_repairs",
+        "repair_count": 1,
+        "quality_flags": [
+          "weak_response_link"
+        ],
+        "review_id": null,
+        "policy_id": "quality_default_v1"
+      },
+      {
+        "timestamp": "2026-04-08T07:18:25.728360+00:00",
+        "run_id": "85bff77a-f86b-472d-84d2-affddd5e57fe",
+        "session_id": "22b6fe98-4c1f-4c3f-a7d9-c87522b6d0de",
+        "backend": "v2",
+        "node_name": "stop_check",
+        "next_actor": "opponent",
+        "stop_reason": "interrupt_for_review",
+        "success": true,
+        "error_summary": null,
+        "trace_id": "trace-85bff77a-f86b-472d-84d2-affddd5e57fe",
+        "checkpoint_id": "ckpt-c2429ef7-05ad-4562-b0a8-0aab1b07c025",
+        "quality_decision": "interrupt",
+        "interrupt_reason": "quality_failed_after_max_repairs",
+        "repair_count": 1,
+        "quality_flags": [
+          "weak_response_link"
+        ],
+        "review_id": null,
+        "policy_id": "quality_default_v1"
+      }
+    ]
+  }
+}

@@ -1,12 +1,41 @@
-# Demo script (v1_demo, mock)
+# Demo Script (Freeze)
 
-1. `pip install -e ".[dev]"` (if not already)
-2. **`python main.py bootstrap-dev-snapshot`** — ensures `dev_snapshot_v2` exists (or skips if valid)
-3. `python main.py validate-env`
-4. `python main.py audit-release-readiness --profile-id v1_demo` *(advisory tooling)*
-5. `python main.py run-demo-scenario --scenario-id text_core_demo --profile-id v1_demo --snapshot-id dev_snapshot_v2 --provider mock`
-6. `python main.py run-api` then `python main.py run-ui` — UI steps: `docs/DEMO_UI_CHECKLIST.md`
-7. Optional: `python main.py build-handover-kit --profile-id v1_demo --output-dir tmp/handover_out` *(advisory bundle)*
+## Recommended mode
 
-Handover, readiness, and stability outputs are **not** formal certification — see `KNOWN_LIMITATIONS_FINAL.md`.
+Use full mode for demo:
 
+```bash
+python -m pip install -e ".[dev,graph]"
+python main.py bootstrap-dev-snapshot
+python main.py run-api --host 127.0.0.1 --port 8000
+```
+
+Frontend:
+
+```bash
+cd frontend
+npm install
+npm run codegen:openapi
+npm run dev
+```
+
+## Demo sequence
+
+1. Open `/sessions`
+2. Create session (`dev_snapshot_v2`)
+3. Submit user turn and run next turn
+4. Show transcript and runtime timeline
+5. Open `/runtime-reviews` and process a review item if available
+6. Return to session detail via linkage
+
+## Validation commands (optional during demo prep)
+
+```bash
+python -m pytest -q
+cd frontend
+npm run test
+npm run build
+npm run e2e:mock
+```
+
+See `docs/final_handover_runbook.md` for full handover checklist.

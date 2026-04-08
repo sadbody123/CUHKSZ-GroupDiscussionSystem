@@ -1,0 +1,33 @@
+{
+  "review_id": "rvw-89c5f957-c287-4c23-975b-e3cee4479581",
+  "session_id": "280c397a-d37a-4a41-8b7c-95aafe95acd9",
+  "run_id": "e311bfb8-eed3-4bbe-aea2-212fdb173079",
+  "checkpoint_id": "ckpt-b2211200-fd91-40d6-98a6-6dc4e9fb05fe",
+  "topic_id": "tc-campus-ai",
+  "reason": "quality_interrupt",
+  "interrupt_reason": "quality_failed_after_max_repairs",
+  "quality_flags": [
+    "weak_response_link"
+  ],
+  "draft_reply_text": "[MOCK::opponent::ce082caf3837] Respectful challenge. Context tail: # Opponent (template placeholder)  You challenge assumptions respectfully: probe weaknesses, request evidence, offer cou [REPAIR] Clarified with explicit topic linkage and a direct response.",
+  "draft_reply_summary": "[MOCK::opponent::ce082caf3837] Respectful challenge. Context tail: # Opponent (template placeholder)  You challenge assumptions respectfully: probe weaknesses, request evidence, offer cou [REPAIR] Clarified with explicit topic linkage and a direct response.",
+  "status": "pending",
+  "version": 1,
+  "allowed_actions": [
+    "approve",
+    "reject",
+    "resume",
+    "apply_edited_draft"
+  ],
+  "review_decision_payload": {},
+  "resolved_by": null,
+  "updated_by": null,
+  "notes": [],
+  "created_at": "2026-04-08T07:10:40.252794+00:00",
+  "updated_at": "2026-04-08T07:10:40.252794+00:00",
+  "metadata": {
+    "policy_id": "quality_default_v1",
+    "quality_decision": "interrupt",
+    "next_actor": "opponent"
+  }
+}

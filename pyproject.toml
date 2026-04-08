@@ -20,6 +20,9 @@ dependencies = [
 # Install for API + UI + pytest: pip install -e ".[dev]"
 # Core library-only install (no FastAPI/Streamlit/tests): pip install -e .
 [project.optional-dependencies]
+graph = [
+    "langgraph",
+]
 dev = [
     "pytest>=8.0",
     "httpx>=0.27",
@@ -37,3 +40,6 @@ include = ["app*"]
 testpaths = ["tests"]
 pythonpath = ["."]
 addopts = "-q"
+markers = [
+    "v2_graph: tests requiring langgraph-backed V2 runtime",
+]

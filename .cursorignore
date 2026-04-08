@@ -1,0 +1,8 @@
+﻿# Keep local / sensitive paths out of Cursor default indexing & AI context where supported.
+
+storage/
+.env
+.env.*
+*.pem
+*.key
+*.p12

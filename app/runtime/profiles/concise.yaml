@@ -20,4 +20,10 @@ prompting:
     coach: 2000
 coach:
   coach_verbosity: brief
-metadata: {}
+metadata:
+  quality_policy:
+    policy_id: quality_concise_v1
+    min_reply_length: 20
+    max_repairs: 0
+    enable_interrupt: false
+    interrupt_after_max_repairs: false

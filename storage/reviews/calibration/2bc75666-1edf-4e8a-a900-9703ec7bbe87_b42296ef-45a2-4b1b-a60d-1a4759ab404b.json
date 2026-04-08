@@ -1,0 +1,57 @@
+{
+  "report_id": "a14e152b-fa67-4a9b-8172-f5cfab011b45",
+  "review_pack_id": "2bc75666-1edf-4e8a-a900-9703ec7bbe87",
+  "session_id": "40c160ee-321d-4625-b1fd-c228105aee43",
+  "review_id": "b42296ef-45a2-4b1b-a60d-1a4759ab404b",
+  "created_at": "2026-04-08T07:08:21.394323+00:00",
+  "overall_agreement": "low",
+  "results": [
+    {
+      "calibration_id": "e329f92b-a2e6-4b17-bed5-0341350bfee9",
+      "component_type": "rubric",
+      "component_id": "content",
+      "ai_value": null,
+      "human_value": 4.0,
+      "delta": null,
+      "agreement_level": "unknown",
+      "notes": [
+        "rubric human score recorded; AI rubric score not modeled in runtime"
+      ],
+      "metadata": {}
+    },
+    {
+      "calibration_id": "ab5a6833-376c-4bb3-8f59-a6b1395ba582",
+      "component_type": "feedback",
+      "component_id": "strengths_language_overlap",
+      "ai_value": [],
+      "human_value": [
+        "Missed counter-argument on campus policy",
+        "Watch time management in rebuttal phase."
+      ],
+      "delta": 1.0,
+      "agreement_level": "low",
+      "notes": [
+        "token overlap heuristic between strengths and human notes"
+      ],
+      "metadata": {}
+    }
+  ],
+  "key_mismatches": [
+    "ai_may_understate_risks_relative_to_human",
+    "proxy_metric_note:no_proxy_limitations_documented"
+  ],
+  "suggested_actions": [
+    "Review coach risk list against human annotations"
+  ],
+  "reviewed_output_refs": {},
+  "metadata": {
+    "disagreement_analysis": {
+      "ai_missing_risk_in_human_view": [
+        "low_interaction_risk",
+        "few_examples_risk"
+      ],
+      "ai_possible_false_positive_strength": [],
+      "human_added_risk_or_concern": []
+    }
+  }
+}

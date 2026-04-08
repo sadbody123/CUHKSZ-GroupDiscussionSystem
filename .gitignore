@@ -27,6 +27,18 @@ build/
 # Env
 .env
 .env.local
+# Local MCP-related secrets / overrides (see .env.mcp.example, docs/MCP_TOOLCHAIN_VALIDATION.md)
+.env.mcp
+.cursor/mcp.local.json
+
+# Playwright / browser automation artifacts (local scratch; if you add E2E later)
+/playwright-report/
+/test-results/
+/blob-report/
+
+# Local DB / sqlite scratch files (do not commit experimental DBs)
+scratch.sqlite
+*.db-journal
 
 # OS
 .DS_Store

@@ -90,3 +90,54 @@ class SessionListItemResponse(BaseModel):
     turn_count: int
     provider_name: str
     learner_id: str | None = None
+
+
+class TranscriptTurnResponse(BaseModel):
+    turn_id: str
+    sequence: int
+    speaker_role: str
+    text: str
+    created_at: str = ""
+    manual_override: bool = False
+    review_id: str | None = None
+    run_id: str | None = None
+    metadata: dict[str, Any] = Field(default_factory=dict)
+
+
+class SessionTranscriptResponse(BaseModel):
+    session_id: str
+    total: int
+    offset: int
+    limit: int
+    next_offset: int | None = None
+    items: list[TranscriptTurnResponse] = Field(default_factory=list)
+
+
+class RuntimeEventResponse(BaseModel):
+    timestamp: str
+    run_id: str
+    session_id: str
+    backend: str
+    node_name: str
+    next_actor: str | None = None
+    stop_reason: str | None = None
+    success: bool
+    error_summary: str | None = None
+    trace_id: str | None = None
+    checkpoint_id: str | None = None
+    quality_decision: str | None = None
+    interrupt_reason: str | None = None
+    repair_count: int | None = None
+    quality_flags: list[str] = Field(default_factory=list)
+    review_id: str | None = None
+    policy_id: str | None = None
+
+
+class SessionRuntimeEventsResponse(BaseModel):
+    session_id: str
+    run_id: str | None = None
+    total: int
+    offset: int
+    limit: int
+    next_offset: int | None = None
+    items: list[RuntimeEventResponse] = Field(default_factory=list)

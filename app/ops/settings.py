@@ -66,6 +66,11 @@ class UnifiedSettings(BaseSettings):
     default_provider: str = Field(default="mock")
     default_model: str | None = Field(default=None)
     default_runtime_profile: str = Field(default="default")
+    agent_runtime_backend: str = Field(default="v1", validation_alias="AGENT_RUNTIME_BACKEND")
+    agent_runtime_v2_dir: Path = Field(
+        default_factory=lambda: _root() / "storage" / "agent_runtime_v2",
+        validation_alias="AGENT_RUNTIME_V2_DIR",
+    )
 
     api_host: str = Field(default="127.0.0.1")
     api_port: int = Field(default=8000)
