@@ -95,6 +95,8 @@ class DiscussionGraph:
                 "interrupt_reason": data.get("interrupt_reason"),
                 "review_id": data.get("review_id"),
                 "policy_id": data.get("policy_id"),
+                "activation_strategy": str(data.get("activation_strategy") or "list"),
+                "pending_actors": list(data.get("pending_actors") or []),
                 "metadata": dict(data.get("metadata") or {}),
                 "artifacts": dict(data.get("artifacts") or {}),
                 "events": list(data.get("events") or []),
@@ -172,6 +174,7 @@ class DiscussionGraph:
         next_role = select_next_actor(state, session)
         return {
             "next_actor": next_role,
+            "pending_actors": list(state.pending_actors or []),
             "stop_reason": state.stop_reason,
             "last_successful_node": "select_next_actor",
             "events": self._append_event(
@@ -378,9 +381,15 @@ class DiscussionGraph:
 
     @staticmethod
     def _route_after_select_next_actor(data: DiscussionGraphData) -> str:
-        if data.get("stop_reason"):
+        if data.get("stop_reason") and data.get("stop_reason") not in ("", None):
+            pending = data.get("pending_actors") or []
+            if len(pending) > 1:
+                return "generate_turn"
             return "stop_check"
         if data.get("next_actor") == "user":
+            pending = data.get("pending_actors") or []
+            if len(pending) > 1:
+                return "generate_turn"
             return "stop_check"
         return "generate_turn"
 
@@ -395,8 +404,12 @@ class DiscussionGraph:
 
     @staticmethod
     def _route_after_stop_check(data: DiscussionGraphData) -> str:
-        if data.get("stop_reason") is not None:
+        if data.get("stop_reason") is not None and data.get("stop_reason") != "":
             return "end"
+        # Support consecutive agent turns: if pending actors remain, loop back
+        pending = data.get("pending_actors") or []
+        if len(pending) > 1:
+            return "select_next_actor"
         return "select_next_actor"
 
     def build_compiled_graph(self):
@@ -465,6 +478,7 @@ class DiscussionGraph:
             "replies": [],
         }
         result: DiscussionGraphData = graph.invoke(initial, config={"recursion_limit": max(64, state.max_steps * 8)})
+        self._event_logger.flush()
         final_state = self._to_model(result)
         session = result.get("session") or self._session_tool.load(final_state.session_id)
         if session is None:

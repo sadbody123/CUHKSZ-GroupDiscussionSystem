@@ -26,13 +26,22 @@ vi.mock("../features/sessions/hooks", () => ({
       feedback_ready: true,
       coach_report_present: false,
       can_run_next: true,
-      peek_next_role: "assistant"
+      peek_next_role: "assistant",
+      activation_strategy: "list",
+      agent_context_mode: "swap",
+      auto_mode_enabled: false,
+      participants: []
     }
   }),
   useSubmitUserTurn: () => ({ mutate: submitMutate, isPending: false }),
   useRunNextTurn: () => ({ mutate: nextMutate, isPending: false }),
   useAutoRunDiscussion: () => ({ mutate: autoMutate, isPending: false }),
   useGenerateFeedback: () => ({ mutate: feedbackMutate, isPending: false }),
+  useSetActivationStrategy: () => ({ mutate: vi.fn(), isPending: false }),
+  useSetAgentContextMode: () => ({ mutate: vi.fn(), isPending: false }),
+  useSetNextSpeaker: () => ({ mutate: vi.fn(), isPending: false }),
+  useToggleAutoMode: () => ({ mutate: vi.fn(), isPending: false }),
+  useSetTalkativeness: () => ({ mutate: vi.fn(), isPending: false }),
   useSessionTranscript: () => ({
     isLoading: false,
     data: {

@@ -93,6 +93,10 @@ class AppConfig(BaseModel):
     authoring_max_preview_steps: int = 50
     authoring_allow_derivative_from_builtin: bool = True
     active_release_profile: str = "v1_demo"
+    default_activation_strategy: str = "list"
+    default_agent_context_mode: str = "swap"
+    default_auto_mode_enabled: bool = False
+    default_auto_mode_delay_seconds: int = 5
 
     @classmethod
     def from_env(cls) -> AppConfig:
@@ -173,6 +177,10 @@ class AppConfig(BaseModel):
             authoring_max_preview_steps=o.authoring_max_preview_steps,
             authoring_allow_derivative_from_builtin=o.authoring_allow_derivative_from_builtin,
             active_release_profile=getattr(o, "active_release_profile", None) or "v1_demo",
+            default_activation_strategy=getattr(o, "default_activation_strategy", None) or "list",
+            default_agent_context_mode=getattr(o, "default_agent_context_mode", None) or "swap",
+            default_auto_mode_enabled=bool(getattr(o, "default_auto_mode_enabled", False)),
+            default_auto_mode_delay_seconds=int(getattr(o, "default_auto_mode_delay_seconds", 5) or 5),
         )
 
 

@@ -40,7 +40,7 @@ class AgentRuntimeFacade:
         self._graph = DiscussionGraph(self._session_tool, self._event_logger)
 
     def _classify_status(self, stop_reason: str | None) -> str:
-        if stop_reason in {"need_user_input", "max_steps_reached", "interrupt_for_review"}:
+        if stop_reason in {"need_user_input", "max_steps_reached", "interrupt_for_review", "cancelled"}:
             return "interrupted"
         if stop_reason in {"error"}:
             return "failed"
@@ -102,6 +102,30 @@ class AgentRuntimeFacade:
         state.max_steps = max(state.loop_index + 1, int(max_steps) if not resume else state.max_steps)
         start_ckpt = self._checkpoint_store.save(state, status="running")
         state.checkpoint_id = start_ckpt
+
+        from app.agent_runtime_v2.facade.cancel_signal import is_cancel_requested
+
+        if is_cancel_requested(state.session_id):
+            state.run_status = "interrupted"
+            state.stop_reason = "cancelled"
+            self._checkpoint_store.save(state, status="interrupted")
+            self._event_logger.log(
+                run_id=state.run_id,
+                session_id=state.session_id,
+                backend="v2",
+                node_name="run",
+                next_actor=state.next_actor,
+                stop_reason="cancelled",
+                success=True,
+                trace_id=state.trace_id,
+                checkpoint_id=start_ckpt,
+            )
+            ctx = self._sessions.manager.load(session_id)
+            if not ctx:
+                raise SessionNotFoundError(session_id)
+            self._event_logger.flush()
+            return ctx, [], state
+
         try:
             final_state, sess, _reply, replies = self._graph.run(state, max_steps=state.max_steps)
             # Interrupt path keeps generated draft in-memory for review, but must not leak
@@ -180,6 +204,7 @@ class AgentRuntimeFacade:
                 review_id=final_state.review_id,
                 policy_id=final_state.policy_id,
             )
+            self._event_logger.flush()
             return sess, replies, final_state
         except Exception as exc:
             state.run_status = "failed"
@@ -197,6 +222,7 @@ class AgentRuntimeFacade:
                 trace_id=state.trace_id,
                 checkpoint_id=failed_ckpt,
             )
+            self._event_logger.flush()
             raise
 
     def run_next_turn(self, session_id: str) -> tuple[SessionContext, AgentReply | None, str | None]:
@@ -211,12 +237,21 @@ class AgentRuntimeFacade:
         max_steps: int,
         auto_fill_user: bool = True,
     ) -> tuple[SessionContext, list[AgentReply]]:
-        _unused = auto_fill_user  # reserved for future parity mode in graph stop policy
-        sess, replies, _state = self.run(session_id, max_steps=max_steps)
-        return sess, replies
+        from app.agent_runtime_v2.facade.cancel_signal import get_cancel_event, clear_cancel
+
+        cancel_evt = get_cancel_event(session_id)
+        cancel_evt.clear()
+        try:
+            sess, replies, _state = self.run(session_id, max_steps=max_steps)
+            return sess, replies
+        finally:
+            clear_cancel(session_id)
 
     def generate_feedback(self, session_id: str) -> dict:
-        # TODO(v2): replace with graph-native feedback path.
+        # V2 reuses V1's FeedbackService by design: the discussion loop and the
+        # feedback/coach evaluation are separate concerns.  When V2 eventually
+        # takes over the full discussion prompt path, feedback will remain a
+        # separate graph detached from the turn-by-turn loop.
         report = FeedbackService(self._sessions).generate_feedback(session_id)
         return report.model_dump()
 

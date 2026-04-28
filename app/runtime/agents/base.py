@@ -43,6 +43,8 @@ def run_agent_turn(
         feedback_signals=signals if role.lower() == RoleType.COACH.value else None,
         retrieval=dict(prof.retrieval),
         participant_context=participant_context,
+        context_mode=getattr(session, "agent_context_mode", "swap") or "swap",
+        session_participants=list(session.participants or []),
     )
     fb_json = json.dumps(feedback_packet, ensure_ascii=False) if feedback_packet else None
     rp = render_prompt_for_role(
@@ -63,7 +65,22 @@ def run_agent_turn(
     r = role.lower().strip()
     raw = by.get(r, by.get(role))
     max_chars = int(raw) if raw is not None else None
-    out_text = postprocess_reply(gen.text, max_chars=max_chars)
+
+    participant_names: list[str] = []
+    current_pid = (participant_context or {}).get("participant_id", "")
+    for p in session.participants or []:
+        pid = str(p.get("participant_id", ""))
+        ctrl = str(p.get("controller_type", "")).lower()
+        if ctrl != "user" and pid != current_pid:
+            participant_names.append(str(p.get("display_name", pid)))
+
+    from app.runtime.enums import RoleType as RT
+
+    for rt in (RT.USER, RT.MODERATOR, RT.ALLY, RT.OPPONENT, RT.COACH):
+        if rt.value.lower() != r:
+            participant_names.append(rt.value)
+
+    out_text = postprocess_reply(gen.text, max_chars=max_chars, current_role=role, participant_names=participant_names)
     return AgentReply(
         role=role,
         text=out_text,

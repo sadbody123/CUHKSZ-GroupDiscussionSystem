@@ -11,6 +11,7 @@ from app.offline_build.build_snapshot.writer import write_snapshot
 from app.offline_build.chunk.evidence_chunker import chunk_document
 from app.offline_build.classify.source_type import default_source_type_for_table
 from app.offline_build.dedupe.exact import dedupe_by_text_hash
+from app.offline_build.dedupe.near_dup import NearDupDetector
 from app.offline_build.evidence_index.builder import build_evidence_index
 from app.offline_build.import_datahub.export_locator import locate_exports
 from app.offline_build.import_datahub.loader import load_table_file
@@ -90,6 +91,23 @@ def run_offline_pipeline(
     pre_dedupe = len(normalized)
     deduped, _dupes = dedupe_by_text_hash(normalized)
 
+    # Near-duplicate detection (SimHash)
+    near_dup_removed = 0
+    near_dup_cluster_count = 0
+    if len(deduped) > 1:
+        near_detector = NearDupDetector(
+            hash_bits=cfg.near_dup_hash_bits,
+            similarity_threshold=cfg.near_dup_threshold,
+        )
+        clusters = near_detector.find_near_duplicates(deduped)
+        near_dup_cluster_count = len(clusters)
+        drop_ids: set[str] = set()
+        for cluster in clusters:
+            drop_ids.update(cluster[1:])
+        if drop_ids:
+            near_dup_removed = len(drop_ids)
+            deduped = [d for d in deduped if d.doc_id not in drop_ids]
+
     chunks: list[EvidenceChunk] = []
     for doc in deduped:
         chunks.extend(
@@ -109,6 +127,8 @@ def run_offline_pipeline(
         dropped=dropped,
         pre_dedupe_count=pre_dedupe,
         post_dedupe_count=len(deduped),
+        near_dup_removed_count=near_dup_removed,
+        near_dup_clusters=near_dup_cluster_count,
         chunk_count=len(chunks),
         tables_used=tables_used,
     )

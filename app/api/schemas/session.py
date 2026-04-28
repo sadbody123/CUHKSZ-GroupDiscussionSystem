@@ -81,6 +81,10 @@ class SessionStatusResponse(BaseModel):
     curriculum_pack_id: str | None = None
     assignment_id: str | None = None
     assignment_step_id: str | None = None
+    activation_strategy: str | None = None
+    agent_context_mode: str | None = None
+    auto_mode_enabled: bool = False
+    auto_mode_delay_seconds: int = 5
 
 
 class SessionListItemResponse(BaseModel):
@@ -141,3 +145,27 @@ class SessionRuntimeEventsResponse(BaseModel):
     limit: int
     next_offset: int | None = None
     items: list[RuntimeEventResponse] = Field(default_factory=list)
+
+
+# ---- Activation strategy API schemas ----
+
+class SetActivationStrategyRequest(BaseModel):
+    strategy: str  # "natural" | "list" | "pooled" | "manual"
+
+
+class SetAgentContextModeRequest(BaseModel):
+    mode: str  # "swap" | "append"
+
+
+class SetNextSpeakerRequest(BaseModel):
+    participant_id: str
+
+
+class ToggleAutoModeRequest(BaseModel):
+    enabled: bool
+    delay_seconds: int | None = None
+
+
+class SetTalkativenessRequest(BaseModel):
+    participant_id: str
+    value: float  # 0.0 - 1.0

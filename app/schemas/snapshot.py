@@ -30,6 +30,8 @@ class BuildReport(BaseModel):
     dropped: int = 0
     pre_dedupe_count: int = 0
     post_dedupe_count: int = 0
+    near_dup_removed_count: int = 0
+    near_dup_clusters: int = 0
     chunk_count: int = 0
     tables_used: list[str] = Field(default_factory=list)
     pedagogy_files_read: int = 0

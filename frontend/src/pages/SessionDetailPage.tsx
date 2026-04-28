@@ -3,12 +3,18 @@ import { Link, useParams } from "react-router-dom";
 
 import {
   useAutoRunDiscussion,
+  useCancelAutoRun,
   useGenerateFeedback,
   useRunNextTurn,
   useSessionRuntimeEvents,
   useSessionStatus,
   useSessionTranscript,
-  useSubmitUserTurn
+  useSubmitUserTurn,
+  useSetActivationStrategy,
+  useSetAgentContextMode,
+  useSetNextSpeaker,
+  useToggleAutoMode,
+  useSetTalkativeness
 } from "../features/sessions/hooks";
 import { useRuntimeReviewList } from "../features/runtimeReviews/hooks";
 import { toUserErrorMessage } from "../features/runtimeReviews/mappers";
@@ -27,7 +33,13 @@ export default function SessionDetailPage() {
   const submitUserTurn = useSubmitUserTurn(sessionId);
   const runNextTurn = useRunNextTurn(sessionId);
   const autoRun = useAutoRunDiscussion(sessionId);
+  const cancelAutoRun = useCancelAutoRun(sessionId);
   const feedback = useGenerateFeedback(sessionId);
+  const setStrategy = useSetActivationStrategy(sessionId);
+  const setContextMode = useSetAgentContextMode(sessionId);
+  const setNext = useSetNextSpeaker(sessionId);
+  const toggleAuto = useToggleAutoMode(sessionId);
+  const setTalk = useSetTalkativeness(sessionId);
   const pendingReviews = useRuntimeReviewList("pending", { sessionId });
   const transcriptQuery = useSessionTranscript(sessionId, 20);
   const [selectedRunId, setSelectedRunId] = useState<string>("");
@@ -47,16 +59,18 @@ export default function SessionDetailPage() {
       submitUserTurn.error ||
       runNextTurn.error ||
       autoRun.error ||
+      cancelAutoRun.error ||
       feedback.error ||
       pendingReviews.error ||
       transcriptQuery.error ||
       runtimeEventsQuery.error;
     return err ? toUserErrorMessage(err) : "";
-  }, [
+}, [
     statusQuery.error,
     submitUserTurn.error,
     runNextTurn.error,
     autoRun.error,
+    cancelAutoRun.error,
     feedback.error,
     pendingReviews.error,
     transcriptQuery.error,
@@ -105,6 +119,91 @@ export default function SessionDetailPage() {
       </div>
 
       <div className="card">
+        <h3>Activation Controls</h3>
+        <div className="form-row">
+          <label>
+            Strategy:{" "}
+            <select
+              value={status.activation_strategy || "list"}
+              onChange={(e) => setStrategy.mutate(e.target.value)}
+              disabled={busy}
+            >
+              <option value="natural">Natural (mentions + talkativeness)</option>
+              <option value="list">List (all agents in order)</option>
+              <option value="pooled">Pooled (round-robin priority)</option>
+              <option value="manual">Manual (user designates)</option>
+            </select>
+          </label>
+          <label>
+            Context:{" "}
+            <select
+              value={status.agent_context_mode || "swap"}
+              onChange={(e) => setContextMode.mutate(e.target.value)}
+              disabled={busy}
+            >
+              <option value="swap">SWAP (current speaker only)</option>
+              <option value="append">APPEND (all agents visible)</option>
+            </select>
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={status.auto_mode_enabled || false}
+              onChange={(e) => toggleAuto.mutate({ enabled: e.target.checked })}
+              disabled={busy}
+            />{" "}
+            Auto Mode
+          </label>
+        </div>
+
+        {status.activation_strategy === "manual" ? (
+          <div className="form-row" style={{ marginTop: "0.5rem" }}>
+            <span>Next Speaker:</span>
+            {(status.participants || []).map((p: Record<string, unknown>) => (
+              <button
+                key={String(p.participant_id)}
+                disabled={busy || setNext.isPending}
+                onClick={() => setNext.mutate(String(p.participant_id), {
+                  onSuccess: () => runNextTurn.mutate(undefined)
+                })}
+              >
+                {String(p.display_name || p.participant_id)}
+              </button>
+            ))}
+          </div>
+        ) : null}
+
+        {(status.participants || []).length > 0 ? (
+          <details style={{ marginTop: "0.5rem" }}>
+            <summary>Talkativeness (0.0 – 1.0)</summary>
+            {(status.participants || []).map((p: Record<string, unknown>) => {
+              const mem = (p.participant_memory_state as Record<string, unknown>) || {};
+              const val = typeof mem.talkativeness === "number" ? mem.talkativeness : 0.5;
+              const pid = String(p.participant_id);
+              return (
+                <div key={pid} className="form-row" style={{ alignItems: "center", gap: "0.5rem" }}>
+                  <span style={{ minWidth: "120px" }}>{String(p.display_name || pid)}</span>
+                  <input
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.1"
+                    value={val as number}
+                    onChange={(e) =>
+                      setTalk.mutate({ participantId: pid, value: Number(e.target.value) })
+                    }
+                    disabled={busy}
+                    style={{ flex: 1 }}
+                  />
+                  <span style={{ minWidth: "30px" }}>{String(val)}</span>
+                </div>
+              );
+            })}
+          </details>
+        ) : null}
+      </div>
+
+      <div className="card">
         <h3>Actions</h3>
         <div className="form-row">
           <textarea
@@ -148,17 +247,30 @@ export default function SessionDetailPage() {
               onChange={(e) => setMaxSteps(Number(e.target.value || "1"))}
             />
           </label>
-          <button
-            disabled={busy}
-            onClick={() =>
-              autoRun.mutate(
-                { max_steps: maxSteps },
-                { onSuccess: (r) => setActionOutput(`auto-run => new_turns=${r.new_turns.length}`) }
-              )
-            }
-          >
-            Auto Run
-          </button>
+          {autoRun.isPending ? (
+            <button
+              disabled={cancelAutoRun.isPending}
+              onClick={() => {
+                cancelAutoRun.mutate(undefined, {
+                  onSuccess: () => setActionOutput("auto-run cancelled")
+                });
+              }}
+            >
+              {cancelAutoRun.isPending ? "Cancelling..." : "Cancel Auto Run"}
+            </button>
+          ) : (
+            <button
+              disabled={busy}
+              onClick={() =>
+                autoRun.mutate(
+                  { max_steps: maxSteps },
+                  { onSuccess: (r) => setActionOutput(`auto-run => new_turns=${r.new_turns.length}`) }
+                )
+              }
+            >
+              Auto Run
+            </button>
+          )}
           <button
             disabled={busy}
             onClick={() =>

@@ -45,6 +45,8 @@ class DiscussionGraphState(BaseModel):
     interrupt_reason: str | None = None
     review_id: str | None = None
     policy_id: str | None = None
+    activation_strategy: str = "list"
+    pending_actors: list[str] = Field(default_factory=list)
     metadata: dict = Field(default_factory=dict)
     artifacts: dict = Field(default_factory=dict)
     events: list[dict] = Field(default_factory=list)
@@ -68,6 +70,7 @@ class DiscussionGraphState(BaseModel):
             max_steps=max_steps,
             trace_id=trace_id,
             runtime_checkpoint_id=checkpoint_id,
+            activation_strategy=getattr(session, "activation_strategy", "list") or "list",
             run_status="running",
             metadata={"created_at": _utc_now_iso()},
         )

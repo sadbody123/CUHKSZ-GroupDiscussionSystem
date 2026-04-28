@@ -31,6 +31,11 @@ from app.api.schemas.session import (
     SessionRuntimeEventsResponse,
     SessionStatusResponse,
     SessionTranscriptResponse,
+    SetActivationStrategyRequest,
+    SetAgentContextModeRequest,
+    SetNextSpeakerRequest,
+    SetTalkativenessRequest,
+    ToggleAutoModeRequest,
 )
 from app.api.schemas.turn import (
     AutoRunRequest,
@@ -210,6 +215,10 @@ def get_session(
         curriculum_pack_id=st.get("curriculum_pack_id"),
         assignment_id=st.get("assignment_id"),
         assignment_step_id=st.get("assignment_step_id"),
+        activation_strategy=st.get("activation_strategy"),
+        agent_context_mode=st.get("agent_context_mode"),
+        auto_mode_enabled=bool(st.get("auto_mode_enabled", False)),
+        auto_mode_delay_seconds=int(st.get("auto_mode_delay_seconds", 5) or 5),
     )
 
 
@@ -280,6 +289,16 @@ def auto_run(
     for r in replies:
         new_turns.append({"role": r.role, "text": r.text, "metadata": r.metadata})
     return AutoRunResponse(new_turns=new_turns, session=sess.model_dump())
+
+
+@router.post("/{session_id}/cancel-auto-run")
+def cancel_auto_run(session_id: str) -> dict[str, str]:
+    from app.runtime.execution.discussion_loop import request_auto_run_cancel as v1_cancel
+    from app.agent_runtime_v2.facade.cancel_signal import request_cancel as v2_cancel
+
+    v1_cancel(session_id)
+    v2_cancel(session_id)
+    return {"status": "cancel_requested", "session_id": session_id}
 
 
 @router.post("/{session_id}/feedback", response_model=FeedbackResponse)
@@ -369,3 +388,107 @@ def export_session(
 ) -> JSONResponse:
     data = svc.export_session_dict(session_id)
     return JSONResponse(content=data)
+
+
+@router.patch("/{session_id}/activation-strategy", response_model=SessionStatusResponse)
+def set_activation_strategy(
+    session_id: str,
+    body: SetActivationStrategyRequest,
+    disc: Annotated[DiscussionService, Depends(get_discussion_service)],
+) -> SessionStatusResponse:
+    disc.set_activation_strategy(session_id, body.strategy)
+    st = disc.get_session_status(session_id)
+    return _build_status_response(st)
+
+
+@router.patch("/{session_id}/agent-context-mode", response_model=SessionStatusResponse)
+def set_agent_context_mode(
+    session_id: str,
+    body: SetAgentContextModeRequest,
+    disc: Annotated[DiscussionService, Depends(get_discussion_service)],
+) -> SessionStatusResponse:
+    disc.set_agent_context_mode(session_id, body.mode)
+    st = disc.get_session_status(session_id)
+    return _build_status_response(st)
+
+
+@router.post("/{session_id}/set-next-speaker", response_model=SessionStatusResponse)
+def set_next_speaker(
+    session_id: str,
+    body: SetNextSpeakerRequest,
+    disc: Annotated[DiscussionService, Depends(get_discussion_service)],
+) -> SessionStatusResponse:
+    disc.set_next_speaker(session_id, body.participant_id)
+    st = disc.get_session_status(session_id)
+    return _build_status_response(st)
+
+
+@router.patch("/{session_id}/auto-mode", response_model=SessionStatusResponse)
+def toggle_auto_mode(
+    session_id: str,
+    body: ToggleAutoModeRequest,
+    disc: Annotated[DiscussionService, Depends(get_discussion_service)],
+) -> SessionStatusResponse:
+    disc.toggle_auto_mode(session_id, body.enabled, body.delay_seconds)
+    st = disc.get_session_status(session_id)
+    return _build_status_response(st)
+
+
+@router.patch("/{session_id}/participants/{participant_id}/talkativeness", response_model=SessionStatusResponse)
+def set_talkativeness(
+    session_id: str,
+    participant_id: str,
+    body: SetTalkativenessRequest,
+    disc: Annotated[DiscussionService, Depends(get_discussion_service)],
+) -> SessionStatusResponse:
+    disc.set_talkativeness(session_id, participant_id, body.value)
+    st = disc.get_session_status(session_id)
+    return _build_status_response(st)
+
+
+def _build_status_response(st: dict) -> SessionStatusResponse:
+    return SessionStatusResponse(
+        session_id=st["session_id"],
+        topic_id=st["topic_id"],
+        learner_id=st.get("learner_id"),
+        mode_id=st.get("mode_id"),
+        preset_id=st.get("preset_id"),
+        drill_id=st.get("drill_id"),
+        assessment_template_id=st.get("assessment_template_id"),
+        mode_report_id=st.get("mode_report_id"),
+        mode_state=st.get("mode_state") or {},
+        timer_state=st.get("timer_state") or {},
+        simulation_note=st.get("simulation_note"),
+        phase=st["phase"],
+        runtime_profile_id=st.get("runtime_profile_id", "default"),
+        retrieval_mode=st.get("retrieval_mode", "rule"),
+        has_indexes=bool(st.get("has_indexes", False)),
+        provider_name=st["provider_name"],
+        model_name=st.get("model_name"),
+        turn_count=st["turn_count"],
+        latest_turns=st["latest_turns"],
+        feedback_ready=st["feedback_ready"],
+        coach_report_present=st["coach_report_present"],
+        coach_text_preview=st.get("coach_text_preview"),
+        can_run_next=st["can_run_next"],
+        peek_next_role=st.get("peek_next_role"),
+        audio_enabled=bool(st.get("audio_enabled", False)),
+        asr_provider_name=st.get("asr_provider_name"),
+        tts_provider_name=st.get("tts_provider_name"),
+        audio_asset_count=int(st.get("audio_asset_count", 0)),
+        speech_report_id=st.get("speech_report_id"),
+        speech_analysis_enabled=bool(st.get("speech_analysis_enabled", False)),
+        roster_template_id=st.get("roster_template_id"),
+        user_participant_id=st.get("user_participant_id"),
+        participants=list(st.get("participants") or []),
+        teams=list(st.get("teams") or []),
+        group_balance_report_id=st.get("group_balance_report_id"),
+        next_candidate_participant_ids=list(st.get("next_candidate_participant_ids") or []),
+        curriculum_pack_id=st.get("curriculum_pack_id"),
+        assignment_id=st.get("assignment_id"),
+        assignment_step_id=st.get("assignment_step_id"),
+        activation_strategy=st.get("activation_strategy"),
+        agent_context_mode=st.get("agent_context_mode"),
+        auto_mode_enabled=bool(st.get("auto_mode_enabled", False)),
+        auto_mode_delay_seconds=int(st.get("auto_mode_delay_seconds", 5) or 5),
+    )

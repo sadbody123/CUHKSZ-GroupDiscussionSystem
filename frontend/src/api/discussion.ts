@@ -35,3 +35,11 @@ export async function autoRunDiscussion(
 export async function generateFeedback(sessionId: string): Promise<FeedbackResponse> {
   return apiRequest<FeedbackResponse>(`/sessions/${sessionId}/feedback`, { method: "POST" });
 }
+
+export async function cancelAutoRun(
+  sessionId: string
+): Promise<{ status: string; session_id: string }> {
+  return apiRequest<{ status: string; session_id: string }>(`/sessions/${sessionId}/cancel-auto-run`, {
+    method: "POST"
+  });
+}

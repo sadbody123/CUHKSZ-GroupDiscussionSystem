@@ -291,6 +291,79 @@ class RoleRouter:
             return None
         return ped_items, ev_items
 
+    def _build_agent_context_summaries(
+        self,
+        *,
+        session_participants: list[dict],
+        current_role: str,
+        topic_id: str | None,
+        session_phase: str,
+        recent_turns: list | None = None,
+    ) -> str:
+        lines: list[str] = []
+        for p in session_participants:
+            pid = str(p.get("participant_id", ""))
+            ctrl = str(p.get("controller_type", "")).lower()
+            if ctrl == "user":
+                continue
+            rel = str(p.get("relation_to_user", "")).lower()
+            role = (
+                "Moderator" if rel == "neutral" else
+                "Ally" if rel == "ally" else
+                "Opponent" if rel == "opponent" else
+                "Agent"
+            )
+            if role.lower() == current_role.lower():
+                continue
+            name = str(p.get("display_name", pid))
+            team = str(p.get("team_id", ""))
+            seat = str(p.get("seat_label", ""))
+            line = f"[{role}] {name}"
+            if team:
+                line += f" (Team: {team})"
+            if seat:
+                line += f" [{seat}]"
+            lines.append(line)
+        if not lines:
+            return ""
+        header = "Other agents in this discussion:\n"
+        identity_block = header + "\n".join(f"- {l}" for l in lines)
+
+        argument_block = ""
+        if recent_turns:
+            pid_to_display: dict[str, str] = {}
+            for p in session_participants:
+                pid_val = str(p.get("participant_id", ""))
+                dname = str(p.get("display_name", pid_val))
+                rel_val = str(p.get("relation_to_user", "")).lower()
+                r = (
+                    "Moderator" if rel_val == "neutral" else
+                    "Ally" if rel_val == "ally" else
+                    "Opponent" if rel_val == "opponent" else "Agent"
+                )
+                pid_to_display[pid_val] = f"{dname}({r})"
+
+            other_agent_turns = []
+            current_role_lower = current_role.lower()
+            for t in recent_turns[-8:]:
+                t_role = (t.speaker_role or "").lower()
+                t_pid = getattr(t, "participant_id", None) or (t.metadata or {}).get("participant_id", "")
+                if t_role == current_role_lower:
+                    continue
+                if t_role == "user":
+                    continue
+                display = pid_to_display.get(str(t_pid), t_role)
+                text_preview = (t.text or "").strip()
+                if len(text_preview) > 300:
+                    text_preview = text_preview[:297] + "..."
+                if text_preview:
+                    other_agent_turns.append(f"- [{display}]: {text_preview}")
+
+            if other_agent_turns:
+                argument_block = "\n\nRecent arguments from other agents:\n" + "\n".join(other_agent_turns)
+
+        return identity_block + argument_block
+
     def build_context_packet(
         self,
         *,
@@ -303,6 +376,8 @@ class RoleRouter:
         user_stance: str | None = None,
         feedback_signals: list[dict] | None = None,
         participant_context: dict | None = None,
+        context_mode: str = "swap",
+        session_participants: list[dict] | None = None,
     ) -> RoleContextPacket:
         tk = effective_top_k(role, retrieval, top_k)
         phase = session_phase or "discussion"
@@ -353,6 +428,20 @@ class RoleRouter:
         pc = participant_context or {}
         if pc:
             meta["participant_context"] = pc
+
+        # APPEND mode: aggregate all agents' context summaries with recent arguments
+        if context_mode == "append" and session_participants:
+            other_agents = self._build_agent_context_summaries(
+                session_participants=session_participants,
+                current_role=r,
+                topic_id=topic_id,
+                session_phase=session_phase or "discussion",
+                recent_turns=recent_turns,
+            )
+            if other_agents:
+                meta["other_agents_context"] = other_agents
+            meta["context_mode"] = "append"
+
         return RoleContextPacket(
             role=r,
             topic_id=topic_id,
