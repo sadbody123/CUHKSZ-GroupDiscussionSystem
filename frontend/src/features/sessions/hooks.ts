@@ -1,8 +1,8 @@
 import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { autoRunDiscussion, generateFeedback, runNextTurn, submitUserTurn } from "../../api/discussion";
+import { autoRunDiscussion, cancelAutoRun, generateFeedback, runNextTurn, submitUserTurn } from "../../api/discussion";
 import { listProfiles, listSnapshots, listTopics } from "../../api/meta";
-import { createSession, getSessionRuntimeEvents, getSessionStatus, getSessionTranscript, listSessions } from "../../api/sessions";
+import { createSession, getSessionRuntimeEvents, getSessionStatus, getSessionTranscript, listSessions, setActivationStrategy, setAgentContextMode, setNextSpeaker, setTalkativeness, toggleAutoMode } from "../../api/sessions";
 import type { AutoRunRequest, CreateSessionRequest, SubmitUserTurnRequest } from "../../api/generated-adapters";
 
 export const sessionKeys = {
@@ -122,6 +122,58 @@ export function useGenerateFeedback(sessionId: string) {
   const invalidate = useInvalidateSessionDetail(sessionId);
   return useMutation({
     mutationFn: () => generateFeedback(sessionId),
+    onSuccess: invalidate
+  });
+}
+
+export function useCancelAutoRun(sessionId: string) {
+  const invalidate = useInvalidateSessionDetail(sessionId);
+  return useMutation({
+    mutationFn: () => cancelAutoRun(sessionId),
+    onSuccess: invalidate
+  });
+}
+
+// ---- Activation strategy hooks ----
+
+export function useSetActivationStrategy(sessionId: string) {
+  const invalidate = useInvalidateSessionDetail(sessionId);
+  return useMutation({
+    mutationFn: (strategy: string) => setActivationStrategy(sessionId, strategy),
+    onSuccess: invalidate
+  });
+}
+
+export function useSetAgentContextMode(sessionId: string) {
+  const invalidate = useInvalidateSessionDetail(sessionId);
+  return useMutation({
+    mutationFn: (mode: string) => setAgentContextMode(sessionId, mode),
+    onSuccess: invalidate
+  });
+}
+
+export function useSetNextSpeaker(sessionId: string) {
+  const invalidate = useInvalidateSessionDetail(sessionId);
+  return useMutation({
+    mutationFn: (participantId: string) => setNextSpeaker(sessionId, participantId),
+    onSuccess: invalidate
+  });
+}
+
+export function useToggleAutoMode(sessionId: string) {
+  const invalidate = useInvalidateSessionDetail(sessionId);
+  return useMutation({
+    mutationFn: (args: { enabled: boolean; delaySeconds?: number }) =>
+      toggleAutoMode(sessionId, args.enabled, args.delaySeconds),
+    onSuccess: invalidate
+  });
+}
+
+export function useSetTalkativeness(sessionId: string) {
+  const invalidate = useInvalidateSessionDetail(sessionId);
+  return useMutation({
+    mutationFn: (args: { participantId: string; value: number }) =>
+      setTalkativeness(sessionId, args.participantId, args.value),
     onSuccess: invalidate
   });
 }

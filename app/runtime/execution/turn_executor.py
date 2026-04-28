@@ -11,6 +11,7 @@ from app.group_sim.engines.turn_allocator import NextSpeakerPlan, allocate_next_
 from app.runtime.agents.base import append_ai_turn, run_agent_turn
 from app.runtime.enums import RoleType
 from app.runtime.llm.manager import get_provider
+from app.runtime.orchestrator.activation import ActivationEngine, ActivationStrategy
 from app.runtime.orchestrator.state_machine import SessionStateMachine
 from app.runtime.profile_resolver import resolve_runtime_profile
 from app.runtime.retrieval.router import RoleRouter, build_repositories
@@ -61,7 +62,39 @@ class TurnExecutor:
             candidate_participant_ids=[],
         )
 
-    def _resolve_next_plan(self, last_role: str | None) -> NextSpeakerPlan:
+    def _resolve_next_plan(self, last_role: str | None, *, user_text: str = "") -> NextSpeakerPlan:
+        # Check for pending activation queue (consecutive agent turns)
+        pending = list(self.session.activation_queue)
+        if pending:
+            pid = pending.pop(0)
+            self.session.activation_queue = pending
+            p = _find_participant(self.session, pid) or {}
+            reason = f"activation_batch_remaining: {len(pending)} left"
+            return self._plan_from_activation(pid, p, reason)
+
+        # Run activation engine if a non-manual strategy is active
+        strategy = getattr(self.session, "activation_strategy", "list") or "list"
+        if strategy != ActivationStrategy.MANUAL.value and self.session.participants:
+            engine = ActivationEngine()
+            plan = engine.activate(self.session, strategy, user_text=user_text, last_role=last_role)
+            if plan.participant_ids:
+                self.session.activation_queue = plan.participant_ids[1:]
+                remaining = list(self.session.activation_queue)
+                if remaining:
+                    self.session.activation_queue = remaining
+                pid = plan.participant_ids[0]
+                p = _find_participant(self.session, pid) or {}
+                reason = f"{plan.strategy.value}: {plan.reason}"
+                return self._plan_from_activation(pid, p, reason)
+            return self._legacy_plan("user")
+
+        # Manual strategy: check user-designated candidates
+        if strategy == ActivationStrategy.MANUAL.value and self.session.next_candidate_participant_ids:
+            pid = self.session.next_candidate_participant_ids[0]
+            self.session.next_candidate_participant_ids = self.session.next_candidate_participant_ids[1:]
+            p = _find_participant(self.session, pid) or {}
+            return self._plan_from_activation(pid, p, "manual: user designated")
+
         cfg = get_app_config()
         if cfg.enable_group_sim and self.session.participants:
             plan = allocate_next_speaker(self.session, last_role)
@@ -70,6 +103,26 @@ class TurnExecutor:
                 return plan
         nr = self.sm.peek_next_role(self.session, last_role)
         return self._legacy_plan(nr)
+
+    def _plan_from_activation(self, pid: str, participant: dict, reason: str) -> NextSpeakerPlan:
+        rel = str(participant.get("relation_to_user") or "neutral")
+        ctrl = str(participant.get("controller_type") or "agent")
+        phase = self.session.phase or "discussion"
+        nr = "user" if ctrl == "user" else (
+            "coach" if phase == "feedback" or rel == "coach" else
+            "ally" if rel == "ally" else "opponent" if rel == "opponent" else "moderator"
+        )
+        return NextSpeakerPlan(
+            next_role=nr,
+            participant_id=pid,
+            team_id=str(participant.get("team_id") or None) if participant.get("team_id") else None,
+            display_name=str(participant.get("display_name") or pid),
+            seat_label=str(participant.get("seat_label") or ""),
+            relation_to_user=rel,
+            turn_role_type="agent" if ctrl != "user" else "user",
+            allocation_reason=reason,
+            candidate_participant_ids=[pid],
+        )
 
     def _participant_context_for_plan(self, plan: "NextSpeakerPlan") -> dict | None:
         if not plan.participant_id:
@@ -165,7 +218,13 @@ class TurnExecutor:
 
     def run_next_turn(self) -> tuple[SessionContext, AgentReply | None]:
         last = self.session.turns[-1].speaker_role if self.session.turns else None
-        plan = self._resolve_next_plan(last)
+        user_text = ""
+        if self.session.turns:
+            for t in reversed(self.session.turns):
+                if t.speaker_role == RoleType.USER.value:
+                    user_text = t.text or ""
+                    break
+        plan = self._resolve_next_plan(last, user_text=user_text)
         if plan.next_role == RoleType.USER.value:
             return self.session, None
         pctx = self._participant_context_for_plan(plan) if plan.participant_id else None

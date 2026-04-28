@@ -8,6 +8,21 @@ from app.agent_runtime_v2.state.graph_state import DiscussionGraphState
 from app.runtime.schemas.agent import AgentReply
 from app.runtime.schemas.session import SessionContext
 
+_REPAIR_HINTS: dict[str, str] = {
+    "too_short": "Expand your response with supporting arguments or examples.",
+    "weak_topic_relevance": "Connect your argument explicitly to the discussion topic.",
+    "weak_response_link": "Directly address or build upon the previous speaker's point.",
+    "inconsistent_stance": "Ensure your argument reflects your assigned stance.",
+    "excessive_self_repetition": "Introduce a new angle or evidence instead of repeating.",
+}
+
+DEFAULT_REPAIR_HINT = "Strengthen the relevance and coherence of your response."
+
+
+def _generate_repair_guidance(flags: list[str]) -> str:
+    hints = [_REPAIR_HINTS.get(f, DEFAULT_REPAIR_HINT) for f in flags]
+    return " ".join(hints)
+
 
 def quality_check(
     state: DiscussionGraphState,
@@ -53,9 +68,11 @@ def repair_turn(
     session: SessionContext,
     reply: AgentReply | None,
 ) -> tuple[SessionContext, AgentReply | None]:
-    """Minimal deterministic repair pass.
+    """Deterministic repair pass.
 
-    Phase-4 intentionally avoids extra LLM calls and applies lightweight rewrite.
+    Instead of appending a [REPAIR] tag, prepends targeted guidance
+    derived from the quality flags so that a re-generation attempt
+    can incorporate the feedback.
     """
     state.repair_count += 1
     if not session.turns:
@@ -63,12 +80,25 @@ def repair_turn(
     last_turn = session.turns[-1]
     if last_turn.speaker_role == "user":
         return session, reply
-    repaired = f"{last_turn.text.strip()} [REPAIR] Clarified with explicit topic linkage and a direct response."
+
+    guidance = _generate_repair_guidance(list(state.quality_flags or []))
+    original = last_turn.text.strip()
+    repaired = f"[Guidance: {guidance}] {original}"
     last_turn.text = repaired
-    last_turn.metadata = {**(last_turn.metadata or {}), "quality_repaired": True, "repair_count": state.repair_count}
+    last_turn.metadata = {
+        **(last_turn.metadata or {}),
+        "quality_repaired": True,
+        "repair_count": state.repair_count,
+        "repair_guidance": guidance,
+    }
     if reply is not None:
         reply.text = repaired
-        reply.metadata = {**(reply.metadata or {}), "quality_repaired": True, "repair_count": state.repair_count}
+        reply.metadata = {
+            **(reply.metadata or {}),
+            "quality_repaired": True,
+            "repair_count": state.repair_count,
+            "repair_guidance": guidance,
+        }
     return session, reply
 
 

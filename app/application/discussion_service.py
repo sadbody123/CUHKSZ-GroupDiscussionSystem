@@ -107,14 +107,23 @@ class DiscussionService:
                 session_id, max_steps=max_steps, auto_fill_user=auto_fill_user
             )
         else:
+            from app.runtime.execution.discussion_loop import auto_run_discussion as v1_auto_run
+
             ex = self._executor(ctx)
-            sess, replies = auto_run_discussion(ex, max_steps=max_steps, auto_fill_user=auto_fill_user)
+            sess, replies = v1_auto_run(ex, max_steps=max_steps, auto_fill_user=auto_fill_user)
         self._sessions.manager.save(sess)
         try:
             self._mode().on_turn_saved(session_id)
         except Exception as exc:
             warn_optional_hook_failed("mode.on_turn_saved", exc, session_id=session_id)
         return sess, replies
+
+    def request_auto_run_cancel(self, session_id: str) -> None:
+        from app.runtime.execution.discussion_loop import request_auto_run_cancel as v1_cancel
+        from app.agent_runtime_v2.facade.cancel_signal import request_cancel as v2_cancel
+
+        v1_cancel(session_id)
+        v2_cancel(session_id)
 
     def get_session_status(self, session_id: str) -> dict:
         ctx = self._sessions.get_session(session_id)
@@ -198,6 +207,10 @@ class DiscussionService:
             "curriculum_pack_id": ctx.curriculum_pack_id,
             "assignment_id": ctx.assignment_id,
             "assignment_step_id": ctx.assignment_step_id,
+            "activation_strategy": getattr(ctx, "activation_strategy", "list") or "list",
+            "agent_context_mode": getattr(ctx, "agent_context_mode", "swap") or "swap",
+            "auto_mode_enabled": bool(getattr(ctx, "auto_mode_enabled", False)),
+            "auto_mode_delay_seconds": int(getattr(ctx, "auto_mode_delay_seconds", 5) or 5),
         }
 
     def get_session_transcript(self, session_id: str, *, offset: int = 0, limit: int = 50) -> dict:
@@ -231,6 +244,58 @@ class DiscussionService:
             "next_offset": next_offset if next_offset < total else None,
             "items": items,
         }
+
+    def set_activation_strategy(self, session_id: str, strategy: str) -> SessionContext:
+        ctx = self._sessions.manager.load(session_id)
+        if not ctx:
+            raise SessionNotFoundError(session_id)
+        ctx.activation_strategy = strategy
+        # Clear pending activation queue when strategy changes
+        ctx.metadata.pop("_pending_activation_pids", None)
+        self._sessions.manager.save(ctx)
+        return ctx
+
+    def set_agent_context_mode(self, session_id: str, mode: str) -> SessionContext:
+        ctx = self._sessions.manager.load(session_id)
+        if not ctx:
+            raise SessionNotFoundError(session_id)
+        ctx.agent_context_mode = mode
+        self._sessions.manager.save(ctx)
+        return ctx
+
+    def set_next_speaker(self, session_id: str, participant_id: str) -> SessionContext:
+        ctx = self._sessions.manager.load(session_id)
+        if not ctx:
+            raise SessionNotFoundError(session_id)
+        ctx.next_candidate_participant_ids = [participant_id]
+        self._sessions.manager.save(ctx)
+        return ctx
+
+    def toggle_auto_mode(self, session_id: str, enabled: bool, delay_seconds: int | None = None) -> SessionContext:
+        ctx = self._sessions.manager.load(session_id)
+        if not ctx:
+            raise SessionNotFoundError(session_id)
+        ctx.auto_mode_enabled = enabled
+        if delay_seconds is not None:
+            ctx.auto_mode_delay_seconds = delay_seconds
+        self._sessions.manager.save(ctx)
+        return ctx
+
+    def set_talkativeness(self, session_id: str, participant_id: str, value: float) -> SessionContext:
+        ctx = self._sessions.manager.load(session_id)
+        if not ctx:
+            raise SessionNotFoundError(session_id)
+        clamped = max(0.0, min(1.0, float(value)))
+        updated = []
+        for p in ctx.participants or []:
+            if str(p.get("participant_id")) == participant_id:
+                mem = dict(p.get("participant_memory_state") or {})
+                mem["talkativeness"] = clamped
+                p = {**p, "participant_memory_state": mem}
+            updated.append(p)
+        ctx.participants = updated
+        self._sessions.manager.save(ctx)
+        return ctx
 
     def get_runtime_events(
         self,

@@ -10,7 +10,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "codegen:openapi:export": "python scripts/export_openapi.py",
-    "codegen:openapi": "npm run codegen:openapi:export && openapi-typescript src/api/generated/openapi.schema.json -o src/api/generated/openapi.ts",
+    "codegen:openapi": "npm run codegen:openapi:export && npx openapi-typescript src/api/generated/openapi.schema.json -o src/api/generated/openapi.ts",
     "e2e:install": "playwright install chromium",
     "e2e:mock": "playwright test -c playwright.config.ts",
     "e2e:real": "playwright test -c playwright.real.config.ts",

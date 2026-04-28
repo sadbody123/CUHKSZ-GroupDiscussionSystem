@@ -24,6 +24,8 @@ class Settings(BaseModel):
     chunk_overlap: int = Field(default=80, ge=0, le=500)
     min_text_chars: int = Field(default=20, ge=0)
     log_level: str = Field(default="INFO")
+    near_dup_hash_bits: int = Field(default=128, ge=64, le=256)
+    near_dup_threshold: float = Field(default=0.85, ge=0.5, le=1.0)
 
     @classmethod
     def from_env(cls) -> "Settings":

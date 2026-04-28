@@ -44,8 +44,7 @@ class SessionStateMachine:
 
     def peek_next_role(self, session: SessionContext, last_role: str | None) -> str:
         """Suggest next speaker without mutating ``session``."""
-        ctx = session.model_copy(deep=True)
-        return self.suggest_next_role(ctx, last_role)
+        return self.suggest_next_role(session, last_role)
 
     def suggest_next_role(self, ctx: SessionContext, last_role: str | None) -> str:
         phase = ctx.phase

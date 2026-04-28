@@ -48,4 +48,11 @@ class SessionContext(BaseModel):
     curriculum_pack_id: str | None = None
     assignment_id: str | None = None
     assignment_step_id: str | None = None
+    activation_strategy: str = "list"
+    allow_consecutive_agent_turns: bool = False
+    agent_context_mode: str = "swap"
+    auto_mode_enabled: bool = False
+    auto_mode_delay_seconds: int = 5
+    auto_fill_user_prompt: str = ""
+    activation_queue: list[str] = Field(default_factory=list)
     metadata: dict = Field(default_factory=dict)
