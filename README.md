@@ -5,7 +5,7 @@
 [![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688.svg)](https://fastapi.tiangolo.com/)
 [![React](https://img.shields.io/badge/React-18-61DAFB.svg)](https://react.dev/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-AGPL--3.0-green.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-pytest%20%2B%20vitest%20%2B%20playwright-8A2BE2.svg)](#testing)
 
 ---
@@ -160,4 +160,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) (if available) — pull requests, feature
 
 ## License
 
-MIT — see [LICENSE](LICENSE)
+AGPL-3.0 — see [LICENSE](LICENSE)
