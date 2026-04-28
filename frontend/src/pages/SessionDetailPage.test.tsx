@@ -42,6 +42,7 @@ vi.mock("../features/sessions/hooks", () => ({
   useSetNextSpeaker: () => ({ mutate: vi.fn(), isPending: false }),
   useToggleAutoMode: () => ({ mutate: vi.fn(), isPending: false }),
   useSetTalkativeness: () => ({ mutate: vi.fn(), isPending: false }),
+  useCancelAutoRun: () => ({ mutate: vi.fn(), isPending: false }),
   useSessionTranscript: () => ({
     isLoading: false,
     data: {
