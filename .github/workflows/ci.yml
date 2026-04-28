@@ -103,7 +103,7 @@ jobs:
 
       - name: Install frontend dependencies
         working-directory: frontend
-        run: npm install
+        run: npm ci
 
       - name: Frontend quality guard
         working-directory: frontend
