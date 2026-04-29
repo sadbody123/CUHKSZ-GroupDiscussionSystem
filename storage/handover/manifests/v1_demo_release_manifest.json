@@ -1,8 +1,8 @@
 {
-  "release_id": "gds_v1_demo_b418d931",
+  "release_id": "gds_v1_demo_78d23f59",
   "release_version": "1.0.0-handover",
   "profile_id": "v1_demo",
-  "created_at": "2026-04-08T07:16:45.071100+00:00",
+  "created_at": "2026-04-28T22:02:57.104810+00:00",
   "rc_report_ref": "report:rc_latest",
   "readiness_report_ref": "report:readiness_latest",
   "stability_report_ref": "report:stability_latest",
