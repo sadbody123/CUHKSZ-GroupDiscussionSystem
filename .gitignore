@@ -57,3 +57,20 @@ app/knowledge/snapshots/*/
 # Local discussion sessions (keep folder)
 storage/sessions/*.json
 !storage/sessions/.gitkeep
+
+# Runtime generated data under storage/ (keep index files)
+storage/assignments/*_*/
+storage/group_reports/
+storage/learners/demo_learner_*/
+storage/learners/*_*/plans/
+storage/learners/*_*/reports/
+storage/mode_reports/
+storage/release/
+storage/reviewers/
+storage/reviews/calibration/
+storage/reviews/review_packs/
+storage/reviews/reviewed_outputs/
+storage/reviews/submissions/
+storage/speech_reports/
+storage/stability/e2e_results/
+storage/stability/issues/
